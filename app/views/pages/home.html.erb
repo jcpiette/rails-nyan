@@ -1,1 +1,7 @@
-<p>hello world!</p>
+<div>
+  <% if user_signed_in? %>
+    <p>You are on the dashboard page</p>
+  <% else %>
+    <p>hello world!</p>
+  <% end %>
+</div>
