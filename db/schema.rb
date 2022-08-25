@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
   create_table "event_members", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "event_id", null: false
+    t.boolean "is_interested", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_members_on_event_id"
