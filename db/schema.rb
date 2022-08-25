@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_102852) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "zip_code"
@@ -59,6 +59,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_102852) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "preferences", force: :cascade do |t|
+    t.string "type"
+    t.string "budget"
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_preferences_on_group_id"
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
   create_table "user_friends", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "user_friend_id", null: false
@@ -89,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_102852) do
   add_foreign_key "events", "user_admins"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
+  add_foreign_key "preferences", "groups"
+  add_foreign_key "preferences", "users"
   add_foreign_key "user_friends", "user_friends"
   add_foreign_key "user_friends", "users"
 end
