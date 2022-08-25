@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   resources :preferences
-  resources :group_members
   resources :groups
   resources :user_friends
-  resources :event_members
   resources :events
   resources :addresses
   devise_for :users

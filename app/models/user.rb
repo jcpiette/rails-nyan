@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :event_members
   has_many :groups, through: :group_members #Invited members
   has_many :users, through: :user_friends
-  has_many :Preferences
+  has_one :Preferences
 end
