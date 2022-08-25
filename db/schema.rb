@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_101039) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_101205) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "zip_code"
@@ -37,10 +37,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_101039) do
     t.string "description"
     t.string "location"
     t.datetime "event_date"
-    t.integer "user_id", null: false
+    t.integer "user_admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["user_admin_id"], name: "index_events_on_user_admin_id"
+  end
+
+  create_table "user_friends", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "user_friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_friend_id"], name: "index_user_friends_on_user_friend_id"
+    t.index ["user_id"], name: "index_user_friends_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_101039) do
   add_foreign_key "addresses", "users"
   add_foreign_key "event_members", "events"
   add_foreign_key "event_members", "users"
-  add_foreign_key "events", "users"
+  add_foreign_key "events", "user_admins"
+  add_foreign_key "user_friends", "user_friends"
+  add_foreign_key "user_friends", "users"
 end
