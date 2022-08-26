@@ -1,5 +1,12 @@
 # README
 
+1. Git Clone repo
+2. In command line, run : 
+* Bundle Install
+* npm install
+* yarn add bootstrap @popperjs/core
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
