@@ -1,0 +1,9 @@
+.user-settings-container {
+  display: flex;
+}
+
+.user-settings-container .user-settings-menu {
+  position: sticky;
+  top: 0;
+  padding-right: 50px;
+}

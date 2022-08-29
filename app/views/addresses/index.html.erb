@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
+<div class="user-settings-container">
 
-<h1>Addresses</h1>
+  <%= render "shared/userMenu" %>
 
-<div id="addresses">
-  <% @addresses.each do |address| %>
-    <%= render address %>
-    <p>
-      <%= link_to "Show this address", address %>
-    </p>
-  <% end %>
+  <div class="user-settings-info">
+    <h1>Addresses</h1>
+    <div id="addresses">
+      <% @addresses.each do |address| %>
+        <%= render address %>
+        <p>
+          <%= link_to "Show this address", address_path(address.id) %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= link_to "New address", new_address_path %>
+  </div>
 </div>
-
-<%= link_to "New address", new_address_path %>

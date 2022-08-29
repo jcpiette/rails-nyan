@@ -1,0 +1,33 @@
+<div class="user-settings-menu">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">
+          <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-user-shield"></i>  Account
+          <% end %>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to addresses_path, method: :post, class: "dropdown-item" do %>
+            <i class="fa-solid fa-address-book"></i> Address
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-bell"></i>  Notifications settings
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <p>Unhappy?</p>
+  <p>
+    <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-secondary" %>
+  </p>
+
+</div>
