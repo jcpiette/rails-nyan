@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :user_friends, :events, only: [:index, :show, :new, :edit, :destroy]
     get '/notification', to: 'users#notification'
     get '/address', to: 'users#address'
-    get '/preferences', to: "users#preferences"
+    get '/preferences', to: 'users#preferences'
   end
   # Defines the root path route ("/")
   # root "articles#index"
