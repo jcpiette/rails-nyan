@@ -11,21 +11,24 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "alias"
     t.string "street"
     t.string "zip_code"
     t.string "city"
     t.boolean "is_default"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "event_members", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.boolean "is_interested", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,15 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
     t.string "description"
     t.string "location"
     t.datetime "event_date"
-    t.integer "user_admin_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_admin_id"], name: "index_events_on_user_admin_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "group_members", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_members_on_group_id"
@@ -63,8 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
   create_table "preferences", force: :cascade do |t|
     t.string "type"
     t.string "budget"
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_preferences_on_group_id"
@@ -72,8 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
   end
 
   create_table "user_friends", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "user_friend_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "user_friend_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_friend_id"], name: "index_user_friends_on_user_friend_id"
@@ -98,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
   add_foreign_key "addresses", "users"
   add_foreign_key "event_members", "events"
   add_foreign_key "event_members", "users"
-  add_foreign_key "events", "user_admins"
+  add_foreign_key "events", "users"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "preferences", "groups"
