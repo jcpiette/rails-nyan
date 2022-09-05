@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
   def preferences
   end
+
+  def notification
+  end
 end
