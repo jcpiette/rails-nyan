@@ -13,6 +13,7 @@ class UserFriendsController < ApplicationController
   # GET /user_friends/new
   def new
     @user_friend = UserFriend.new
+    @user = current_user
   end
 
   # GET /user_friends/1/edit
@@ -22,10 +23,11 @@ class UserFriendsController < ApplicationController
   # POST /user_friends or /user_friends.json
   def create
     @user_friend = UserFriend.new(user_friend_params)
+    @user = current_user
 
     respond_to do |format|
       if @user_friend.save
-        format.html { redirect_to user_friend_url(@user_friend), notice: "User friend was successfully created." }
+        format.html { redirect_to user_user_friends_path(@user), notice: "User friend was successfully created." }
         format.json { render :show, status: :created, location: @user_friend }
       else
         format.html { render :new, status: :unprocessable_entity }
