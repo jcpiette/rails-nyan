@@ -88,9 +88,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_103224) do
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "preference", default: "", null: false
+    t.string "notification_settings", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string "notification_settings", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
