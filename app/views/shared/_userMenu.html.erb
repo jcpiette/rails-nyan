@@ -10,21 +10,21 @@
       </tr>
       <tr>
         <td>
-          <%= link_to user_users_address_path(current_user), class: "dropdown-item" do %>
+          <%= link_to user_address_path(current_user), class: "dropdown-item" do %>
             <i class="fa-solid fa-address-book"></i> Address
           <% end %>
         </td>
       </tr>
       <tr>
         <td>
-          <%= link_to user_users_preferences_path(current_user), class: "dropdown-item" do %>
+          <%= link_to user_preferences_path(current_user), class: "dropdown-item" do %>
             <i class="fa-solid fa-sliders"></i> Preferences
           <% end %>
         </td>
       </tr>
       <tr>
         <td>
-          <%= link_to user_users_notification_path(current_user), class: "dropdown-item" do %>
+          <%= link_to user_notification_path(current_user), class: "dropdown-item" do %>
             <i class="fa-solid fa-bell"></i>  Notifications
           <% end %>
         </td>

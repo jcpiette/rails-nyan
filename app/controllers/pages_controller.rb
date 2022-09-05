@@ -3,13 +3,4 @@ class PagesController < ApplicationController
 
   def home
   end
-
-  def address
-  end
-
-  def preference
-  end
-
-  def notification
-  end
 end
