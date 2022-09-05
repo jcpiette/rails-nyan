@@ -1,4 +1,4 @@
-class UserMembersController < ApplicationController
+class UserController < ApplicationController
 
   def address
   end
