@@ -7,5 +7,8 @@ class User < ApplicationRecord
   #relation
   has_many :events, dependent: :destroy #Event owner
   has_many :event_members, dependent: :destroy
-  has_many :users, through: :user_friends
+  has_many :groups, through: :group_members #Invited members
+  has_many :friends, class_name: "UserFriends", foreign_key: :friend_id
+  has_many :user_friends
+  has_one :Preferences, dependent: :destroy
 end
