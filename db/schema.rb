@@ -49,9 +49,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_101205) do
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "preference", default: "", null: false
-    t.string "notification_settings", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "post_code", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "country", default: "", null: false
+    t.string "latitude", default: "", null: false
+    t.string "longitude", default: "", null: false
+    t.string "google_place_id", default: "", null: false
+    t.string "preference_type", default: "", null: false
+    t.string "preference_budget", default: "", null: false
+    t.boolean "notification_friend_invite", default: true, null: false
+    t.boolean "notification_event_invite", default: true, null: false
+    t.boolean "notification_event_update", default: true, null: false
+    t.boolean "notification_friend_update", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

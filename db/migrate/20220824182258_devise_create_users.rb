@@ -10,10 +10,24 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
-      ## Other
-      t.string :address, null: false, default: ""
-      t.string :preference, null: false, default: ""
-      t.string :notification_settings, null: false, default: ""
+      ## address
+      t.string :street, null: false, default: ""
+      t.string :post_code, null: false, default: ""
+      t.string :city, null: false, default: ""
+      t.string :country, null: false, default: ""
+      t.string :latitude, null: false, default: ""
+      t.string :longitude, null: false, default: ""
+      t.string :google_place_id, null: false, default: ""
+
+      ## preference
+      t.string :preference_type, null: false, default: ""
+      t.string :preference_budget, null: false, default: ""
+
+      ## notification
+      t.boolean :notification_friend_invite, null: false, default: "True"
+      t.boolean :notification_event_invite, null: false, default: "True"
+      t.boolean :notification_event_update, null: false, default: "True"
+      t.boolean :notification_friend_update, null: false, default: "True"
 
       ## Recoverable
       t.string   :reset_password_token

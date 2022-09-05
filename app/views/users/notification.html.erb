@@ -1,0 +1,28 @@
+<div class="user-settings-container">
+
+  <%= render "shared/userMenu" %>
+
+  <div class="user-settings-notification">
+    <h1>Notification</h1>
+    <br>
+    <%= simple_form_for(current_user, url: registration_path(current_user), data: {turbo: false}) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :notification_friend_invite,
+                required: true %>
+        <%= f.input :notification_event_invite,
+            required: true %>
+        <%= f.input :notification_event_update,
+                    required: true %>
+        <%= f.input :notification_friend_update,
+                    required: true %>
+      </div>
+      <br>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
