@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   def address
   end
 
-  def preferences
+  def preference
   end
 end
