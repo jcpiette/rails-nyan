@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'users/notification', to: 'pages#notification'
     get 'users/address', to: 'pages#address'
     get 'users/preferences', to: "pages#preferences"
+   
   end
   # Defines the root path route ("/")
   # root "articles#index"
