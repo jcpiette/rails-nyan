@@ -1,0 +1,43 @@
+<div class="user-settings-menu">
+  <div class="user-settings-tabs" data-controller="user-menu-tab">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayAccount' } do %>
+              <i class="fa-solid fa-user-shield"></i>  Account
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayAddress' } do %>
+              <i class="fa-solid fa-address-book"></i> Address
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td data-action="click->user-menu-tab#displayPreference">
+            <%= link_to '#', class: "dropdown-item tab-selected" do %>
+              <i class="fa-solid fa-sliders"></i> Preferences
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayNotification' } do %>
+              <i class="fa-solid fa-bell"></i>  Notifications
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <div class="delete-account">
+    <p>Unhappy?</p>
+    <p>
+      <%= link_to "Delete my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-secondary" %>
+    </p>
+  </div>
+</div>

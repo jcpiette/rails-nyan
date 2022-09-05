@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
+
+import UserMenuTabController from "./user_menu_tab_controller"
+application.register("user-menu-tab", UserMenuTabController)

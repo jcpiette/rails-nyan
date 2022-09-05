@@ -1,0 +1,24 @@
+<div class="user-settings-address" style="display: none;">
+  <h1>Address</h1>
+  <br>
+  <%= simple_form_for(current_user, url: user_address_path(current_user)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <%= f.input :street,
+              required: true %>
+      <%= f.input :post_code,
+              required: true %>
+      <%= f.input :city,
+              required: true %>
+
+    </div>
+    <br>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
