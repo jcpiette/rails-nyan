@@ -5,29 +5,18 @@
   <div class="user-settings-notification">
     <h1>Notification</h1>
     <br>
-    <%= simple_form_for(current_user, url: user_notification_path(current_user)) do |f| %>
+    <%= simple_form_for(current_user, url: registration_path(current_user), data: {turbo: false}) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="friendRequest" checked>
-          <label class="form-check-label" for="friendRequest">Friend Request</label>
-        </div>
-        <br>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="eventInvite">
-          <label class="form-check-label" for="eventInvite">Event Invite</label>
-        </div>
-        <br>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="inviteStatus" checked>
-          <label class="form-check-label" for="inviteStatus">Invite Sent Status</label>
-        </div>
-        <br>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="eventUpdate">
-          <label class="form-check-label" for="eventUpdate">Event Update</label>
-        </div>
+        <%= f.input :notification_friend_invite,
+                required: true %>
+        <%= f.input :notification_event_invite,
+            required: true %>
+        <%= f.input :notification_event_update,
+                    required: true %>
+        <%= f.input :notification_friend_update,
+                    required: true %>
       </div>
       <br>
       <div class="form-actions">

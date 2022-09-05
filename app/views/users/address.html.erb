@@ -3,19 +3,22 @@
   <%= render "shared/userMenu" %>
 
   <div class="user-settings-notification">
-    <h1>Notification</h1>
+    <h1>Address</h1>
     <br>
     <%= simple_form_for(current_user, url: user_address_path(current_user)) do |f| %>
       <%= f.error_notification %>
 
-      <label for="street">Street</label><br>
-      <input type="text" id="street" name="street" value=""><br>
+      <div class="form-inputs">
 
-      <label for="postcode">Post Code</label><br>
-      <input type="text" id="postcode" name="postcode" value=""><br>
+        <%= f.input :street,
+                required: true %>
+        <%= f.input :post_code,
+                required: true %>
+        <%= f.input :city,
+                required: true %>
 
-      <label for="city">City</label><br>
-      <input type="text" id="city" name="city" value=""><br>
+      </div>
+      <br>
 
       <div class="form-actions">
         <%= f.button :submit, "Update", class: "btn btn-primary" %>
