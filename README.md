@@ -5,6 +5,7 @@
 * Bundle Install
 * npm install
 * yarn add bootstrap @popperjs/core
+* yarn add @rails/actioncable
 
 
 This README would normally document whatever steps are necessary to get the
