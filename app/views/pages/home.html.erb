@@ -3,6 +3,10 @@
     <p>You are on the dashboard page</p>
     <%#  this does not work fix!!<%= render "pages/home/addFriendButton" %>
     <%= link_to "Add Friend", new_user_user_friend_path(current_user) %>
+
+    <% @notifications.each do |n| %>
+    <p> <%= n.message %></p>
+    <% end %>
   <% else %>
     <p>hello world!</p>
   <% end %>

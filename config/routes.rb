@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :events, only: [:index, :show, :new, :edit, :destroy]
     resources :user_friends, :events, only: [:index, :show, :new, :create, :edit, :destroy]
+    resources :notifications, only: [:show]
   end
   # Defines the root path route ("/")
   # root "articles#index"

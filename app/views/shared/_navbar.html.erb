@@ -11,9 +11,9 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "/",  class: "nav-link", style: "font-size:larger" do %>
-              <i class="fa-solid fa-bell"></i> Notifications
-            <% end %>
+            <a tabindex="0" class="btn btn-secondary" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
+              <i class="fa-solid fa-bell"></i> Notifications <span class="badge badge-light">4</span>
+            </a>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/jcpiette", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
