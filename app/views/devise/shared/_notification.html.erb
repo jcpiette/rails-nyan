@@ -16,14 +16,8 @@
     </div>
     <br>
 
-    <div class="save-user-settings">
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <div class="form-actions">
-        <%= f.button :submit, "Update", class: "btn btn-primary" %>
-      </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class: "btn btn-primary" %>
     </div>
   <% end %>
 
