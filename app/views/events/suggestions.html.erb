@@ -1,2 +1,9 @@
 <h1>Suggestions<h1>
-<%= @suggestions%>
+  <div style='display: flex;'>
+    <% @suggestions.each do |suggestion|%>
+      <div class='card', style='border-style : solid; border-color : red; margin-top : 10px;'>
+        <p><%=suggestion['name']%></p>
+        <p><%='£'*suggestion['price level']%></p>
+      <%end%>
+      </div>
+  </div>
