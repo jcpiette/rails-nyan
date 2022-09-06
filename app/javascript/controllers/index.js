@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import notificationSubscriptionController from "./notification_subscription_controller"
+application.register("notification-subscription", notificationSubscriptionController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
 

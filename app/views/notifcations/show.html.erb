@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @notifcation %>
+
+<div>
+  <%= link_to "Edit this notifcation", edit_notifcation_path(@notifcation) %> |
+  <%= link_to "Back to notifcations", notifcations_path %>
+
+  <%= button_to "Destroy this notifcation", @notifcation, method: :delete %>
+</div>
