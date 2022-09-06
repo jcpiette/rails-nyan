@@ -26,6 +26,11 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
+        NotificationChannel.broadcast_to(
+          @notification.user_id,
+          render_to_string(partial: "notifications", locals: {notification: @notification})
+        )
+        head :ok
         format.html { redirect_to notification_url(@notification), notice: "Notification was successfully created." }
         format.json { render :show, status: :created, location: @notification }
       else
