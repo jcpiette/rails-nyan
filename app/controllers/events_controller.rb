@@ -23,11 +23,14 @@ class EventsController < ApplicationController
   end
 
   def suggestions
-    location = '51.536388,-0.140556'
-    type = 'thai restaurant'
-    radius = '3000'
-    minprice = 3
-    maxprice = 3
+    location = find_event_location()
+
+    type = 'restaurant'
+    radius = '1500'
+    fminprice = find_event_budget()
+    fmaxprice = find_event_budget()
+    minprice = fminprice.to_i
+    maxprice = fmaxprice.to_i
     # make the json
     url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
     https = Net::HTTP.new(url.host, url.port)
@@ -131,7 +134,7 @@ class EventsController < ApplicationController
     float_longitudes = string_longitudes.map(&:to_f)
     average_latitude = (float_latitudes.sum / float_latitudes.count)
     average_longitude = (float_longitudes.sum / float_longitudes.count)
-    @location = [average_latitude, average_longitude]
+    @location = "#{average_latitude.to_s},#{average_longitude.to_s}"
   end
 
  # POST /events or /events.json
