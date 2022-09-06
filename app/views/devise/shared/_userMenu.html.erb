@@ -1,31 +1,31 @@
 <div class="user-settings-menu">
-  <div class="user-settings-tabs" data-controller="user-menu-tab">
+  <div class="user-settings-tabs">
     <table class="table">
       <tbody>
         <tr>
           <th scope="row">
-            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayAccount' } do %>
+            <%= link_to '/', class: "dropdown-item tab-selected", remote: true, data: { action: 'click->user-menu-tab#displayAccount', user_menu_tab_target: "button" } do %>
               <i class="fa-solid fa-user-shield"></i>  Account
             <% end %>
           </th>
         </tr>
         <tr>
           <td>
-            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayAddress' } do %>
+            <%= link_to '/', class: "dropdown-item ", remote: true, data: { action: 'click->user-menu-tab#displayAddress', user_menu_tab_target: "button" } do %>
               <i class="fa-solid fa-address-book"></i> Address
             <% end %>
           </td>
         </tr>
         <tr>
-          <td data-action="click->user-menu-tab#displayPreference">
-            <%= link_to '#', class: "dropdown-item tab-selected" do %>
+          <td>
+            <%= link_to '/', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayPreference', user_menu_tab_target: "button" } do %>
               <i class="fa-solid fa-sliders"></i> Preferences
             <% end %>
           </td>
         </tr>
         <tr>
           <td>
-            <%= link_to '#', class: "dropdown-item", remote: true, data: { action: 'click->user-menu-tab#displayNotification' } do %>
+            <%= link_to '/', class: "dropdown-item ", remote: true, data: { action: 'click->user-menu-tab#displayNotification', user_menu_tab_target: "button" } do %>
               <i class="fa-solid fa-bell"></i>  Notifications
             <% end %>
           </td>
