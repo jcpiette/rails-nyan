@@ -1,3 +1,6 @@
+require 'uri'
+require 'net/http'
+require 'json'
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
 
@@ -19,7 +22,119 @@ class EventsController < ApplicationController
   def edit
   end
 
-  # POST /events or /events.json
+  def suggestions
+    location = '51.536388,-0.140556'
+    type = 'thai restaurant'
+    radius = '3000'
+    minprice = 3
+    maxprice = 3
+    # make the json
+    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = https.request(request)
+    file = response.read_body
+    json_file = JSON.parse(file)
+
+    place_ids = []
+    json_file['results'].each do |place|
+      place_ids << place['place_id']
+    end
+    @suggestions = []
+    place_ids.each do |place_id|
+      newurl = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+      new_https = Net::HTTP.new(newurl.host, newurl.port)
+      new_https.use_ssl = true
+      new_request = Net::HTTP::Get.new(newurl)
+      response = new_https.request(new_request)
+      new_file = response.read_body
+      json_file = JSON.parse(new_file)
+      @suggestions << place_hash = {
+        'name' => json_file['result']['name'],
+       #'address' => json_file['result']['formatted_address'],
+       # 'adr_address' => json_file['result']['adr_address'],
+        'price level' => json_file['result']['price_level'],
+       # 'rating' => json_file['result']['rating'],
+      }
+    end
+    @suggestions
+  end
+
+  def suggestions_attempt
+    radius = '1000'
+    #type = find_event_type()
+    #min_budget = find_event_budget()
+    #max_budget = find_event_budget()
+    #location = find_event_location()
+    places_id = find_places(location, radius, type, min_budget, max_budget) #places each id of a match in an array
+    @suggestions = []
+    places_id.each do |place|
+      suggestions << get_info(place) #places a hash of info for each id into an array
+    end
+    @suggestions
+  end
+
+  def make_json(url)
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = https.request(request)
+    file = response.read_body
+    json_file = JSON.parse(file)
+    return json_file
+  end
+
+  def find_places(location, radius, type, min_budget, max_budget)
+    id_array = []
+    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{min_budget}maxprice=#{max_budget}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+    json_file = make_json(url)
+    json_file['results'].each do |place|
+      id_array << place['place_id']
+    end
+    id_array
+  end
+
+  def get_info(id)
+    url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+    puts url
+    json_file = make_json(url)
+    place_hash = {
+      'name' => json_file['result']['name'],
+      #'address' => json_file['result']['formatted_address'],
+      #'adr_address' => json_file['result']['adr_address'],
+      'price level' => json_file['result']['price_level'],
+      'rating' => json_file['result']['rating'],
+    }
+    place_hash
+  end
+
+  def find_event_type
+    # Outputs the most popular preference type for the users of the event
+    preference_types = Event.find(1).users.map(&:preference_type)
+    frequencies = preference_types.inject(Hash.new(0)) { |h , v| h[v] += 1; h }
+    @event_type = frequencies.max_by { |_k, v| v }[0]
+  end
+
+  def find_event_budget
+    # Outputs the average budget for the users of the event
+    budgets = Event.find(1).users.map(&:preference_budget)
+    test1 = budgets.map(&:to_i)
+    test2 = test1.map(&:to_f)
+    @budget = (test2.sum / budgets.count)
+  end
+
+  def find_event_location
+    string_latitudes = Event.find(1).users.map(&:latitude).map(&:to_f)
+    string_longitudes = Event.find(1).users.map(&:longitude).map(&:to_f)
+    float_latitudes = string_latitudes.map(&:to_f)
+    float_longitudes = string_longitudes.map(&:to_f)
+    average_latitude = (float_latitudes.sum / float_latitudes.count)
+    average_longitude = (float_longitudes.sum / float_longitudes.count)
+    @location = [average_latitude, average_longitude]
+  end
+
+ # POST /events or /events.json
   def create
     @event = Event.new(event_params)
 
@@ -56,6 +171,7 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
