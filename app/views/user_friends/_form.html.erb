@@ -1,10 +1,10 @@
 
-<%= simple_form_for [@user, @user_friend] do |f| %>
+<%= simple_form_for [current_user, @user_friend] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :user %>
+    <%= f.association :user, collection: User.all.order(:first_name).pluck(:first_name, :id), label_method: :first, value_method: :second %>
   </div>
 
   <div class="form-actions">

@@ -1,12 +1,17 @@
 <div id="<%= dom_id user_friend %>">
   <p>
-    <strong>User:</strong>
-    <%= user_friend.user_id %>
+    <strong>Name:</strong>
+    <%= User.find(user_friend.id).first_name %> <%= User.find(user_friend.id).last_name%>
   </p>
-
   <p>
-    <strong>User:</strong>
-    <%= user_friend.user_id %>
+    <strong>Email:</strong>
+    <%= User.find(user_friend.id).email %>
   </p>
-
+  <%# <p>
+    <strong>Address:</strong>
+    <%= User.find(user_friend.id).street %>
+    <%# <%= User.find(user_friend.id).postcode %>
+    <%# <%= User.find(user_friend.id).city %>
+    <%# <%= User.find(user_friend.id).country %>
+  <%# </p>  %>
 </div>
