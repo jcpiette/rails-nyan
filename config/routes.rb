@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   end
   # Defines the root path route ("/")
   # root "articles#index"
-
+  get 'events/find_event_type', to: 'events#find_event_type'
+  get 'events/find_event_budget', to: 'events#find_event_budget'
+  get 'events/find_event_location', to: 'events#find_event_location'
+  get 'events/suggestions', to: 'events#suggestions'
   root 'pages#home'
+
 end
