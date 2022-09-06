@@ -23,11 +23,11 @@ class UserFriendsController < ApplicationController
   # POST /user_friends or /user_friends.json
   def create
     @user_friend = UserFriend.new(user_friend_params)
-    @user = current_user
+    @user_friend.friend_id =params[:user_id]
 
     respond_to do |format|
       if @user_friend.save
-        format.html { redirect_to user_user_friends_path(@user), notice: "User friend was successfully created." }
+        format.html { redirect_to user_user_friends_path(current_user), notice: "User friend was successfully created." }
         format.json { render :show, status: :created, location: @user_friend }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,6 +67,6 @@ class UserFriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_friend_params
-      params.require(:user_friend).permit(:user_id, :user_id)
+      params.require(:user_friend).permit(:user_id, :friend_id)
     end
 end
