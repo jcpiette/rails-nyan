@@ -10,5 +10,4 @@ class User < ApplicationRecord
   has_many :groups, through: :group_members #Invited members
   has_many :friends, class_name: "UserFriends", foreign_key: :friend_id
   has_many :user_friends
-  has_one :Preferences, dependent: :destroy
 end
