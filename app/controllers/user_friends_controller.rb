@@ -38,6 +38,7 @@ class UserFriendsController < ApplicationController
 
   # PATCH/PUT /user_friends/1 or /user_friends/1.json
   def update
+    @users = User.all
     respond_to do |format|
       if @user_friend.update(user_friend_params)
         format.html { redirect_to user_friend_url(@user_friend), notice: "User friend was successfully updated." }
@@ -52,9 +53,8 @@ class UserFriendsController < ApplicationController
   # DELETE /user_friends/1 or /user_friends/1.json
   def destroy
     @user_friend.destroy
-
     respond_to do |format|
-      format.html { redirect_to user_friends_url, notice: "User friend was successfully destroyed." }
+      format.html { redirect_to user_user_friends_path(current_user), notice: "User friend was successfully destroyed.", status: :see_other}
       format.json { head :no_content }
     end
   end
