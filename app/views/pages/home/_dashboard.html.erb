@@ -1,32 +1,33 @@
-<div class="dashbaord-page">
-  <div class="left-side">
+<div class="dashboard-page">
 
-    <div class="friends-list">
+  <div class="section left-side">
+    <div class="dash-card friends-list">
       <h2><%= current_user.first_name %>'s Friends</h2>
+      <%= link_to "Add Friend", new_user_user_friend_path(current_user) %>
       <ul>
       <% @friends.each do |friend|%>
         <li><%= User.find(friend.user_id).first_name %></li>
       <% end %>
       </ul>
     </div>
-
-    <div class="pending-friends">
+    <div class="dash-card pending-friends">
       <p>need to add 'pending' friends</p>
     </div>
-
   </div>
 
-  <div class="middle">
+  <div class="section middle">
+    <div class="dash-card">
+      <h2>Upcoming Events</h2>
+    </div>
   </div>
 
-  <div class="right-side">
-
-    <div class="suggested-for-user">
+  <div class="section right-side">
+    <div class="dash-card suggested-for-user">
+      <h2> Suggested For <%= current_user.first_name %></h2>
     </div>
-
-    <div class="empty">
+    <div class="dash-card empty">
+      <p>adverts?</p>
     </div>
-
   </div>
 
 </div>

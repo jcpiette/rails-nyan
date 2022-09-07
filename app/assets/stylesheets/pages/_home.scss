@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+
+.dashboard-page {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.dash-card {
+  border-radius: 10px;
+  border-color: lightgray;
+  border-style: solid;
+  padding: 20px;
+}
