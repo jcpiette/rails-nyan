@@ -77,3 +77,4 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "devise"
 gem 'nested_form'
+gem 'omniauth-facebook'
