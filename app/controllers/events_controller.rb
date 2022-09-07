@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events or /events.json
   def index
@@ -22,9 +22,16 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def user_suggestions
+    location = [ User.find(session[:user_id].latitude, User.find(session[:user_id]).longitude)]
+    type = User.find(session[:user_id]).preference_type
+    minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
+    radius = '1000'
+
+  end
+
   def suggestions
     location = find_event_location()
-
     type = 'restaurant'
     radius = '1500'
     fminprice = find_event_budget()
@@ -40,76 +47,33 @@ class EventsController < ApplicationController
     file = response.read_body
     json_file = JSON.parse(file)
 
-    place_ids = []
+    place_ids = []  #ID OF EACH PLACE
     json_file['results'].each do |place|
       place_ids << place['place_id']
     end
-    @suggestions = []
-    place_ids.each do |place_id|
-      newurl = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
-      new_https = Net::HTTP.new(newurl.host, newurl.port)
-      new_https.use_ssl = true
-      new_request = Net::HTTP::Get.new(newurl)
-      response = new_https.request(new_request)
-      new_file = response.read_body
-      json_file = JSON.parse(new_file)
-      @suggestions << place_hash = {
+    @suggestions = []  #ALL PLACE ID
+    place_photo = []   #GET THE ID OF THE PHOTO
+    place_ids.each_with_index do |place_id, index|
+      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+      https = Net::HTTP.new(url.host, url.port)
+      https.use_ssl = true
+      request = Net::HTTP::Get.new(url)
+      response = https.request(request)
+      file = response.read_body
+      json_file = JSON.parse(file)
+      new_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{json_file['result']['photos'].first['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+      place_photo << new_url
+      #places_photo_reference << { 'name_photo' => [ "#{json_file['result']['name']}", "#{json_file['result']['photos'][index]['photo_reference']}"]}
+      @suggestions << {
         'name' => json_file['result']['name'],
-       #'address' => json_file['result']['formatted_address'],
-       # 'adr_address' => json_file['result']['adr_address'],
+        'photo' => place_photo[index],
+        'address' => json_file['result']['formatted_address'],
+        'adr_address' => json_file['result']['adr_address'],
         'price level' => json_file['result']['price_level'],
-       # 'rating' => json_file['result']['rating'],
+        'rating' => json_file['result']['rating']
       }
     end
     @suggestions
-  end
-
-  def suggestions_attempt
-    radius = '1000'
-    #type = find_event_type()
-    #min_budget = find_event_budget()
-    #max_budget = find_event_budget()
-    #location = find_event_location()
-    places_id = find_places(location, radius, type, min_budget, max_budget) #places each id of a match in an array
-    @suggestions = []
-    places_id.each do |place|
-      suggestions << get_info(place) #places a hash of info for each id into an array
-    end
-    @suggestions
-  end
-
-  def make_json(url)
-    https = Net::HTTP.new(url.host, url.port)
-    https.use_ssl = true
-    request = Net::HTTP::Get.new(url)
-    response = https.request(request)
-    file = response.read_body
-    json_file = JSON.parse(file)
-    return json_file
-  end
-
-  def find_places(location, radius, type, min_budget, max_budget)
-    id_array = []
-    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{min_budget}maxprice=#{max_budget}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
-    json_file = make_json(url)
-    json_file['results'].each do |place|
-      id_array << place['place_id']
-    end
-    id_array
-  end
-
-  def get_info(id)
-    url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
-    puts url
-    json_file = make_json(url)
-    place_hash = {
-      'name' => json_file['result']['name'],
-      #'address' => json_file['result']['formatted_address'],
-      #'adr_address' => json_file['result']['adr_address'],
-      'price level' => json_file['result']['price_level'],
-      'rating' => json_file['result']['rating'],
-    }
-    place_hash
   end
 
   def find_event_type
@@ -174,7 +138,6 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
