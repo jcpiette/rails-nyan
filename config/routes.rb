@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :notifcations
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callabacks: 'omniauth' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users do
     resources :events, only: [:index, :show, :new, :edit, :destroy]
