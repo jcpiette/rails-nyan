@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   def suggestions
     location = find_event_location()
     type = 'restaurant'
-    radius = '1500'
+    radius = '200'
     fminprice = find_event_budget()
     fmaxprice = find_event_budget()
     minprice = fminprice.to_i
@@ -72,6 +72,7 @@ class EventsController < ApplicationController
         'price level' => json_file['result']['price_level'],
         'rating' => json_file['result']['rating']
       }
+      @suggestions << location
     end
     @suggestions
   end
