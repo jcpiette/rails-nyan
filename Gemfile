@@ -42,7 +42,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'omniauth-facebook'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -73,3 +73,4 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "devise"
 gem 'nested_form'
+gem 'omniauth-facebook'

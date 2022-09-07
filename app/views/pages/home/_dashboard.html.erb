@@ -1,0 +1,45 @@
+<div class="dashboard-page">
+
+  <div class="section left-side">
+    <div class="dash-card friends-list">
+      <h2>Your Friends</h2>
+      <div class="button-dash">
+        <%= link_to "Add Friend", new_user_user_friend_path(current_user), class:"btn-dash" %>
+      </div>
+      <ul>
+      <% @friends.each do |friend|%>
+        <li><%= User.find(friend.user_id).first_name %></li>
+      <% end %>
+      </ul>
+    </div>
+    <div class="dash-card pending-friends">
+      <h3>Pending</h3>
+    </div>
+  </div>
+
+  <div class="section middle">
+    <div class="dash-card">
+      <h2>Upcoming Events</h2>
+      <div class="button-dash">
+        <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
+      </div>
+      <ul>
+        <div class="event-card">
+          <% @events.each do |event|%>
+            <li><%= Event.find(event.id).title %></li>
+          <% end %>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section right-side">
+    <div class="dash-card suggested-for-user">
+      <h2> Suggested For You</h2>
+    </div>
+    <div class="dash-card empty">
+      <h3>...adverts...</h3>
+    </div>
+  </div>
+
+</div>
