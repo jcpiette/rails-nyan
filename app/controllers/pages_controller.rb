@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @notifications = Notification.where(user_id: current_user)
+    @friends = UserFriend.all
   end
 
 end

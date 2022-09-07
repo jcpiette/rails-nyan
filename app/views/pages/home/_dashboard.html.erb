@@ -1,0 +1,32 @@
+<div class="dashbaord-page">
+  <div class="left-side">
+
+    <div class="friends-list">
+      <h2><%= current_user.first_name %>'s Friends</h2>
+      <ul>
+      <% @friends.each do |friend|%>
+        <li><%= User.find(friend.user_id).first_name %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="pending-friends">
+      <p>need to add 'pending' friends</p>
+    </div>
+
+  </div>
+
+  <div class="middle">
+  </div>
+
+  <div class="right-side">
+
+    <div class="suggested-for-user">
+    </div>
+
+    <div class="empty">
+    </div>
+
+  </div>
+
+</div>
