@@ -20,8 +20,8 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= event.user_id %>
+    <strong>Created By:</strong>
+    <%= User.find(event.user_id).first_name %>
   </p>
 
 </div>

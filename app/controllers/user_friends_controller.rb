@@ -54,19 +54,20 @@ class UserFriendsController < ApplicationController
   def destroy
     @user_friend.destroy
     respond_to do |format|
-      format.html { redirect_to user_user_friends_path(current_user), notice: "User friend was successfully destroyed.", status: :see_other}
+      format.html { redirect_to root_path, notice: "User friend was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_friend
-      @user_friend = UserFriend.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_friend_params
-      params.require(:user_friend).permit(:user_id, :friend_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_friend
+    @user_friend = UserFriend.find(params[:user_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_friend_params
+    params.require(:user_friend).permit(:user_id, :friend_id)
+  end
 end
