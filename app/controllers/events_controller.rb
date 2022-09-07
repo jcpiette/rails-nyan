@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = Event.where(user_id = current_user || Event.id = EventMember.event_id && )
   end
 
   # GET /events/1 or /events/1.json
