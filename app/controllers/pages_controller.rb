@@ -6,5 +6,4 @@ class PagesController < ApplicationController
     @friends = UserFriend.where(friend_id: current_user)
     @events = Event.where(user_id: current_user)
   end
-
 end
