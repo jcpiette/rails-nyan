@@ -8,7 +8,9 @@
       </div>
       <ul>
       <% @friends.each do |friend|%>
-        <li><%= User.find(friend.user_id).first_name %></li>
+        <li><%= User.find(friend.user_id).first_name %>
+            <%= link_to "Details", user_user_friend_path(current_user, friend.user_id)%>
+        </li>
       <% end %>
       </ul>
     </div>
@@ -23,13 +25,11 @@
       <div class="button-dash">
         <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
       </div>
-      <ul>
-        <div class="event-card">
-          <% @events.each do |event|%>
-            <li><%= Event.find(event.id).title %></li>
-          <% end %>
-        </div>
-      </ul>
+        <% @events.each do |event|%>
+          <div class="event-card">
+            <%= link_to "#{Event.find(event.id).title}", user_event_path(current_user, event) %>
+          </div>
+        <% end %>
     </div>
   </div>
 
