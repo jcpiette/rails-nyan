@@ -58,7 +58,7 @@ export default class extends Controller {
     this.preferenceTarget.style.display = "none";
     this.buttonTargets.forEach((button) => {
       button.classList.remove("tab-selected"); //<------Remove bold selection when select different menu
-    e.target.classList.add("tab-selected");//<------Make it Bold when click it
-
-  }
+      e.target.classList.add("tab-selected");//<------Make it Bold when click it
+    });
  }
+}
