@@ -20,6 +20,16 @@
   <div class="section middle">
     <div class="dash-card">
       <h2>Upcoming Events</h2>
+      <div class="button-dash">
+        <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
+      </div>
+      <ul>
+        <div class="event-card">
+          <% @events.each do |event|%>
+            <li><%= Event.find(event.id).title %></li>
+          <% end %>
+        </div>
+      </ul>
     </div>
   </div>
 
