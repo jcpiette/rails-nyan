@@ -24,7 +24,6 @@ class EventsController < ApplicationController
 
   def suggestions
     location = find_event_location()
-
     type = 'restaurant'
     radius = '1500'
     fminprice = find_event_budget()
