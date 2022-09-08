@@ -13,11 +13,11 @@ user1 = User.create!(first_name: 'Paulo', last_name: 'Gomes', email: "pjgomes85@
 user2 = User.create!(first_name: 'Theo', last_name: 'Simpson', email: "kmstheodore@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 user3 = User.create!(first_name: 'Olivia', last_name: 'Patterson', email: "oliviapatterson123@live.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 user4 = User.create!(first_name: 'Jay', last_name: 'P.', email: "piette.jc@me.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-User.create!(first_name: 'Clarke', last_name: 'Kent', email: "ckent@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-User.create!(first_name: 'Gary', last_name: 'Barlow', email: "gbarlow@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-User.create!(first_name: 'Jack', last_name: 'Smith', email: "jsmith@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-User.create!(first_name: 'Stephanie', last_name: 'Knowles', email: "sknowles@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-User.create!(first_name: 'Anna', last_name: 'Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user5 = User.create!(first_name: 'Clarke', last_name: 'Kent', email: "ckent@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user6 = User.create!(first_name: 'Gary', last_name: 'Barlow', email: "gbarlow@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user7 = User.create!(first_name: 'Jack', last_name: 'Smith', email: "jsmith@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user8 = User.create!(first_name: 'Stephanie', last_name: 'Knowles', email: "sknowles@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 
 puts 'Users created!'
 
@@ -45,6 +45,23 @@ Notification.create!(message: "Lorem Ipsum 3", is_read: 0, user: user4)
 Notification.create!(message: "Lorem Ipsum 4", is_read: 0, user: user4)
 
 puts 'Notifications created!'
+
+# Create User Friends
+puts 'Adding User Friends...'
+
+# accepted friends
+UserFriend.create!(user_id: user3, friend_id: user1, status: 'Accepted')
+UserFriend.create!(user_id: user3, friend_id: user2, status: 'Accepted')
+UserFriend.create!(user_id: user3, friend_id: user4, status: 'Accepted')
+
+# waiting on them accepting my friend request
+UserFriend.create!(user_id: user3, friend_id: user5, status: 'Pending')
+
+# I can accept and decline
+UserFriend.create!(user_id: user6, friend_id: user3, status: 'Pending')
+UserFriend.create!(user_id: user7, friend_id: user3, status: 'Pending')
+
+puts 'Friends Created!'
 
 # Create Events
 puts 'Creating events...'
@@ -75,12 +92,4 @@ EventMember.create!(user_id: user1, event_id: event4)
 EventMember.create!(user_id: user3, event_id: event4)
 EventMember.create!(user_id: user4, event_id: event4)
 
-
 puts 'Events created!'
-
-# Create User Friends
-puts 'Adding User Friends...'
-
-UserFriend.create!()
-
-puts 'Friends Created!'
