@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users do
     resources :events, only: [:index, :show, :new, :edit, :destroy]
-    resources :user_friends, :events, only: [:index, :show, :new, :create, :edit]
+    resources :user_friends, :events, only: [:index, :show, :new, :create, :edit] do
+      member do
+        post :accept
+      end
+    end
     resources :user_friends, :events, only: :destroy, as: :user_friend_delete
     resources :notifications, only: [:show]
   end

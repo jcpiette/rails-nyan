@@ -2,8 +2,4 @@
 
 <%= render @user_friend %>
 
-<div>
-  <%= link_to "Edit this user friend", edit_user_user_friend_path(@user_friend) %> |
-  <%= link_to "Delete this user friend", user_user_friend_delete_path(current_user, @user_friend), data: { turbo_method: :delete, turbo: true } %>
-</div>
-<%= link_to "Back to user friends", user_user_friends_path %>
+<%= link_to "Back to Dashboard", root_path %>
