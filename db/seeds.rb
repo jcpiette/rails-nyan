@@ -9,15 +9,15 @@ puts 'Database cleaned!'
 # Create Users
 puts 'Creating users...'
 
-user1 = User.create!(first_name: 'Paulo', last_name: 'Gomes', email: "pjgomes85@hotmail.com", password: "Test123", latitude: '51.498356', longitude: '-0.176894', preference_type: 'restaurant', preference_budget: '4')
-user2 = User.create!(first_name: 'Theo', last_name: 'Simpson', email: "kmstheodore@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user3 = User.create!(first_name: 'Olivia', last_name: 'Patterson', email: "oliviapatterson123@live.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user4 = User.create!(first_name: 'Jay', last_name: 'P.', email: "piette.jc@me.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user5 = User.create!(first_name: 'Clarke', last_name: 'Kent', email: "ckent@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user6 = User.create!(first_name: 'Gary', last_name: 'Barlow', email: "gbarlow@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user7 = User.create!(first_name: 'Jack', last_name: 'Smith', email: "jsmith@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user8 = User.create!(first_name: 'Stephanie', last_name: 'Knowles', email: "sknowles@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
-user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user1 = User.create!(first_name: 'Paulo', last_name: 'Gomes', full_name: 'Paulo Gomes', email: "pjgomes85@hotmail.com", password: "Test123", latitude: '51.498356', longitude: '-0.176894', preference_type: 'restaurant', preference_budget: '4')
+user2 = User.create!(first_name: 'Theo', last_name: 'Simpson', full_name: 'Theo Simpson', email: "kmstheodore@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user3 = User.create!(first_name: 'Olivia', last_name: 'Patterson', full_name: 'Olivia Patterson', email: "oliviapatterson123@live.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user4 = User.create!(first_name: 'Jay', last_name: 'P.', full_name: 'Jay P.', email: "piette.jc@me.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user5 = User.create!(first_name: 'Clarke', last_name: 'Kent', full_name: 'Clarke Kent', email: "ckent@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user6 = User.create!(first_name: 'Gary', last_name: 'Barlow', full_name: 'Gary Barlow', email: "gbarlow@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user7 = User.create!(first_name: 'Jack', last_name: 'Smith', full_name: 'Jack Smith', email: "jsmith@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user8 = User.create!(first_name: 'Stephanie', last_name: 'Knowles', full_name: 'Stephanie Knowles', email: "sknowles@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
+user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', full_name: 'Anna Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 
 puts 'Users created!'
 
