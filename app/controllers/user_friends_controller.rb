@@ -32,8 +32,8 @@ class UserFriendsController < ApplicationController
     @user_friend.friend_id =params[:user_id]
 
     respond_to do |format|
-      if @user_friend.save
-        format.html { redirect_to user_user_friends_path(current_user), notice: "User friend was successfully created." }
+      if @user_friend.save!
+        format.html { redirect_to root_path, notice: "User friend was successfully created." }
         format.json { render :show, status: :created, location: @user_friend }
       else
         format.html { render :new, status: :unprocessable_entity }

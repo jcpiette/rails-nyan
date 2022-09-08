@@ -1,19 +1,21 @@
-<div class="modal fade modal-dialog modal-dialog-centered" id="addRelation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="addRelation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addRelationLabel">Invite a relation</h5>
+        <h5 class="modal-title" id="addRelationLabel">Invite a user</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <%= form_tag(user_user_friends_path(current_user), method: 'post', class: "form-inline") do %>
+          <div id= "search-data" class="form-search search-data" data-users="<%= @users.to_json %>">
+            <%= text_field_tag :searchAddFriends, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <%= link_to "Add Friend", new_user_user_friend_path(current_user), class:"btn-dash" %>
-
-        <button type="button" class="btn btn-primary">Invite</button>
+        <%= link_to "Add Friend", user_user_friends_path(current_user), class:"btn-dash" %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
