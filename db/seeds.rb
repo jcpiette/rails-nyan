@@ -21,7 +21,33 @@ user7 = User.create!(first_name: 'Jack', last_name: 'Smith', full_name: 'Jack Sm
 user8 = User.create!(first_name: 'Stephanie', last_name: 'Knowles', full_name: 'Stephanie Knowles', email: "sknowles@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', full_name: 'Anna Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '4')
 
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654080/development/dvlhrpj8smkn0ubqvyzwt3dc2px7.jpg")
+user1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654080/development/dvlhrpj8smkn0ubqvyzwt3dc2px7.jpg")
+user2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654282/development/pti9xqclmzj8bt0zpk76poix7qcq.jpg")
+user3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 puts 'Users created!'
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user7.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user8.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662653985/development/zm21nxuvk8kuitimzvq01mpz9l8f.jpg")
+user9.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 # Create notifications
 puts 'Creating notifications...'
