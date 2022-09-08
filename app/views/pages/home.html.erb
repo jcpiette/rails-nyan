@@ -1,9 +1,8 @@
 <div>
   <% if user_signed_in? %>
-    <p>You are <strong>on the dashboard</strong> page</p>
     <%= render "pages/home/dashboard" %>
     <%#  this does not work fix!!<%= render "pages/home/addFriendButton" %>
   <% else %>
-    <p>hello world!</p>
+    <p>Homepage</p>
   <% end %>
 </div>
