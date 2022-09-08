@@ -1,7 +1,7 @@
 # Clean Database
 puts 'Cleaning...'
 
-# User.destroy_all
+User.destroy_all
 Notification.destroy_all
 
 puts 'Database cleaned!'

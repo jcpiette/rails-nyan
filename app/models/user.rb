@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :groups, through: :group_members #Invited members
   has_many :friends, class_name: "UserFriends", foreign_key: :friend_id
-  has_many :user_friends
+  has_many :user_friends, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one_attached :photo
 
