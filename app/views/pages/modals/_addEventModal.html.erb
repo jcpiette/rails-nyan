@@ -6,7 +6,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>hello create event</p>
+        <form action="/action_page.php">
+          <label for="friendsEvent">Friends to invite:</label>
+            <select id="multipleSelect" multiple name="native-select" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                <% @relations.each do |rel|%>
+                 <option value="<%= rel %>"><%= rel %></option>
+                <% end %>
+            </select>
+          <br><br>
+          <input type="submit" value="Submit">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
