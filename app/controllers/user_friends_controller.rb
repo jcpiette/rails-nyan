@@ -29,7 +29,8 @@ class UserFriendsController < ApplicationController
   # POST /user_friends or /user_friends.json
   def create
     @user_friend = UserFriend.new(user_friend_params)
-    @user_friend.friend_id =params[:user_id]
+    @user_friend.friend_id = params[:user_id]
+    @user_friend.user_id = User.where(full_name: params[:user_friend][:user]).first.id
 
     respond_to do |format|
       if @user_friend.save!

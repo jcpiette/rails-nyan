@@ -2,7 +2,7 @@ import autocomplete from 'js-autocomplete';
 
 const autocompleteSearch = () => {
   const users = JSON.parse(document.getElementById('search-data').dataset.users)
-  const searchInput = document.getElementById('searchAddFriends');
+  const searchInput = document.getElementById('user_friend_user');
 
   if (users && searchInput) {
     new autocomplete({

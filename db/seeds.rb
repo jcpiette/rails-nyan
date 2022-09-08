@@ -44,8 +44,4 @@ puts 'Notifications created!'
 # Create Events
 puts 'Creating events...'
 
-event1 = Event.create!(title: 'School Leavers Party', description: 'Bye school.', user_id: user3)
-EventMember.create!(user_id: user1, event_id: event1)
-EventMember.create!(user_id: user2, event_id: event1)
-
 puts 'Events created!'
