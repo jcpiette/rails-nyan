@@ -1,7 +1,6 @@
-import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
-const autocompleteSearch = function() {
+const autocompleteSearch = () => {
   const users = JSON.parse(document.getElementById('search-data').dataset.users)
   const searchInput = document.getElementById('searchAddFriends');
 
@@ -11,7 +10,7 @@ const autocompleteSearch = function() {
       minChars: 1,
       source: function(term, suggest){
           term = term.toLowerCase();
-          const choices = skills;
+          const choices = users;
           const matches = [];
           for (let i = 0; i < choices.length; i++)
               if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
