@@ -4,7 +4,9 @@
     <div class="dash-card friends-list">
       <h2>Your Friends</h2>
       <div class="button-dash">
-        <%= link_to "Add Friend", new_user_user_friend_path(current_user), class:"btn-dash" %>
+        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelation">
+          Add Friend
+        </button>
       </div>
       <ul>
       <% @friends.each do |friend|%>
@@ -43,3 +45,8 @@
   </div>
 
 </div>
+
+<!-- Modal -->
+
+<!-- Add Friends Modal -->
+<%= render "pages/modals/addFriendModal" %>
