@@ -6,18 +6,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
-        <%= form_tag(root_path, method: 'get', class: "form-inline") do %>
+        <%= form_tag(user_user_friends_path(current_user), method: 'post', class: "form-inline") do %>
           <div id= "search-data" class="form-search search-data" data-users="<%= @users.to_json %>">
             <%= text_field_tag :searchAddFriends, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
           </div>
-        <% end %>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <%= link_to "Add Friend", user_user_friends_path(current_user), class:"btn-dash" %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
