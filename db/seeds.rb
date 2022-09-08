@@ -1,7 +1,7 @@
 # Clean Database
 puts 'Cleaning...'
 
-User.destroy_all
+# User.destroy_all
 Notification.destroy_all
 
 puts 'Database cleaned!'
@@ -50,16 +50,16 @@ puts 'Notifications created!'
 puts 'Adding User Friends...'
 
 # accepted friends
-UserFriend.create!(user_id: user3, friend_id: user1, status: 'Accepted')
-UserFriend.create!(user_id: user3, friend_id: user2, status: 'Accepted')
-UserFriend.create!(user_id: user3, friend_id: user4, status: 'Accepted')
+UserFriend.create!(user_id: user3.id, friend_id: user1.id, status: 'Accepted')
+UserFriend.create!(user_id: user3.id, friend_id: user2.id, status: 'Accepted')
+UserFriend.create!(user_id: user3.id, friend_id: user4.id, status: 'Accepted')
 
 # waiting on them accepting my friend request
-UserFriend.create!(user_id: user3, friend_id: user5, status: 'Pending')
+UserFriend.create!(user_id: user3.id, friend_id: user5.id, status: 'Pending')
 
 # I can accept and decline
-UserFriend.create!(user_id: user6, friend_id: user3, status: 'Pending')
-UserFriend.create!(user_id: user7, friend_id: user3, status: 'Pending')
+UserFriend.create!(user_id: user6.id, friend_id: user3.id, status: 'Pending')
+UserFriend.create!(user_id: user7.id, friend_id: user3.id, status: 'Pending')
 
 puts 'Friends Created!'
 
@@ -69,27 +69,28 @@ puts 'Creating events...'
 event1 = Event.create!(
   title: 'Le Wagon Alumni Lunch',
   description: 'Meeting up for lunch with the gang.',
-  user_id: user3
+  user_id: user3.id
 )
-EventMember.create!(user_id: user1, event_id: event1)
-EventMember.create!(user_id: user2, event_id: event1)
-EventMember.create!(user_id: user4, event_id: event1)
+
+EventMember.create!(user_id: user1.id, event_id: event1.id)
+EventMember.create!(user_id: user2.id, event_id: event1.id)
+EventMember.create!(user_id: user4.id, event_id: event1.id)
 
 Event.create!(
   title: 'Family BBQ',
   description: 'Come along for some good grub ft. my famous ham sandwhiches',
-  user_id: user3
+  user_id: user3.id
 )
 
 Event.create!(
   title: 'Pottery Class',
   description: 'Join me for a fun and creative pottery class.',
-  user_id: user3
+  user_id: user3.id
 )
 
-event4 = Event.create!(title: 'Birthday Bash', description: "Celebrating Theo's Birthday", user_id: user2)
-EventMember.create!(user_id: user1, event_id: event4)
-EventMember.create!(user_id: user3, event_id: event4)
-EventMember.create!(user_id: user4, event_id: event4)
+event4 = Event.create!(title: 'Birthday Bash', description: "Celebrating Theo's Birthday", user_id: user2.id)
+EventMember.create!(user_id: user1.id, event_id: event4.id)
+EventMember.create!(user_id: user3.id, event_id: event4.id)
+EventMember.create!(user_id: user4.id, event_id: event4.id)
 
 puts 'Events created!'
