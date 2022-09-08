@@ -7,7 +7,7 @@
         <%= link_to "Add Friend", new_user_user_friend_path(current_user), class:"btn-dash" %>
       </div>
       <ul>
-      <% @friends.each do |friend|%>
+      <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
         <li><%= User.find(friend.user_id).first_name %>
             <%= link_to "Details", user_user_friend_path(current_user, friend.user_id)%>
         </li>
@@ -16,11 +16,24 @@
     </div>
     <div class="dash-card pending-friends">
       <h3>Pending</h3>
+      <ul>
+      <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.user_id).first_name %>
+            <%= link_to "Details", user_user_friend_path(current_user, friend.user_id)%>
+        </li>
+      <% end %>
+      <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.friend_id).first_name %>
+            <%= link_to "Accept" %>
+            <%= link_to "Decline" %>
+        </li>
+      <% end %>
+      </ul>
     </div>
   </div>
 
   <div class="section middle">
-    <div class="dash-card">
+    <div class="dash-card events-card">
       <h2>Upcoming Events</h2>
       <div class="button-dash">
         <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
@@ -37,7 +50,7 @@
     <div class="dash-card suggested-for-user">
       <h2> Suggested For You</h2>
     </div>
-    <div class="dash-card empty">
+    <div class="dash-card adverts-card">
       <h3>...adverts...</h3>
     </div>
   </div>
