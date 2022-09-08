@@ -26,8 +26,9 @@ class EventsController < ApplicationController
 
    # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new
     @event.user = current_user
+    fsdf
     if @event.save
       redirect_to root_path
     else
