@@ -1,6 +1,8 @@
 # Clean Database
 puts 'Cleaning...'
-
+UserFriend.destroy_all
+EventMember.destroy_all
+Event.destroy_all
 User.destroy_all
 Notification.destroy_all
 
