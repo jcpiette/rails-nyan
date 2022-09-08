@@ -11,7 +11,6 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-
     @event = Event.find(params[:id])
   end
 
@@ -20,8 +19,6 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
-
-
   end
 
    # POST /events or /events.json
@@ -45,7 +42,6 @@ class EventsController < ApplicationController
     type = User.find(session[:user_id]).preference_type
     minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
     radius = '500'
-
   end
 
   def suggestions(users)
