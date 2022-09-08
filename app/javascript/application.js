@@ -4,5 +4,7 @@ import "./controllers"
 import * as bootstrap from "bootstrap";
 import "./channels"
 import "./components"
+import { autocompleteSearch } from "./components/autocomplete";
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+autocompleteSearch()
