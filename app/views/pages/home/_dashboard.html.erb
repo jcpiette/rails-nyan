@@ -4,23 +4,37 @@
     <div class="dash-card friends-list">
       <h2>Your Friends</h2>
       <div class="button-dash">
-        <%= link_to "Add Friend", new_user_user_friend_path(current_user), class:"btn-dash" %>
+        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelation">
+          Add Friend
+        </button>
       </div>
       <ul>
-      <% @friends.each do |friend|%>
-        <li><%= User.find(friend.user_id).first_name %>
-            <%= link_to "Details", user_user_friend_path(current_user, friend.user_id)%>
+      <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
+        <li><%= User.find(friend.friend_id).first_name %>
+            <%= link_to "Details", user_user_friend_path(current_user, friend)%>
+            <%= link_to "Delete", user_user_friend_delete_path( friend, current_user), data: { turbo_method: :delete, turbo: true } %>
         </li>
       <% end %>
       </ul>
     </div>
     <div class="dash-card pending-friends">
       <h3>Pending</h3>
+      <ul>
+      <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.user_id).first_name %>...</li>
+      <% end %>
+      <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.friend_id).first_name %>
+            <%= link_to "Accept", accept_user_user_friend_path(current_user, friend), data: { turbo_method: :post } %>
+            <%= link_to "Decline", user_user_friend_delete_path(friend, current_user), data: { turbo_method: :delete, turbo: true }  %>
+        </li>
+      <% end %>
+      </ul>
     </div>
   </div>
 
   <div class="section middle">
-    <div class="dash-card">
+    <div class="dash-card events-card">
       <h2>Upcoming Events</h2>
       <div class="button-dash">
         <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
@@ -37,9 +51,14 @@
     <div class="dash-card suggested-for-user">
       <h2> Suggested For You</h2>
     </div>
-    <div class="dash-card empty">
+    <div class="dash-card adverts-card">
       <h3>...adverts...</h3>
     </div>
   </div>
 
 </div>
+
+<!-- Modal -->
+
+<!-- Add Friends Modal -->
+<%= render "pages/modals/addFriendModal" %>

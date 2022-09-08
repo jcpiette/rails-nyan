@@ -1,11 +1,11 @@
 <div id="<%= dom_id user_friend %>">
   <p>
     <strong>Name:</strong>
-    <%= User.find(user_friend.id).first_name %> <%= User.find(user_friend.id).last_name%>
+    <%= User.find(user_friend.friend_id).first_name %> <%= User.find(user_friend.user_id).last_name%>
   </p>
   <p>
     <strong>Email:</strong>
-    <%= User.find(user_friend.id).email %>
+    <%= User.find(user_friend.friend_id).email %>
   </p>
   <%# <p>
     <strong>Address:</strong>
