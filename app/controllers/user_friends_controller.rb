@@ -59,10 +59,11 @@ class UserFriendsController < ApplicationController
   # DELETE /user_friends/1 or /user_friends/1.json
   def destroy
     @user_friend.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "User friend was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to root_path
+    # respond_to do |format|
+    #   format.html { redirect_to root_path, notice: "User friend was successfully destroyed.", status: :see_other }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
