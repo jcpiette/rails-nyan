@@ -5,6 +5,6 @@ class PagesController < ApplicationController
     @notifications = Notification.where(user_id: current_user)
     @friends = UserFriend.where(friend_id: current_user)
     @events = Event.where(user_id: current_user)
-    @users = User.pluck(:last_name).sort
+    @users = User.pluck(:first_name).sort
   end
 end

@@ -2,10 +2,10 @@ import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
 const autocompleteSearch = function() {
-  const skills = JSON.parse(document.getElementById('search-data').dataset.users)
-  const searchInput = document.getElementById('q');
+  const users = JSON.parse(document.getElementById('search-data').dataset.users)
+  const searchInput = document.getElementById('searchAddFriends');
 
-  if (skills && searchInput) {
+  if (users && searchInput) {
     new autocomplete({
       selector: searchInput,
       minChars: 1,

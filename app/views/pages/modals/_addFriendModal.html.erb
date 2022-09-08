@@ -8,8 +8,8 @@
       <div class="modal-body">
 
         <%= form_tag(root_path, method: 'get', class: "form-inline") do %>
-          <div id= "search-data" class="form-search search-data" data-skills="<%= @skills.to_json %>">
-            <%= text_field_tag :q, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
+          <div id= "search-data" class="form-search search-data" data-users="<%= @users.to_json %>">
+            <%= text_field_tag :searchAddFriends, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
           </div>
         <% end %>
 
