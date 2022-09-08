@@ -1,5 +1,5 @@
 class UserFriendsController < ApplicationController
-  before_action :set_user_friend, only: %i[ show edit update destroy ]
+  before_action :set_user_friend, only: %i[ edit update destroy ]
 
   # GET /user_friends or /user_friends.json
   def index
@@ -8,6 +8,12 @@ class UserFriendsController < ApplicationController
 
   # GET /user_friends/1 or /user_friends/1.json
   def show
+    @user_friend = UserFriend.find(params[:id])
+  end
+
+  def accept
+    UserFriend.find(params[:id]).update(status: "Accepted")
+    redirect_to root_path
   end
 
   # GET /user_friends/new
