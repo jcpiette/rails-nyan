@@ -6,6 +6,7 @@
 * npm install
 * yarn add bootstrap @popperjs/core
 * yarn add @rails/actioncable
+* yarn add js-autocomplete
 
 
 This README would normally document whatever steps are necessary to get the
