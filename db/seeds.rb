@@ -24,7 +24,7 @@ user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', full_name: 'Anna Do
 file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654080/development/dvlhrpj8smkn0ubqvyzwt3dc2px7.jpg")
 user1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654080/development/dvlhrpj8smkn0ubqvyzwt3dc2px7.jpg")
+file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654673/development/xx8nlqyrtzxey4ky0na99kzwvdop.jpg")
 user2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1662654282/development/pti9xqclmzj8bt0zpk76poix7qcq.jpg")
