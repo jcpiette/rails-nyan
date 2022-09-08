@@ -19,12 +19,15 @@
     </div>
     <div class="dash-card pending-friends">
       <h3>Pending</h3>
-
       <ul>
       <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-        <li><%= User.find(friend.user_id).full_name %>...</li>
-        <%= link_to "Accept", accept_user_user_friend_path(current_user, friend), data: { turbo_method: :post } %>
+        <li><%= User.find(friend.user_id).first_name %>...</li>
+      <% end %>
+      <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.friend_id).full_name %>
+            <%= link_to "Accept", accept_user_user_friend_path(current_user, friend), data: { turbo_method: :post } %>
             <%= link_to "Decline", user_user_friend_delete_path(friend, current_user), data: { turbo_method: :delete, turbo: true }  %>
+        </li>
       <% end %>
       </ul>
     </div>
