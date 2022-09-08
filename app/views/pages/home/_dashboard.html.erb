@@ -4,7 +4,7 @@
     <div class="dash-card friends-list">
       <h2>Your Friends</h2>
       <div class="button-dash">
-        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelation">
+        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelationModal">
           Add Friend
         </button>
       </div>
@@ -36,7 +36,12 @@
   <div class="section middle">
     <div class="dash-card events-card">
       <h2>Upcoming Events</h2>
+
+     <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addEventModal">
+          Add Event
+        </button>
       <div class="button-dash">
+
         <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
       </div>
         <% @events.each do |event|%>
