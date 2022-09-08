@@ -3,7 +3,7 @@
     <table class="table">
       <tbody>
 
-      <%= cl_image_tag current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "nav-link", data: {avatar_target: "avatar", action: "click->avatar#showFileInterface"}%>
+      <%= cl_image_tag current_user.photo.key,  width: 150, height: 150, crop: :thumb, gravity: :face, class: "nav-link", data: {avatar_target: "avatar", action: "click->avatar#showFileInterface"} %>
         <tr>
           <th scope="row">
             <%= link_to '/', class: "dropdown-item tab-selected", remote: true, data: { action: 'click->user-menu-tab#displayAccount', user_menu_tab_target: "button" } do %>
