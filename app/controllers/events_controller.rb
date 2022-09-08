@@ -11,11 +11,28 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+
+    @event = Event.find(params[:id])
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @users = User.all
+    @suggestions = suggestions(@users)
+
+
+  end
+
+   # POST /events or /events.json
+  def create
+    @event = Event.new(event_params)
+    @event.user = current_user
+    if @event.save
+      redirect_to root_path
+    else
+      format.html { render :new, status: :unprocessable_entity }
+    end
   end
 
   # GET /events/1/edit
@@ -26,16 +43,16 @@ class EventsController < ApplicationController
     location = [ User.find(session[:user_id].latitude, User.find(session[:user_id]).longitude)]
     type = User.find(session[:user_id]).preference_type
     minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
-    radius = '1000'
+    radius = '500'
 
   end
 
-  def suggestions
-    location = find_event_location()
-    type = 'restaurant'
-    radius = '200'
-    fminprice = find_event_budget()
-    fmaxprice = find_event_budget()
+  def suggestions(users)
+    location = find_event_location(users)
+    type = find_event_type(users)
+    radius = '1000'
+    fminprice = find_event_budget(users)
+    fmaxprice = find_event_budget(users)
     minprice = fminprice.to_i
     maxprice = fmaxprice.to_i
     # make the json
@@ -54,7 +71,7 @@ class EventsController < ApplicationController
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
     place_ids.each_with_index do |place_id, index|
-      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
       request = Net::HTTP::Get.new(url)
@@ -70,51 +87,38 @@ class EventsController < ApplicationController
         'address' => json_file['result']['formatted_address'],
         'adr_address' => json_file['result']['adr_address'],
         'price level' => json_file['result']['price_level'],
-        'rating' => json_file['result']['rating']
+        'rating' => json_file['result']['rating'],
+        'location' => location,
+        'website' => json_file['result']['website']
       }
-      @suggestions << location
+
     end
     @suggestions
   end
 
-  def find_event_type
+  def find_event_type(users)
     # Outputs the most popular preference type for the users of the event
-    preference_types = Event.find(1).users.map(&:preference_type)
+    preference_types = users.map(&:preference_type)
     frequencies = preference_types.inject(Hash.new(0)) { |h , v| h[v] += 1; h }
     @event_type = frequencies.max_by { |_k, v| v }[0]
   end
 
-  def find_event_budget
+  def find_event_budget(users)
     # Outputs the average budget for the users of the event
-    budgets = Event.find(1).users.map(&:preference_budget)
+    budgets = users.map(&:preference_budget)
     test1 = budgets.map(&:to_i)
     test2 = test1.map(&:to_f)
     @budget = (test2.sum / budgets.count)
   end
 
-  def find_event_location
-    string_latitudes = Event.find(1).users.map(&:latitude).map(&:to_f)
-    string_longitudes = Event.find(1).users.map(&:longitude).map(&:to_f)
+  def find_event_location(users)
+    string_latitudes = users.map(&:latitude).map(&:to_f)
+    string_longitudes = users.map(&:longitude).map(&:to_f)
     float_latitudes = string_latitudes.map(&:to_f)
     float_longitudes = string_longitudes.map(&:to_f)
     average_latitude = (float_latitudes.sum / float_latitudes.count)
     average_longitude = (float_longitudes.sum / float_longitudes.count)
     @location = "#{average_latitude.to_s},#{average_longitude.to_s}"
-  end
-
- # POST /events or /events.json
-  def create
-    @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /events/1 or /events/1.json
@@ -148,6 +152,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :location, :event_date, :user_id)
+      params.require(:event).permit(:title, :description, :location, :event_date)
     end
 end

@@ -1,17 +1,61 @@
 
-<%= simple_form_for(current_user, @event) do |f| %>
+<%= simple_form_for(@event, url: user_events_path ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :location %>
     <%= f.input :event_date %>
-    <%= f.association :user %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+
+<div class="row justify-content-center">
+  <div class="col-sm-8 text-center">
+    <p> For your group</p>
+    <div class="d-flex flex-wrap justify-content-center pt-4">
+      <% @suggestions.each_with_index do |event, index|%>
+        <% if index <= 5%>
+          <div class="clickable">
+            <p> <%= event['name'] %> </p>
+            <p> <%= event['address'] %> </p>
+            <p> <%= '£'*event['price level'].to_i%> </p>
+            <p> <%= '⭐'*event['rating'].to_i%> </p>
+            <%= link_to "website", "#{event['website']}", target: "_blank" %>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
   </div>
+</div>
+</div>
+
+
+
+
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
 <% end %>
+<style>
+.clickable {
+  padding: 40px;
+  width: 220px;
+  border: 1px solid #dedede;
+  color: #a0a0a0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+</style>
