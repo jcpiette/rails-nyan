@@ -10,14 +10,10 @@
           <div id= "search-data" class="form-search search-data" data-users="<%= @users.to_json %>">
             <%= f.input :user, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
           </div>
-        <%= f.submit "add simple form" %>
-      <% end %>
-        <%= form_tag(user_user_friends_path(current_user), data: {turbo_method: 'post'} , class: "form-inline") do %>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= link_to "Add Friend", user_user_friends_path(current_user), class:"btn-dash" %>
+        <%= f.submit "add simple form", class:"btn-dash" %>
       </div>
       <% end %>
     </div>
