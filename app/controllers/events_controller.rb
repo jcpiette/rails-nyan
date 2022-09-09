@@ -19,11 +19,9 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
-
-
   end
 
-   # POST /events or /events.json
+  # POST /events or /events.json
   def create
     @event = Event.new(event_params)
     @event.user = current_user
@@ -52,7 +50,7 @@ class EventsController < ApplicationController
     radius = '1000'
     fminprice = find_event_budget(users)
     fmaxprice = find_event_budget(users)
-    minprice = fminprice.to_i
+    minprice = (fminprice.to_i - 1)
     maxprice = fmaxprice.to_i
     # make the json
     url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
@@ -105,9 +103,9 @@ class EventsController < ApplicationController
   def find_event_budget(users)
     # Outputs the average budget for the users of the event
     budgets = users.map(&:preference_budget)
-    test1 = budgets.map(&:to_i)
-    test2 = test1.map(&:to_f)
-    @budget = (test2.sum / budgets.count)
+    budgets_to_i = budgets.map(&:to_i)
+    budgets_to_f = budgets_to_i.map(&:to_f)
+    @budget = (budgets_to_f.sum / budgets.count)
   end
 
   def find_event_location(users)

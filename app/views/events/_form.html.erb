@@ -1,60 +1,34 @@
-
 <%= simple_form_for(@event, url: user_events_path ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :event_date %>
-  </div>
+<div class="form-inputs">
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :event_date %>
+  <%= f.input :location, input_html: { value: 'Choose a restaurant' } %>
+</div>
 
 <section class="layout">
   <% @suggestions.each_with_index do |suggestion, index|%>
     <% if index <= 5%>
-      <div class="clickable" data-suggestion="<%= suggestion.to_s %>">
+      <div id="<%=index%>" data-suggestion="<%= suggestion.to_s %>">
+        <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
         <p> <%= suggestion['name'] %> </p>
         <p> <%= suggestion['address'] %> </p>
         <p> <%= '£'*suggestion['price level'].to_i%> </p>
         <p> <%= '⭐'*suggestion['rating'].to_i%> </p>
         <%= link_to "website", "#{suggestion['website']}", target: "_blank" %>
-        <%= f.check_box :location %>
-        <div class="form-actions">
-          <%= f.button :submit%>
-        </div>
-      <% end %>
-    </div>
+      </div>
     <% end %>
   <% end %>
-
-
+  <div class="form-actions">
+    <%= f.button :submit%>
+  </div>
 </section>
-
-
-
-
-
-
-
-<style>
-
-
-.clickable {
-  border-style: solid;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
-  text-align: center;
+<% end %>
+<script>
+function myfunction(name) {
+  document.getElementById('event_location').value = name
 }
-
-.layout {
-  width: 1366px;
-  height: 768px;
-  margin-top: 10px;
-
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-</style>
+</script>
