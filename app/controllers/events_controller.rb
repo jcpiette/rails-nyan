@@ -19,15 +19,19 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
+
+    # redirect_to event_path
   end
 
    # POST /events or /events.json
   def create
     @event = Event.new
     @event.user = current_user
-
-    if @event.save
-      redirect_to root_path
+    params["native-select"].split(",").each do |user|
+      EventMember.create(event: @event, user: User.where(full_name: user).first)
+    end
+    if @event.save!
+      redirect_to edit_event_path(@event)
     else
       format.html { render :new, status: :unprocessable_entity }
     end
@@ -35,6 +39,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @suggestions = suggestions(current_user)
   end
 
   def user_suggestions
