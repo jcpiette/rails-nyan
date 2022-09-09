@@ -1,18 +1,18 @@
 // Specific CSS for your home-page
 
-.dashboard-page {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-around;
-}
+// .dashboard-page {
+//   display: flex;
+//   align-items: stretch;
+//   justify-content: space-around;
+// }
 
 .dash-card {
   border-radius: 10px;
-  border: solid 1px lightgrey;
+  border: solid 1px #ba3c07;
   padding: 20px;
 }
 
-.dashboard-page > h2, h3 {
+.dash-card > h2, h3 {
   text-align: center;
 }
 
@@ -27,10 +27,10 @@
   padding: 20px;
 }
 
-// .pending-friends, .adverts-card {
-//   height: 30%;
-// }
+ul {
+  list-style: none;
+}
 
-// .suggested-for-user, .friends-list {
-//   height: 70%;
-// }
+a {
+  text-decoration: none;
+}
