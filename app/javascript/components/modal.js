@@ -1,7 +1,11 @@
 // Add Friends Relation Modal on Dashboard screen
-const myModal = document.getElementById('addRelation')
-const myInput = document.getElementById('test')
+const myFriendModal = document.getElementById('addRelationModal')
 
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
+myFriendModal.addEventListener('shown.bs.modal', () => {
+})
+
+// Add Event Relation Modal on Dashboard screen
+const myEventModal = document.getElementById('addEventModal')
+
+myEventModal.addEventListener('shown.bs.modal', () => {
 })

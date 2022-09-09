@@ -3,8 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @notifications = Notification.where(user_id: current_user)
-    @friends = UserFriend.all
-    @events = Event.all
-    @users = User.pluck(:full_name).sort
+    @friends = UserFriend.where(friend_id: current_user)
+    @events = Event.where(user_id: current_user)
+    @nunlinked_users = User.pluck(:full_name).sort
+    @relations = User.pluck(:full_name).sort
+    @event = Event.new
   end
 end

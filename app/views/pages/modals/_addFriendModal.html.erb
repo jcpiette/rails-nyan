@@ -1,21 +1,21 @@
-<div class="modal fade" id="addRelation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="addRelationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addRelationLabel">Invite a user</h5>
+        <h5 class="modal-title" id="addRelationModalLabel">Invite a user</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [current_user, UserFriend.new] do |f| %>
-            <div id= "search-data" class="form-search search-data" data-users="<%= @users.to_json %>">
-              <%= f.input :user, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
-            </div>
+      <%= simple_form_for [UserFriend.new] do |f| %>
+        <div id= "search-data" class="form-search search-data" data-users="<%= @nunlinked_users.to_json %>">
+          <%= f.input :user, autocomplete: :off, class: "form-control search-input", placeholder: "Search by username" %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <%= f.submit "Invite", class:"btn-dash" %>
-        </div>
-        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= f.submit "Invite", class:"btn-dash" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
