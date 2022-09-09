@@ -12,15 +12,13 @@
       <ul>
       <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
         <li><%= User.find(friend.friend_id).full_name %>
-            <%#= link_to "Details", user_user_friend_path(current_user, friend)%>
-            <%= link_to "Delete", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true } %>
+            <%= link_to "Delete", decline_user_friend_path(friend), data: { turbo_method: :delete } %>
         </li>
       <% end %>
       <%# friends who have added me and I have accepted %>
       <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
         <li><%= User.find(friend.user_id).full_name %>
-            <%#= link_to "Details", user_user_friend_path(current_user, friend)%>
-            <%= link_to "Delete", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true } %>
+            <%= link_to "Delete", decline_user_friend_path(friend), data: { turbo_method: :delete } %>
         </li>
       <% end %>
       </ul>
@@ -36,7 +34,7 @@
       <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
         <li><%= User.find(friend.user_id).full_name %>
             <%= link_to "Accept", accept_user_friend_path(friend), data: { turbo_method: :post } %> |
-            <%= link_to "Decline", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true }  %>
+            <%= link_to "Decline", decline_user_friend_path(friend), data: { turbo_method: :delete }  %>
         </li>
       <% end %>
       </ul>

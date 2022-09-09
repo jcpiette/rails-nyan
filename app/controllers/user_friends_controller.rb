@@ -16,11 +16,16 @@ class UserFriendsController < ApplicationController
     redirect_to root_path
   end
 
+  def decline
+    @user_friend = UserFriend.find(params[:id])
+    @user_friend.destroy
+    redirect_to root_path
+  end
+
   # GET /user_friends/new
   def new
     @user_friend = UserFriend.new
     @user = current_user
-
   end
 
   # GET /user_friends/1/edit
@@ -62,10 +67,6 @@ class UserFriendsController < ApplicationController
   def destroy
     @user_friend.destroy
     redirect_to root_path
-    # respond_to do |format|
-    #   format.html { redirect_to root_path, notice: "User friend was successfully destroyed.", status: :see_other }
-    #   format.json { head :no_content }
-    # end
   end
 
   private
