@@ -30,33 +30,33 @@ puts "user created"
 user9 = User.create!(first_name: 'Anna', last_name: 'Dobbs', full_name: 'Anna Dobbs', email: "adobbs@gmail.com", password: "Test123", latitude: '51.50360210286566', longitude: '-0.15148749007201978', preference_type: 'restaurant', preference_budget: '3')
 puts "user created"
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-puts 'Users created!'
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# puts 'Users created!'
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user7.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user7.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user8.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user8.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
-user9.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# file = URI.open("https://res.cloudinary.com/dkywz955g/image/upload/v1661504913/cld-sample.jpg")
+# user9.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 # Create notifications
 puts 'Creating notifications...'
