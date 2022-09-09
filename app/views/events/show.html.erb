@@ -4,6 +4,6 @@
 
 <div>
   <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Delete this event", user_user_friend_delete_path(current_user, @event), data: { turbo_method: :delete, turbo: true } %>
+  <%= link_to "Delete this event", user_friend_delete_path(@event), data: { turbo_method: :delete, turbo: true } %>
 </div>
 <%= link_to "Back to Dashboard", root_path %>

@@ -39,7 +39,14 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @suggestions = suggestions(current_user)
+    users = []
+
+    @event.event_members.each do |n|
+      users.push(n.user)
+    end
+
+    @suggestions = suggestions(users)
+    raise
   end
 
   def user_suggestions
