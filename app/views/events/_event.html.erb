@@ -21,7 +21,16 @@
 
   <p>
     <strong>Created By:</strong>
-    <%= User.find(event.user_id).first_name %>
+    <%= User.find(event.user_id).full_name %>
+  </p>
+
+  <p>
+    <strong>Who's Going:</strong>
+    <ul>
+    <% @members.where(event_id: event).each do |member| %>
+      <li><%= User.find(member.user_id).full_name%></li>
+    <% end %>
+    </ul>
   </p>
 
 </div>
