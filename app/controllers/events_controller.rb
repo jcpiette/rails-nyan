@@ -19,9 +19,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @users = User.all
-    @suggestions = suggestions(@users)
-
-    # redirect_to event_path
   end
 
   # POST /events or /events.json

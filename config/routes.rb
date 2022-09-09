@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :notifications, only: [:show]
-  resources :events, only: [:index, :show, :new, :create, :edit, :destroy]
+  resources :events, only: [:index, :show, :new, :create, :edit, :destroy, :update]
   resources :user_friends, only: [:index, :show, :new, :create, :edit, :destroy] do
     member do
       post :accept
