@@ -8,8 +8,11 @@
 
 .dash-card {
   border-radius: 10px;
-  border: solid 1px #ba3c07;
   padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  margin-top: 10px;
+  box-shadow: 5px 5px lightgray;
 }
 
 .dash-card > h2, h3 {
@@ -18,17 +21,46 @@
 
 .button-dash {
   text-align: center;
-  margin: 20px;
+  margin: 30px;
+}
+
+.row {
+  height: 100%;
+}
+
+.col {
+  min-height: 85vh;
+}
+
+.friends-list, .suggested-for-user {
+  height: 70%;
+}
+
+.pending-friends, .adverts {
+  height: 30%
+}
+
+.events-card {
+  height: 101%;
 }
 
 .event-card {
   border-radius: 10px;
-  border: solid 1px lightgrey;
+  background-color: #ba3c07;
   padding: 20px;
+  margin-top: 15px;
+}
+
+.event-card > a {
+  color: white;
 }
 
 ul {
   list-style: none;
+}
+
+li {
+  margin-top: 20px;
 }
 
 a {
