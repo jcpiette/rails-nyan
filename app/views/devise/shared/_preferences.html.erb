@@ -9,7 +9,46 @@
               required: true %>
       <%= f.input :preference_budget,
                   required: true %>
-
+      <div class="preference-type">
+        <p> Select your preference type</p>
+        <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
+        <span>
+          <input type="radio" value="bar" name="user[preference_type]" id="user_preference_type_bar">
+          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_bar">
+            Bar
+          </label>
+        </span>
+        <span>
+          <input type="radio" value="restaurant" name="user[preference_type]" id="user_preference_type_restaurant">
+          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_restaurant">
+            Restaurant
+          </label>
+        </span>
+        <span>
+          <input type="radio" value="casino" name="user[preference_type]" id="user_preference_type_casino">
+          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_casino">
+            Casino
+          </label>
+        </span>
+        <span>
+          <input type="radio" value="night_club" name="user[preference_type]" id="user_preference_type_night_club">
+          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_night_club">
+            Night club
+          </label>
+        </span>
+        <span>
+          <input type="radio" value="musuem" name="user[preference_type]" id="user_preference_type_musuem">
+          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_musuem">
+            Musuem
+          </label>
+        </span>
+        <span>
+          <input type="radio" value="movie_theater" name="user[preference_type]" id="user_preference_type_movie_theater">
+          <label class="collection_radio_movie_theater pref-type-radio-button" for="user_preference_type_movie_theater">
+            Movie theater
+          </label>
+        </span>
+      </div>
     </div>
     <br>
 
