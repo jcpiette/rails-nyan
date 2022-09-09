@@ -19,13 +19,14 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
+    raise
   end
 
    # POST /events or /events.json
   def create
     @event = Event.new
     @event.user = current_user
-    fsdf
+    raise
     if @event.save
       redirect_to root_path
     else
