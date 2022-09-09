@@ -1,61 +1,80 @@
-<div class="dashboard-page">
-
-  <div class="section left-side">
+<div class="dashboard-page container">
+<div class="row">
+  <div class="col section left-side">
     <div class="dash-card friends-list">
       <h2>Your Friends</h2>
       <div class="button-dash">
-        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelation">
+        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelationModal">
           Add Friend
         </button>
       </div>
+      <%# friends I have added who have accepted %>
       <ul>
       <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
-        <li><%= User.find(friend.friend_id).first_name %>
-            <%= link_to "Details", user_user_friend_path(current_user, friend)%>
-            <%= link_to "Delete", user_user_friend_delete_path( friend, current_user), data: { turbo_method: :delete, turbo: true } %>
+        <li><%= User.find(friend.friend_id).full_name %>
+            <%#= link_to "Details", user_user_friend_path(current_user, friend)%>
+            <%= link_to "Delete", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true } %>
+        </li>
+      <% end %>
+      <%# friends who have added me and I have accepted %>
+      <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
+        <li><%= User.find(friend.user_id).full_name %>
+            <%#= link_to "Details", user_user_friend_path(current_user, friend)%>
+            <%= link_to "Delete", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true } %>
         </li>
       <% end %>
       </ul>
     </div>
     <div class="dash-card pending-friends">
       <h3>Pending</h3>
-
+      <%# friends I have added and I am waiting on them to accept/decline %>
       <ul>
+      <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+        <li><%= User.find(friend.friend_id).full_name %>...</li>
+      <% end %>
+      <%# friends who have added me and I can accept/decline %>
       <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-        <li><%= User.find(friend.user_id).full_name %>...</li>
-        <%= link_to "Accept", accept_user_user_friend_path(current_user, friend), data: { turbo_method: :post } %>
-            <%= link_to "Decline", user_user_friend_delete_path(friend, current_user), data: { turbo_method: :delete, turbo: true }  %>
+        <li><%= User.find(friend.user_id).full_name %>
+            <%= link_to "Accept", accept_user_friend_path(friend), data: { turbo_method: :post } %> |
+            <%= link_to "Decline", user_friend_delete_path(friend), data: { turbo_method: :delete, turbo: true }  %>
+        </li>
       <% end %>
       </ul>
     </div>
   </div>
 
-  <div class="section middle">
+  <div class="col-5 section middle">
     <div class="dash-card events-card">
       <h2>Upcoming Events</h2>
+
+     <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addEventModal">
+          Add Event
+        </button>
       <div class="button-dash">
-        <%= link_to "New", new_user_event_path(current_user), class:"btn-dash" %>
       </div>
         <% @events.each do |event|%>
           <div class="event-card">
-            <%= link_to "#{Event.find(event.id).title}", user_event_path(current_user, event) %>
+            <%= link_to "#{Event.find(event.id).title}", event_path(event) %>
           </div>
         <% end %>
     </div>
   </div>
 
-  <div class="section right-side">
+  <div class="col section right-side">
     <div class="dash-card suggested-for-user">
       <h2> Suggested For You</h2>
     </div>
-    <div class="dash-card adverts-card">
+    <div class="dash-card adverts">
       <h3>...adverts...</h3>
     </div>
   </div>
-
+</div>
 </div>
 
 <!-- Modal -->
+
+<!-- add event modal -->
+<%= render "pages/modals/addEventModal" %>
 
 <!-- Add Friends Modal -->
 <%= render "pages/modals/addFriendModal" %>

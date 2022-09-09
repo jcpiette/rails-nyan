@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1 or /events/1.json
   def show
     @event = Event.find(params[:id])
+    @members = EventMember.all
   end
 
   # GET /events/new
@@ -19,14 +20,19 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
+
+    # redirect_to event_path
   end
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new
     @event.user = current_user
-    if @event.save
-      redirect_to root_path
+    params["native-select"].split(",").each do |user|
+      EventMember.create(event: @event, user: User.where(full_name: user).first)
+    end
+    if @event.save!
+      redirect_to edit_event_path(@event)
     else
       format.html { render :new, status: :unprocessable_entity }
     end
@@ -34,6 +40,11 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    users = []
+    @event.event_members.each do |n|
+      users.push(n.user)
+    end
+    @suggestions = suggestions(users)
   end
 
   def user_suggestions
@@ -41,7 +52,6 @@ class EventsController < ApplicationController
     type = User.find(session[:user_id]).preference_type
     minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
     radius = '500'
-
   end
 
   def suggestions(users)
