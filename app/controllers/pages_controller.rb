@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @nunlinked_users = User.pluck(:full_name).sort
     @relations = User.pluck(:full_name).sort
     @event = Event.new
+    @user_friend = UserFriend.new
   end
 end
