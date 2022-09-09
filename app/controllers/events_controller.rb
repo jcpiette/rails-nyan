@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @suggestions = suggestions(@users)
+    qfqsfqsfqsdfÒ
   end
 
    # POST /events or /events.json
