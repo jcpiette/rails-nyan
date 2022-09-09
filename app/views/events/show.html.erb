@@ -3,7 +3,7 @@
 <%= render @event %>
 
 <div>
-  <%= link_to "Edit this event", edit_user_event_path(current_user, @event) %> |
+  <%= link_to "Edit this event", edit_event_path(@event) %> |
   <%= link_to "Delete this event", user_user_friend_delete_path(current_user, @event), data: { turbo_method: :delete, turbo: true } %>
 </div>
 <%= link_to "Back to Dashboard", root_path %>

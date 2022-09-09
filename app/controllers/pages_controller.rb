@@ -7,5 +7,6 @@ class PagesController < ApplicationController
     @events = Event.where(user_id: current_user)
     @nunlinked_users = User.pluck(:full_name).sort
     @relations = User.pluck(:full_name).sort
+    @event = Event.new
   end
 end
