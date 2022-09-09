@@ -1,12 +1,5 @@
-<div>
-  <% if user_signed_in? %>
-    <%= render "pages/home/dashboard" %>
-    <%#  this does not work fix!!<%= render "pages/home/addFriendButton" %>
-  <% else %>
-    <p>Homepage</p>
-  <% end %>
-</div>
-
-
-
-
+<% if user_signed_in? %>
+  <%= render "pages/home/dashboard" %>
+<% else %>
+  <p>Homepage</p>
+<% end %>

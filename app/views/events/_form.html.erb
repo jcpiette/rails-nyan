@@ -9,53 +9,52 @@
     <%= f.input :event_date %>
   </div>
 
-
-<div class="row justify-content-center">
-  <div class="col-sm-8 text-center">
-    <p> For your group</p>
-    <div class="d-flex flex-wrap justify-content-center pt-4">
-      <% @suggestions.each_with_index do |event, index|%>
-        <% if index <= 5%>
-          <div class="clickable">
-            <p> <%= event['name'] %> </p>
-            <p> <%= event['address'] %> </p>
-            <p> <%= '£'*event['price level'].to_i%> </p>
-            <p> <%= '⭐'*event['rating'].to_i%> </p>
-            <%= link_to "website", "#{event['website']}", target: "_blank" %>
-          </div>
-        <%end%>
-      <%end%>
+<section class="layout">
+  <% @suggestions.each_with_index do |suggestion, index|%>
+    <% if index <= 5%>
+      <div class="clickable" data-suggestion="<%= suggestion.to_s %>">
+        <p> <%= suggestion['name'] %> </p>
+        <p> <%= suggestion['address'] %> </p>
+        <p> <%= '£'*suggestion['price level'].to_i%> </p>
+        <p> <%= '⭐'*suggestion['rating'].to_i%> </p>
+        <%= link_to "website", "#{suggestion['website']}", target: "_blank" %>
+        <%= f.check_box :location %>
+        <div class="form-actions">
+          <%= f.button :submit%>
+        </div>
+      <% end %>
     </div>
-  </div>
-</div>
-</div>
+    <% end %>
+  <% end %>
+
+
+</section>
 
 
 
 
-<div class="form-actions">
-  <%= f.button :submit %>
-</div>
-<% end %>
+
+
+
 <style>
+
+
 .clickable {
-  padding: 40px;
-  width: 220px;
-  border: 1px solid #dedede;
-  color: #a0a0a0;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
 }
 
-.suggestions {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+.layout {
+  width: 1366px;
+  height: 768px;
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 </style>
