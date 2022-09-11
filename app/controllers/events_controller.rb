@@ -82,12 +82,17 @@ class EventsController < ApplicationController
       response = https.request(request)
       file = response.read_body
       json_file = JSON.parse(file)
-      #new_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{json_file['result']['photos'].first['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
-      #place_photo << new_url
-      #places_photo_reference << { 'name_photo' => [ "#{json_file['result']['name']}", "#{json_file['result']['photos'][index]['photo_reference']}"]}
+
+      photo_references = []
+      json_file['result']['photos'].each do |reference|
+        photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+        photo_references << photo_url
+      end
+
+
       @suggestions << {
         'name' => json_file['result']['name'],
-        #'photo' => place_photo[index],
+        'photos' => photo_references,
         'address' => json_file['result']['formatted_address'],
         'adr_address' => json_file['result']['adr_address'],
         'price level' => json_file['result']['price_level'],
@@ -95,7 +100,6 @@ class EventsController < ApplicationController
         'location' => location,
         'website' => json_file['result']['website']
       }
-
     end
     @suggestions
   end

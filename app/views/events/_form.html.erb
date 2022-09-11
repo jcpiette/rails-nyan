@@ -1,4 +1,4 @@
-<%= simple_form_for(@event, url: event_path ) do |f| %>
+<%= simple_form_for(@event, url: events_path ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -18,6 +18,7 @@
         <p> <%= suggestion['address'] %> </p>
         <p> <%= '£'*suggestion['price level'].to_i%> </p>
         <p> <%= '⭐'*suggestion['rating'].to_i%> </p>
+
         <%= link_to "website", "#{suggestion['website']}", target: "_blank" %>
       </div>
     <% end %>
@@ -27,6 +28,10 @@
   </div>
 </section>
 <% end %>
+
+
+
+
 <script>
 function myfunction(name) {
   document.getElementById('event_location').value = name
