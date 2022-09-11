@@ -9,7 +9,7 @@
         </button>
       </div>
       <%# friends I have added who have accepted %>
-      <ul>
+      <ul>xxs
       <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
         <li><%= User.find(friend.friend_id).full_name %>
             <%= link_to "Delete", decline_user_friend_path(friend), data: { turbo_method: :delete } %>
