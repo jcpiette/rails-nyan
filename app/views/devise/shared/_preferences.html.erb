@@ -10,18 +10,44 @@
       <%= f.input :preference_type,
               required: true, :as => :hidden %>
       <%= f.input :preference_budget,
-                  required: true %>
+                  required: true, :as => :hidden %>
+
+
+        <div class="preference_budget">
+        <p><strong>Select your Budget:<strong></p>
+
+        <input type="hidden" name="user[preference_budget]" value="" autocomplete="off">
+
+        <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
+          <span>
+            <% if current_user.preference_budget == (n[:value])  %>
+              <%# raise %>
+              <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>" checked>
+              <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+              </label>
+          <% else %>
+              <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>">
+              <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+              </label>
+          <% end %>
+          </span>
+        <% end %>
+
+
 
 
 
       <div class="preference-type">
-        <p><strong>Select your preference type<strong></p>
+        <p><strong>Select your preference type:<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
 
         <% [{value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'}].each do |n| %>
+          <div class="flexbox1">
           <span>
             <% if current_user.preference_type == (n[:value])  %>
-              <%# raise %>
+
               <input type="radio" value="<%= n[:value]%>" name="user[preference_type]" id="user_preference_type_<%=n[:value]%>" checked>
               <label class="clickable" for="user_preference_type_<%=n[:value]%>">
                 <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
@@ -41,7 +67,7 @@
     <br>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      <%= f.button :submit, "Update⬆", class: "btn btn-success" %>
     </div>
   <% end %>
 
