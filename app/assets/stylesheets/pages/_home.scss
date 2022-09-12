@@ -67,10 +67,8 @@
   justify-content: center;
 }
 
-.event-info > a {
+.event-info {
   color: white;
-  text-align: center;
-  text-decoration: none;
 }
 
 ul {
@@ -84,4 +82,8 @@ li {
 .accept-decline {
   display: flex;
   justify-content: space-between;
+}
+
+.card-link {
+  text-decoration: none;
 }

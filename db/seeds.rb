@@ -97,32 +97,30 @@ puts 'Creating events...'
 event1 = Event.create!(
   title: 'Le Wagon Alumni Lunch',
   description: 'Meeting up for lunch with the gang.',
-  user_id: user3.id
-)
+  user_id: user3.id,
+  event_date: Date.today + 10
 
+)
 EventMember.create!(user_id: user1.id, event_id: event1.id)
 EventMember.create!(user_id: user2.id, event_id: event1.id)
 EventMember.create!(user_id: user4.id, event_id: event1.id)
 
-event2 = Event.create!(
-  title: 'Family BBQ',
-  description: 'Come along for some good grub ft. my famous ham sandwhiches',
-  user_id: user3.id
-)
-EventMember.create(user_id: user8.id, event_id: event2.id)
-EventMember.create(user_id: user7.id, event_id: event2.id)
+# event2 = Event.create!(
+#   title: 'Family BBQ',
+#   description: 'Come along for some home cooked dinner.',
+#   user_id: user3.id,
+#   event_date: Date.today + 20
+# )
+# EventMember.create(user_id: user8.id, event_id: event2.id)
+# EventMember.create(user_id: user7.id, event_id: event2.id)
 
 
 event3 = Event.create!(
   title: 'Pottery Class',
   description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id
+  user_id: user3.id,
+  event_date: Date.today + 30
 )
 EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event4 = Event.create!(title: 'Birthday Bash', description: "Celebrating Theo's Birthday", user_id: user2.id)
-EventMember.create!(user_id: user1.id, event_id: event4.id)
-EventMember.create!(user_id: user3.id, event_id: event4.id)
-EventMember.create!(user_id: user4.id, event_id: event4.id)
 
 puts 'Events created!'

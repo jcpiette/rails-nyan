@@ -58,9 +58,14 @@
         </button>
       </div>
         <% @events.each do |event|%>
+          <%= link_to event_path(event), class:"card-link" do%>
           <div class="event-card">
             <div class="event-info">
-              <%= link_to "#{Event.find(event.id).title}", event_path(event) %>
+              <ul>
+                <li><%= event.title %></li>
+                <li><%=  event.description%></li>
+                <li><%= event.event_date.strftime("%d / %m / %Y") %></li>
+              </ul>
             </div>
             <div class="avatars">
               <% @event_members.where(event_id: event.id).each do |member|%>
@@ -68,6 +73,7 @@
               <% end %>
             </div>
           </div>
+          <% end %>
         <% end %>
     </div>
   </div>
