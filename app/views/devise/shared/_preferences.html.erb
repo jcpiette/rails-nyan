@@ -15,10 +15,10 @@
 
 
       <div class="preference-type">
-        <p> Select your preference type</p>
+        <p><strong>Select your preference type<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
 
-        <%= [ {value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'},  ].each do |n| %>
+        <% [{value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'}].each do |n| %>
           <span>
             <% if current_user.preference_type == (n[:value])  %>
               <%# raise %>
