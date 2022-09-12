@@ -17,11 +17,11 @@
         <p><strong>Select your Budget:<strong></p>
 
         <input type="hidden" name="user[preference_budget]" value="" autocomplete="off">
+<div class="flex-cards">
+         <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
 
-        <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
-          <span>
+          <div>
             <% if current_user.preference_budget == (n[:value])  %>
-              <%# raise %>
               <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>" checked>
               <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
                 <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
@@ -32,9 +32,18 @@
                 <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
               </label>
           <% end %>
-          </span>
+          </div>
         <% end %>
+        </div>
 
+<style>
+.flex-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+</style>
 
 
 
@@ -42,9 +51,9 @@
       <div class="preference-type">
         <p><strong>Select your preference type:<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
-
+        <div class="flex-cards">
         <% [{value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'}].each do |n| %>
-          <div class="flexbox1">
+
           <span>
             <% if current_user.preference_type == (n[:value])  %>
 
@@ -60,7 +69,7 @@
           <% end %>
           </span>
         <% end %>
-
+        </div>
 
       </div>
     </div>
