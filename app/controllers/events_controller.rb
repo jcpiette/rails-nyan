@@ -77,8 +77,10 @@ class EventsController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each do |place|
-      place_ids << place['place_id']
+    json_file['results'].each do |place, index|
+      while index < 9
+        place_ids << place['place_id']
+      end
     end
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
@@ -92,9 +94,11 @@ class EventsController < ApplicationController
       json_file = JSON.parse(file)
 
       photo_references = []
-      json_file['result']['photos'].each do |reference|
-        photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
-        photo_references << photo_url
+      json_file['result']['photos'].each do |reference, index|
+        while index < 1
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+          photo_references << photo_url
+        end
       end
 
 
