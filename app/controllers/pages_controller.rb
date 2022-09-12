@@ -14,6 +14,7 @@ class PagesController < ApplicationController
     @event = Event.new
     @user_friend = UserFriend.new
     @mysuggestions = suggestions()
+    @event_members = EventMember.all
   end
 
   def suggestions()

@@ -60,6 +60,9 @@
         <% @events.each do |event|%>
           <div class="event-card">
             <%= link_to "#{Event.find(event.id).title}", event_path(event) %>
+            <% @event_members.where(event_id: event.id).each do |member|%>
+              <%= cl_image_tag User.find(member.user_id).photo.key,  width: 50, height: 50, crop: :thumb, gravity: :face, class: "nav-link", data: {avatar_target: "avatar", action: "click->avatar#showFileInterface"} %>
+            <% end %>
           </div>
         <% end %>
     </div>
