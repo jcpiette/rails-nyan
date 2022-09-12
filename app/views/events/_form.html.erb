@@ -9,31 +9,43 @@
   <%= f.input :location, input_html: { value: 'Choose a restaurant' } %>
 </div>
 
+<div class="x">
+
 <section class="layout">
   <% @suggestions.each_with_index do |suggestion, index|%>
-    <% if index <= 5%>
-      <div class="event-container" id="<%=index%>">
-        <div class="event-picture">
-          <img src=<%="#{suggestion['photos'][0]}"%>>
+    <% if index <= 3%>
+
+      <div class="card" style="width: 18rem;" id="<%=index%>">
+        <img class="card-img-top" src="<%="#{suggestion['photos'][0]}"%>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= suggestion['name'] %></h5>
+          <p class="card-text"><%= suggestion['address'] %></p>
         </div>
-        <div class="event-details">
-          <h3> <%= suggestion['name'] %> </h3>
-          <p> <%= suggestion['address'] %> </p>
-          <p> <%= '£'*suggestion['price level'].to_i%> </p>
-          <p> <%= '⭐'*suggestion['rating'].to_i%> </p>
-          <%= link_to "website", "#{suggestion['website']}", target: "_blank" %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
+          <li class="list-group-item"><%= '£'*suggestion['price level'].to_i%></li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <a href="<%="#{suggestion['website']}"%>" class="card-link">Website</a>
           <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
         </div>
       </div>
-    <% end %>
-  <% end %>
+      <% end %>
+      <%end%>
+    </div>
+<%=@suggestions[0]['name']%>
 </section>
+</div>
+
+
 
 <div class="form-actions">
     <%= f.button :submit%>
 </div>
 
 <% end %>
+
 
 
 <script>
