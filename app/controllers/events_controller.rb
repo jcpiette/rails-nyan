@@ -26,7 +26,15 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user = current_user
     params["native-select"].split(",").each do |user|
-      EventMember.create(event: @event, user: User.where(full_name: user).first)
+      iu = User.where(full_name: user).first
+      EventMember.create(event: @event, user: iu)
+      Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
+
+      NotificationChannel.broadcast_to(
+        iu.friend,
+        "<p>#{notif.message}</p>".html_safe
+      )
+      head :ok
     end
     if @event.save!
       redirect_to edit_event_path(@event)
@@ -69,8 +77,10 @@ class EventsController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each do |place|
-      place_ids << place['place_id']
+    json_file['results'].each do |place, index|
+      while index < 9
+        place_ids << place['place_id']
+      end
     end
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
@@ -82,12 +92,19 @@ class EventsController < ApplicationController
       response = https.request(request)
       file = response.read_body
       json_file = JSON.parse(file)
-      #new_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{json_file['result']['photos'].first['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
-      #place_photo << new_url
-      #places_photo_reference << { 'name_photo' => [ "#{json_file['result']['name']}", "#{json_file['result']['photos'][index]['photo_reference']}"]}
+
+      photo_references = []
+      json_file['result']['photos'].each do |reference, index|
+        while index < 1
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+          photo_references << photo_url
+        end
+      end
+
+
       @suggestions << {
         'name' => json_file['result']['name'],
-        #'photo' => place_photo[index],
+        'photos' => photo_references,
         'address' => json_file['result']['formatted_address'],
         'adr_address' => json_file['result']['adr_address'],
         'price level' => json_file['result']['price_level'],
@@ -95,7 +112,6 @@ class EventsController < ApplicationController
         'location' => location,
         'website' => json_file['result']['website']
       }
-
     end
     @suggestions
   end

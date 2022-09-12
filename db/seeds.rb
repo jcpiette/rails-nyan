@@ -15,7 +15,7 @@ user1 = User.create!(first_name: 'Paulo', last_name: 'Gomes', full_name: 'Paulo 
 puts "user created"
 user2 = User.create!(first_name: 'Theo', last_name: 'Simpson', full_name: 'Theo Simpson', email: "kmstheodore@gmail.com", password: "Test123", latitude: '51.541257', longitude: '-0.153317', preference_type: 'restaurant', preference_budget: '3')
 puts "user created"
-user3 = User.create!(first_name: 'Olivia', last_name: 'Patterson', full_name: 'Olivia Patterson', email: "oliviapatterson123@live.com", password: "Test123", latitude: '51.5105', longitude: '0.1872', preference_type: 'restaurant', preference_budget: '3') #queensway
+user3 = User.create!(first_name: 'Olivia', last_name: 'Patterson', full_name: 'Olivia Patterson', email: "oliviapatterson123@live.com", password: "Test123", latitude: '51.5105', longitude: '-0.1872', preference_type: 'restaurant', preference_budget: '3') #queensway
 puts "user created"
 user4 = User.create!(first_name: 'Jay', last_name: 'P.', full_name: 'Jay P.', email: "piette.jc@me.com", password: "Test123", latitude: '51.5556', longitude: '0.1762', preference_type: 'restaurant', preference_budget: '4') #hampstead
 puts "user created"

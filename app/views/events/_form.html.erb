@@ -1,4 +1,4 @@
-<%= simple_form_for(@event, url: event_path ) do |f| %>
+<%= simple_form_for(@event, url: events_path ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -9,24 +9,20 @@
   <%= f.input :location, input_html: { value: 'Choose a restaurant' } %>
 </div>
 
-<section class="layout">
-  <% @suggestions.each_with_index do |suggestion, index|%>
-    <% if index <= 5%>
-      <div id="<%=index%>" data-suggestion="<%= suggestion.to_s %>">
-        <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
-        <p> <%= suggestion['name'] %> </p>
-        <p> <%= suggestion['address'] %> </p>
-        <p> <%= '£'*suggestion['price level'].to_i%> </p>
-        <p> <%= '⭐'*suggestion['rating'].to_i%> </p>
-        <%= link_to "website", "#{suggestion['website']}", target: "_blank" %>
-      </div>
-    <% end %>
-  <% end %>
-  <div class="form-actions">
+
+
+
+
+
+
+<div class="form-actions">
     <%= f.button :submit%>
-  </div>
-</section>
+</div>
+
 <% end %>
+
+
+
 <script>
 function myfunction(name) {
   document.getElementById('event_location').value = name
