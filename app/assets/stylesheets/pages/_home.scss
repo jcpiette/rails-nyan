@@ -1,17 +1,18 @@
 // Specific CSS for your home-page
 
 .dash-card {
-  border-radius: 10px;
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
-  margin-top: 10px;
-  box-shadow: 5px 5px rgb(222, 220, 220);
 }
 
-.dash-card > h2, h3 {
+.dash-card > h2 {
   text-align: center;
-  color: #36395E
+  color: #0C2445;
+}
+
+.dash-card > h3 {
+  text-align: center;
+  color: #124073;
 }
 
 .button-dash {
@@ -28,26 +29,30 @@
 }
 
 .friends-list, .suggested-for-user {
-  height: 70%;
+  height: 60%;
+  color: #124073;
 }
 
 .pending-friends, .adverts {
-  height: 30%
+  height: 40%;
+  color: #124073;
 }
 
 .events-card {
   height: 101%;
+  background-color: white;
 }
 
 .event-card {
   border-radius: 10px;
-  background-color: #36395E;
+  background-color: #0C2445;
   padding: 20px;
   margin-top: 15px;
 }
 
 .event-card > a {
   color: white;
+  text-align: center;
 }
 
 ul {
@@ -60,4 +65,10 @@ li {
 
 a {
   text-decoration: none;
+  color: #124073;
+}
+
+.accept-decline {
+  display: flex;
+  justify-content: space-between;
 }
