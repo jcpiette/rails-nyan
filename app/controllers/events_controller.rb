@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each do |place, index|
+    json_file['results'].each_with_index do |place, index|
       while index < 9
         place_ids << place['place_id']
       end
