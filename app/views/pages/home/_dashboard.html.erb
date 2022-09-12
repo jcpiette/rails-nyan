@@ -2,24 +2,20 @@
 <div class="row">
   <div class="col section left-side">
     <div class="dash-card friends-list">
-      <h2>Your Friends</h2>
+      <h3>Your Friends</h3>
       <div class="button-dash">
         <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelationModal">
           Add Friend
         </button>
       </div>
       <%# friends I have added who have accepted %>
-      <ul>xxs
+      <ul>
       <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
-        <li><%= User.find(friend.friend_id).full_name %>
-            <%= link_to "Delete", decline_user_friend_path(friend), data: { turbo_method: :delete } %>
-        </li>
+        <li><%= User.find(friend.friend_id).full_name %></li>
       <% end %>
       <%# friends who have added me and I have accepted %>
       <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-        <li><%= User.find(friend.user_id).full_name %>
-            <%= link_to "Delete", decline_user_friend_path(friend), data: { turbo_method: :delete } %>
-        </li>
+        <li><%= User.find(friend.user_id).full_name %></li>
       <% end %>
       </ul>
     </div>
@@ -32,9 +28,18 @@
       <% end %>
       <%# friends who have added me and I can accept/decline %>
       <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-        <li><%= User.find(friend.user_id).full_name %>
-            <%= link_to "Accept", accept_user_friend_path(friend), data: { turbo_method: :post } %> |
-            <%= link_to "Decline", decline_user_friend_path(friend), data: { turbo_method: :delete }  %>
+        <li>
+          <div class="accept-decline">
+            <%= User.find(friend.user_id).full_name %>
+            <div>
+              <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post }, class: 'mr-5' do %>
+                <i class="fa-solid fa-check"></i>
+              <% end %>
+              <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                <i class="fa-solid fa-xmark"></i>
+              <% end %>
+            </div>
+          </div>
         </li>
       <% end %>
       </ul>
@@ -43,12 +48,11 @@
 
   <div class="col-5 section middle">
     <div class="dash-card events-card">
-      <h2>Upcoming Events</h2>
-
-     <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addEventModal">
+      <h2><strong>Upcoming Events</strong></h2>
+      <div class="button-dash">
+        <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addEventModal">
           Add Event
         </button>
-      <div class="button-dash">
       </div>
         <% @events.each do |event|%>
           <div class="event-card">
@@ -60,10 +64,8 @@
 
   <div class="col section right-side">
     <div class="dash-card suggested-for-user">
-      <h2> Suggested For You</h2>
-    </div>
-    <div class="dash-card adverts">
-      <h3>...adverts...</h3>
+      <h3> Near You</h3>
+
     </div>
   </div>
 </div>
@@ -76,3 +78,21 @@
 
 <!-- Add Friends Modal -->
 <%= render "pages/modals/addFriendModal" %>
+<%# <% @mysuggestions.each do |suggestion|%>
+        <%# <div class="suggestion-card" style="width: 18rem;"> %>
+          <%# <div class="card-body"> %>
+            <%# <h5 class="card-title"><%= suggestion['name']</h5> %>
+          <%# </div> %>
+          <%# <img class="card-img-top" src="<%="#{suggestion['photos'][0]}"" alt="Card image cap"> %>
+          <%# <ul class="list-group list-group-flush"> %>
+            <%# <li class="list-group-item"><% suggestion['price level'].to_i.times do %>
+                <%# <i class="fa-solid fa-sterling-sign"></i> %>
+              <%# <% end %>
+            <%# </li> %>
+            <%# <li class="list-group-item"><% suggestion['rating'].to_i.times do %>
+              <%# <i class="fa-solid fa-star"></i> %>
+            <%# <% end %>
+            <%# </li> %>
+          <%# </ul> %>
+        <%# </div> %>
+      <%# <% end %>
