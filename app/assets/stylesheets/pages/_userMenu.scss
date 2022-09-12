@@ -5,11 +5,12 @@
   padding: 4px 26px !important;
   outline: none;
   cursor: pointer;
-  transition: all 0.5s;
-  -o-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
+  transition: all 0.7s;
+  -o-transition: all 0.7s;
+  -ms-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  
 
 }
 
@@ -26,4 +27,13 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   margin-bottom: 25px;
+}
+
+.delete-account {
+  margin-top: 70px  !important;
+}
+.previous {
+  background-color: #f1f1f1;
+  color: grey;
+
 }
