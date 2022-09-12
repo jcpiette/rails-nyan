@@ -8,3 +8,16 @@ import { autocompleteSearch } from "./components/autocomplete";
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 autocompleteSearch()
+
+
+// const sports = document.querySelectorAll('.clickable');
+
+// const toggleActiveClass = (event) => {
+//   event.currentTarget.classList.toggle('active');
+// };
+
+// const toggleActiveOnClick = (sport) => {
+//   sport.addEventListener('click', toggleActiveClass);
+// };
+
+// sports.forEach(toggleActiveOnClick);

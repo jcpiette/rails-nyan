@@ -4,50 +4,38 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
     <%= f.error_notification %>
 
+
+
     <div class="form-inputs">
       <%= f.input :preference_type,
-              required: true %>
+              required: true, :as => :hidden %>
       <%= f.input :preference_budget,
                   required: true %>
+
+
+
       <div class="preference-type">
         <p> Select your preference type</p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
-        <span>
-          <input type="radio" value="bar" name="user[preference_type]" id="user_preference_type_bar">
-          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_bar">
-            Bar
-          </label>
-        </span>
-        <span>
-          <input type="radio" value="restaurant" name="user[preference_type]" id="user_preference_type_restaurant">
-          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_restaurant">
-            Restaurant
-          </label>
-        </span>
-        <span>
-          <input type="radio" value="casino" name="user[preference_type]" id="user_preference_type_casino">
-          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_casino">
-            Casino
-          </label>
-        </span>
-        <span>
-          <input type="radio" value="night_club" name="user[preference_type]" id="user_preference_type_night_club">
-          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_night_club">
-            Night club
-          </label>
-        </span>
-        <span>
-          <input type="radio" value="musuem" name="user[preference_type]" id="user_preference_type_musuem">
-          <label class="collection_radio_buttons pref-type-radio-button" for="user_preference_type_musuem">
-            Musuem
-          </label>
-        </span>
-        <span>
-          <input type="radio" value="movie_theater" name="user[preference_type]" id="user_preference_type_movie_theater">
-          <label class="collection_radio_movie_theater pref-type-radio-button" for="user_preference_type_movie_theater">
-            Movie theater
-          </label>
-        </span>
+
+        <%= [ {value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'},  ].each do |n| %>
+          <span>
+            <% if current_user.preference_type == (n[:value])  %>
+              <%# raise %>
+              <input type="radio" value="<%= n[:value]%>" name="user[preference_type]" id="user_preference_type_<%=n[:value]%>" checked>
+              <label class="clickable" for="user_preference_type_<%=n[:value]%>">
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+              </label>
+          <% else %>
+              <input type="radio" value="<%= n[:value]%>" name="user[preference_type]" id="user_preference_type_<%=n[:value]%>">
+              <label class="clickable" for="user_preference_type_<%=n[:value]%>">
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+              </label>
+          <% end %>
+          </span>
+        <% end %>
+
+
       </div>
     </div>
     <br>
