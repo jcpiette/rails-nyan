@@ -7,3 +7,22 @@
   top: 0;
   padding-right: 50px;
 }
+
+
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:not(:disabled) ~ label {
+  cursor: pointer;
+}
+input[type=radio]:disabled ~ label {
+  color: #bcc2bf;
+  border-color: #bcc2bf;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+input[type=radio]:checked + label {
+  color: red;
+}
+
