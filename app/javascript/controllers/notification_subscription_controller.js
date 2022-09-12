@@ -7,6 +7,9 @@ export default class extends Controller {
   static targets = ["notifications"]
 
   connect() {
+    console.log("connect to notif room");
+    console.log(this.notificationIdValue);
+
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel", id: this.notificationIdValue },
       { received: data => console.log(data) }

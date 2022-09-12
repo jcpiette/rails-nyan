@@ -26,8 +26,15 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user = current_user
     params["native-select"].split(",").each do |user|
-      EventMember.create(event: @event, user: User.where(full_name: user).first)
-      Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: user)
+      iu = User.where(full_name: user).first
+      EventMember.create(event: @event, user: iu)
+      Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
+
+      NotificationChannel.broadcast_to(
+        iu.friend,
+        "<p>#{notif.message}</p>".html_safe
+      )
+      head :ok
     end
     if @event.save!
       redirect_to edit_event_path(@event)
