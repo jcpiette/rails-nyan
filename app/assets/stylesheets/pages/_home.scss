@@ -28,17 +28,17 @@
   min-height: 85vh;
 }
 
-.friends-list, .suggested-for-user {
+.friends-list{
   height: 60%;
   color: #124073;
 }
 
-.pending-friends, .adverts {
+.pending-friends{
   height: 40%;
   color: #124073;
 }
 
-.events-card {
+.events-card, .suggested-for-user {
   height: 101%;
   background-color: white;
 }

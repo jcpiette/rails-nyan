@@ -13,13 +13,15 @@ class PagesController < ApplicationController
     @relations = User.pluck(:full_name).sort
     @event = Event.new
     @user_friend = UserFriend.new
+    @mysuggestions = suggestions()
+  end
 
     def suggestions()
-      location = '51.536388,-0.140556'
-      type = 'thai restaurant'
+      location = "#{current_user.latitude},#{current_user.longitude}"
+      type = "#{current_user.preference_type}"
       radius = '3000'
-      minprice = 3
-      maxprice = 3
+      minprice = "#{current_user.preference_budget}"
+      maxprice = "#{current_user.preference_budget}"
       # make the json
       url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
       https = Net::HTTP.new(url.host, url.port)
@@ -46,18 +48,23 @@ class PagesController < ApplicationController
         json_file['result']['photos'].each do |reference|
           photo_references << reference['photo_reference']
         end
+
+        photo_references = []
+        json_file['result']['photos'].each do |reference|
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+          photo_references << photo_url
+        end
+
         #places_photo_reference << { 'name_photo' => [ "#{json_file['result']['name']}", "#{json_file['result']['photos'][index]['photo_reference']}"]}
         @suggestions << {
-          'name' => json_file['result']['name']
-          # 'address' => json_file['result']['formatted_address'],
+          'name' => json_file['result']['name'],
+          'address' => json_file['result']['formatted_address'],
           # 'adr_address' => json_file['result']['adr_address'],
-          # 'price level' => json_file['result']['price_level'],
-          # 'rating' => json_file['result']['rating']
+          'price level' => json_file['result']['price_level'],
+          'rating' => json_file['result']['rating'],
+          'photos' => photo_references
         }
       end
-      @suggestions
+      @suggestions.first(3)
     end
-  end
-
-
 end
