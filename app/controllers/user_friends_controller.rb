@@ -12,12 +12,15 @@ class UserFriendsController < ApplicationController
   end
 
   def accept
-    UserFriend.find(params[:id]).update(status: "Accepted")
+    uf = UserFriend.find(params[:id])
+    uf.update(status: "Accepted")
+    Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: User.find(uf.friend_id))
     redirect_to root_path
   end
 
   def decline
     @user_friend = UserFriend.find(params[:id])
+    Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: User.find(@user_friend.friend_id))
     @user_friend.destroy
     redirect_to root_path
   end
