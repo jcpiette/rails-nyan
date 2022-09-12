@@ -1,26 +1,15 @@
-
+@import 'bootstrap/scss/bootstrap';
 
 
 .layout {
-  width: 100%;
+  width: 50%;
   height: 100%;
   margin-top: 10px;
-
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-}
-
-img {
-  height: 100px;
-  width: 100px;
-}
-
-.event-container {
-  display: flex;
-}
-
-input {
-  width: 300px;
+  text-align: center;
+  align-items: center !important;
+  justify-content: center !important;
 }
