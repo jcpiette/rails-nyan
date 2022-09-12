@@ -64,19 +64,8 @@
 
   <div class="col section right-side">
     <div class="dash-card suggested-for-user">
-      <h3> For You</h3>
-      <% @mysuggestions.each do |suggestion|%>
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="<%="#{suggestion['photos'][0]}"%>" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><%= suggestion['name'] %></h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price level: <%= suggestion['price level'] %></li>
-            <li class="list-group-item">Rating : <%= suggestion['rating'] %></li>
-          </ul>
-        </div>
-      <% end %>
+      <h3> Near You</h3>
+
     </div>
   </div>
 </div>
@@ -89,3 +78,21 @@
 
 <!-- Add Friends Modal -->
 <%= render "pages/modals/addFriendModal" %>
+<%# <% @mysuggestions.each do |suggestion|%>
+        <%# <div class="suggestion-card" style="width: 18rem;"> %>
+          <%# <div class="card-body"> %>
+            <%# <h5 class="card-title"><%= suggestion['name']</h5> %>
+          <%# </div> %>
+          <%# <img class="card-img-top" src="<%="#{suggestion['photos'][0]}"" alt="Card image cap"> %>
+          <%# <ul class="list-group list-group-flush"> %>
+            <%# <li class="list-group-item"><% suggestion['price level'].to_i.times do %>
+                <%# <i class="fa-solid fa-sterling-sign"></i> %>
+              <%# <% end %>
+            <%# </li> %>
+            <%# <li class="list-group-item"><% suggestion['rating'].to_i.times do %>
+              <%# <i class="fa-solid fa-star"></i> %>
+            <%# <% end %>
+            <%# </li> %>
+          <%# </ul> %>
+        <%# </div> %>
+      <%# <% end %>
