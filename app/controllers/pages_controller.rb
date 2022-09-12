@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     type = "#{current_user.preference_type}"
     radius = '1000'
     fminprice = "3"
-    fmaxprice = "3"
+    fmaxprice = "4"
     minprice = (fminprice.to_i - 1)
     maxprice = fmaxprice.to_i
     # make the json
@@ -34,8 +34,10 @@ class PagesController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each do |place|
-      place_ids << place['place_id']
+    json_file['results'].each do |place, index|
+      while index < 9
+        place_ids << place['place_id']
+      end
     end
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
