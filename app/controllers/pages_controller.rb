@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @relations = User.pluck(:full_name).sort
     @event = Event.new
     @user_friend = UserFriend.new
-    @mysuggestions = suggestions()
+    # @mysuggestions = suggestions()
     @event_members = EventMember.all
   end
 

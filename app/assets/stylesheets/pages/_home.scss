@@ -52,15 +52,25 @@
 }
 
 .event-card {
+  display: flex;
   border-radius: 10px;
   background-color: #0C2445;
   padding: 20px;
   margin-top: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.event-card > a {
+.avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-info > a {
   color: white;
   text-align: center;
+  text-decoration: none;
 }
 
 ul {
@@ -69,11 +79,6 @@ ul {
 
 li {
   margin-top: 20px;
-}
-
-a {
-  text-decoration: none;
-  color: #124073;
 }
 
 .accept-decline {
