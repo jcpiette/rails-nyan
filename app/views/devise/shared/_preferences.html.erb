@@ -17,7 +17,7 @@
         <p><strong>Select your Budget:<strong></p>
 
         <input type="hidden" name="user[preference_budget]" value="" autocomplete="off">
-<div class="flex-cards">
+<div class="flex-cards-budget">
          <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
 
           <div>
@@ -35,23 +35,10 @@
           </div>
         <% end %>
         </div>
-
-<style>
-.flex-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
-</style>
-
-
-
-
       <div class="preference-type">
         <p><strong>Select your preference type:<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
-        <div class="flex-cards">
+        <div class="flex-cards-preference">
         <% [{value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'}].each do |n| %>
 
           <span>
