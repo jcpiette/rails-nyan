@@ -58,9 +58,22 @@
         </button>
       </div>
         <% @events.each do |event|%>
+          <%= link_to event_path(event), class:"card-link" do%>
           <div class="event-card">
-            <%= link_to "#{Event.find(event.id).title}", event_path(event) %>
+            <div class="event-info">
+              <ul>
+                <li><%= event.title %></li>
+                <li><%=  event.description%></li>
+                <li><%= event.event_date.strftime("%d / %m / %Y") %></li>
+              </ul>
+            </div>
+            <div class="avatars">
+              <% @event_members.where(event_id: event.id).each do |member|%>
+                <%= cl_image_tag User.find(member.user_id).photo.key,  width: 30, height: 30, crop: :thumb, gravity: :face, class: "nav-link", data: {avatar_target: "avatar", action: "click->avatar#showFileInterface"} %>
+              <% end %>
+            </div>
           </div>
+          <% end %>
         <% end %>
     </div>
   </div>

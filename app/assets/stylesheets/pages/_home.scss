@@ -52,15 +52,23 @@
 }
 
 .event-card {
+  display: flex;
   border-radius: 10px;
   background-color: #0C2445;
   padding: 20px;
   margin-top: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.event-card > a {
+.avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-info {
   color: white;
-  text-align: center;
 }
 
 ul {
@@ -71,12 +79,11 @@ li {
   margin-top: 20px;
 }
 
-a {
-  text-decoration: none;
-  color: #124073;
-}
-
 .accept-decline {
   display: flex;
   justify-content: space-between;
+}
+
+.card-link {
+  text-decoration: none;
 }

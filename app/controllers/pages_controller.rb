@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     @relations = User.pluck(:full_name).sort
     @event = Event.new
     @user_friend = UserFriend.new
+    @event_members = EventMember.all
     @mysuggestions = suggestions() unless current_user.nil?
   end
 
