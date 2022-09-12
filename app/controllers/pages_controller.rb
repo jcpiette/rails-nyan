@@ -13,8 +13,8 @@ class PagesController < ApplicationController
     @relations = User.pluck(:full_name).sort
     @event = Event.new
     @user_friend = UserFriend.new
-    # @mysuggestions = suggestions()
     @event_members = EventMember.all
+    @mysuggestions = suggestions() unless current_user.nil?
   end
 
   def suggestions()
@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     minprice = (fminprice.to_i - 1)
     maxprice = fmaxprice.to_i
     # make the json
-    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM")
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
     request = Net::HTTP::Get.new(url)
@@ -35,7 +35,7 @@ class PagesController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each do |place, index|
+    json_file['results'].each_with_index do |place, index|
       while index < 9
         place_ids << place['place_id']
       end
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
     place_ids.each_with_index do |place_id, index|
-      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs")
+      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM")
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
       request = Net::HTTP::Get.new(url)
@@ -53,7 +53,7 @@ class PagesController < ApplicationController
 
       photo_references = []
       json_file['result']['photos'].each do |reference|
-        photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs"
+        photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM"
         photo_references << photo_url
       end
 
