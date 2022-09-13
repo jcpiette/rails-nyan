@@ -67,7 +67,8 @@ class PagesController < ApplicationController
         'name' => json_file['result']['name'],
         'photos' => photo_references,
         'price level' => json_file['result']['price_level'],
-        'rating' => json_file['result']['rating']
+        'rating' => json_file['result']['rating'],
+        'address' => json_file['result']['formatted_address']
       }
     end
     @suggestions

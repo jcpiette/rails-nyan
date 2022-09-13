@@ -132,6 +132,31 @@
   <div class="col section right-side">
     <div class="dash-card suggested-for-user">
       <h3> Near You</h3>
+      <%@mysuggestions.each_with_index do |suggestion, index|%>
+
+      <%if index < 1%>
+
+
+      <div class="card" style="width: 18rem;">
+        <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= suggestion['name'] %></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%=suggestion['address']%></li>
+        <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+      <%end%>
+      <%end%>
+    </div>
+
+
+
 
     </div>
   </div>
