@@ -12,7 +12,7 @@
           <div class="notification" data-controller="notification-subscription" data-notification-subscription-notification-id-value="<%= current_user.id %>">
             <li>
                 <div class="notifications" data-notification-subscription-target="notifications">
-                  <a tabindex="0" class="btn btn-info" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus" data-bs-title="My Notifications" data-bs-html="true" data-bs-content='<%= render 'notifcations/popover' %>'>
+                  <a data-notification-subscription-target="notificationsMessage" tabindex="0" class="btn btn-info" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus" data-bs-title="My Notifications" data-bs-html="true" data-bs-content='<%= render 'notifcations/popover' %>'>
                       <i class="fa-solid fa-bell"></i> Notifications <span class="badge badge-light"> <%= @notifications.count %> </span>
                   </a>
                 </div>

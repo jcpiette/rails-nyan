@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="notification-subscription"
 export default class extends Controller {
   static values = { notificationId: Number }
-  static targets = ["notifications"]
+  static targets = ["notifications", "notificationsMessage" ]
 
   connect() {
     console.log("connect to notif room");
@@ -12,12 +12,16 @@ export default class extends Controller {
 
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel", id: this.notificationIdValue },
-      { received: data => console.log(data) }
+      { received: data => this.addMessage(data) }
     )
   }
 
   disconnect() {
     console.log("Unsubscribed from the notification")
     this.channel.unsubscribe()
+  }
+
+  addMessage(data) {
+    this.notificationsMessageTarget.dataset.bsContent = this.notificationsMessageTarget.dataset.bsContent + data;
   }
 }

@@ -9,12 +9,11 @@ class EventsController < ApplicationController
     em = EventMember.find(params[:id])
     em.update(is_interested: 1)
     notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
-    # NotificationChannel.broadcast_to(
-    #   uf.friend,
-    #   "<p>#{notif.message}</p>".html_safe
-    # )
-    # head :ok
-    redirect_to root_path
+    NotificationChannel.broadcast_to(
+       uf.friend,
+       "<p>#{notif.message}</p>".html_safe
+    )
+    head :ok
 
   end
 
@@ -62,12 +61,11 @@ class EventsController < ApplicationController
       iu = User.where(full_name: user).first
       EventMember.create(event: @event, user: iu)
       notif = Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
-
-      # NotificationChannel.broadcast_to(
-      #   iu,
-      #   "<p>#{notif.message}</p>".html_safe
-      # )
-      # head :ok
+      NotificationChannel.broadcast_to(
+         iu,
+         "<div><p>#{notif.message}</p></div>".html_safe
+       )
+      head :ok
     end
     if @event.save!
       redirect_to edit_event_path(@event)
