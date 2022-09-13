@@ -14,7 +14,7 @@
 
 
         <div class="preference_budget">
-        <p><strong>Select your Budget:<strong></p>
+        <p><strong>I want to spend...<strong></p>
 
         <input type="hidden" name="user[preference_budget]" value="" autocomplete="off">
 <div class="flex-cards-budget">
@@ -36,7 +36,7 @@
         <% end %>
         </div>
       <div class="preference-type">
-        <p><strong>Select your preference type:<strong></p>
+        <p><strong>I want to go to a...<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
         <div class="flex-cards-preference">
         <% [{value: 'bar', icon: 'fa-champagne-glasses'}, {value: 'restaurant', icon: 'fa-solid fa-utensils'},  {value: 'casino', icon: 'fa-solid fa-dice'}, {value: 'Night club', icon: 'fa-solid fa-utensils'}, {value: 'Musuem', icon: 'fa-solid fa-building-columns'}, {value: 'Movie theater', icon: 'fa-solid fa-masks-theater'}].each do |n| %>
@@ -68,5 +68,3 @@
   <% end %>
 
 </div>
-
-
