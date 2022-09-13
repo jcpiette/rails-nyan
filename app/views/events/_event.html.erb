@@ -1,23 +1,18 @@
 <div id="<%= dom_id event %>" class="container">
   <div class="row">
     <div class="event-show-card show-card col">
-      <h2><%= event.title %><h2>
-
-      <h3>Description:</h3>
-      <p><%= event.description %></p>
-
-      <h3>Date:</h3>
-      <p><%= event.event_date %></p>
-
-      <h3>Who's Going:</h3>
-        <ul>
+      <div class="event-info">
+        <h2><%= event.title %></h2>
+        <p><%= event.description %></p>
+        <p>When: <%= event.event_date %></p>
+        <div>
+          Who:
           <% @members.where(event_id: event).each do |member| %>
-            <li><%= image_tag  User.find(member.user_id).img_url, class:"avatar" %><%= User.find(member.user_id).full_name%></li>
+            <%= image_tag  User.find(member.user_id).img_url, class:"avatar" %><%= User.find(member.user_id).full_name%>
           <% end %>
-        </ul>
-
-      <h3>Location:</h3>
-      <%= event.location %>
+        </div>
+        <p>Location: <%= event.location %></p>
+      </div>
     </div>
 
     <div class="map-show-card show-card col" id="map" style="width: 50%; height: 600px;"
