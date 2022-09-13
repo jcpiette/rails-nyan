@@ -16,7 +16,8 @@
       <% end %>
       <%# friends who have added me and I have accepted %>
       <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-        <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %></li>
+        <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
+        <%= User.find(friend.user_id).full_name %></li>
       <% end %>
       </ul>
     </div>
@@ -49,7 +50,7 @@
               <div id="fb-top">
                 <p><b>Friend Requests</b></p>
               </div>
-              <%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %>
+              <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %>
               <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
               <p id="info"><b><%=User.find(friend.friend_id).full_name  %></b> <br> <span>14 mutual friends</p>
               <div id="button-block">
@@ -75,7 +76,7 @@
           <li>
 
             <div class="accept-decline">
-              <%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %>
+              <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %>
               <div>
                 <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
                   <i class="fa-solid fa-check"></i>
@@ -125,7 +126,7 @@
             </div>
             <div class="avatars">
               <% @event_members.where(event_id: event.id).each do |member|%>
-                <%= image_tag User.find(member.user_id).img_url%>
+              <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
               <% end %>
             </div>
             <div id="interested">
