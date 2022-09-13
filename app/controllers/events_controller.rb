@@ -4,33 +4,6 @@ require 'json'
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  def accept
-    raise
-    em = EventMember.find(params[:id])
-    em.update(is_interested: 1)
-    notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
-    # NotificationChannel.broadcast_to(
-    #   uf.friend,
-    #   "<p>#{notif.message}</p>".html_safe
-    # )
-    # head :ok
-    redirect_to root_path
-
-  end
-
-  def decline
-    @em = EventMember.find(params[:id])
-    Notification.create!(message: "#{current_user.full_name} will not joint your event!", is_read: 1, user: User.find(@em.event.user_id))
-    # NotificationChannel.broadcast_to(
-    #   @user_friend.friend,
-    #   "<p>#{notification.message}</p>".html_safe
-    # )
-    # head :ok
-    @em.destroy
-    redirect_to root_path
-  end
-
-
   # GET /events or /events.json
   def index
     @events = Event.all

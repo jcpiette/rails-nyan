@@ -1,15 +1,26 @@
 class EventMembersController < ApplicationController
   before_action :set_event_member, only: %i[ show edit update destroy ]
 
+  def decline
+    @em = EventMember.find(params[:id])
+    Notification.create!(message: "#{current_user.full_name} will not joint your event!", is_read: 1, user: User.find(@em.event.user_id))
+    # NotificationChannel.broadcast_to(
+    #   @user_friend.friend,
+    #   "<p>#{notification.message}</p>".html_safe
+    # )
+    # head :ok
+    @em.destroy
+    redirect_to root_path
+  end
+
   # GET /event_members or /event_members.json
   def index
     @event_members = EventMember.all
   end
 
   def accept
-
     em = EventMember.find(params[:id])
-    em.update(is_interested: 1)
+    em.update(is_interested: true)
     notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
     # NotificationChannel.broadcast_to(
     #   uf.friend,
