@@ -21,10 +21,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div class="container">
+    <div class="flex-grow-1 container">
       <%= yield %>
     </div>
     <%= render "shared/footer" %>
