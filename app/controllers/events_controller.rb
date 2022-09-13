@@ -69,7 +69,7 @@ class EventsController < ApplicationController
   def suggestions(users)
     location = find_event_location(users)
     type = find_event_type(users)
-    radius = '1000'
+    radius = '500'
     fminprice = find_event_budget(users)
     fmaxprice = find_event_budget(users)
     minprice = (fminprice.to_i - 1)
@@ -119,8 +119,9 @@ class EventsController < ApplicationController
         'adr_address' => json_file['result']['adr_address'],
         'price level' => json_file['result']['price_level'],
         'rating' => json_file['result']['rating'],
-        'location' => location,
-        'website' => json_file['result']['website']
+        'radius' => location,
+        'website' => json_file['result']['website'],
+        'latlng' => json_file['result']['geometry']['location']
       }
     end
     @suggestions
@@ -163,6 +164,8 @@ class EventsController < ApplicationController
       end
     end
   end
+
+
 
   # DELETE /events/1 or /events/1.json
   def destroy
