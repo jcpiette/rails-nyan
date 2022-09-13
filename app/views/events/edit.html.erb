@@ -1,39 +1,37 @@
-<h1>Editing event</h1>
-
-<%= render "form", event: @event %>
-
-<div class="events-and-map-container">
-  <section class="layout">
+<div class="event-container">
+  <div class="form-and-map">
+    <%= render "form", event: @event %>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=500x330&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM">
+  </div>
+  <div>
+  <div class="places-container">
+    <section class="layout">
     <% @suggestions.each_with_index do |suggestion, index|%>
       <% if index <= 3%>
-
-        <div class="card" style="width: 18rem;" id="<%=index%>">
-          <img class="card-img-top" src="<%="#{suggestion['photos'][0]}"%>" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><%= suggestion['name'] %></h5>
-            <p class="card-text"><%= suggestion['address'] %></p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
-            <li class="list-group-item"><%= '£'*suggestion['price level'].to_i%></li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-          <div class="card-body">
-            <a href="<%="#{suggestion['website']}"%>" class="card-link">Website</a>
-            <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
+        <div class="card mb-3" style="max-height: 200px; ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= suggestion['name'] %></h5>
+                <p class="card-text"><%= suggestion['address'] %></p>
+                <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
+                <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
+                <a href="<%="#{suggestion['website']}"%>" class="card-link">Website</a>
+                <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
+              </div>
+            </div>
           </div>
         </div>
-        <% end %>
-        <%end%>
-
+      <% end %>
+    <%end%>
   </section>
-  <div class="map-right">
-    <img src="https://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap\&markers=size:mid%7Ccolor:red%7C{post_code__here}&key=AIzaSyCSlUELYAxe0sfUJpUEJQU3TcF1OXNS-xs">
-  </div>
 </div>
 
 <br>
-
+<div>
 <div>
   <%= link_to "Show this event", @event %> |
   <%= link_to "Back to events", events_path %>
