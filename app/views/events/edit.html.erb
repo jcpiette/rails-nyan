@@ -8,7 +8,7 @@
     <section class="layout">
     <% @suggestions.each_with_index do |suggestion, index|%>
       <% if index <= 3%>
-        <div class="card mb-3" style="max-height: 200px; ">
+        <div class="card mb-3 event-cards" style="max-height: 200px; ">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
@@ -20,7 +20,7 @@
                 <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
                 <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
                 <a href="<%="#{suggestion['website']}"%>" class="card-link">Website</a>
-                <button id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Try it</button>
+                <button class="button" id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">Go</button>
               </div>
             </div>
           </div>
