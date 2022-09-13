@@ -5,10 +5,17 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
 
+.navbar-logo > h3 {
+  color: white;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
