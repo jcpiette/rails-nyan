@@ -33,9 +33,8 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user = current_user
     params["native-select"].split(",").each do |user|
-      iu = User.where(full_name: user)
-      identifier = iu.id
-      EventMember.create(event: @event, user: User.find(identifier))
+      iu = User.where(full_name: user).first
+      EventMember.create(event: @event, user: iu)
       Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
 
       NotificationChannel.broadcast_to(
@@ -106,7 +105,6 @@ class EventsController < ApplicationController
       counter2 = 0
       json_file['result']['photos'].each do |reference|
         if counter2 < 2
-          counter2 += 1
           photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM"
           photo_references << photo_url
         end
