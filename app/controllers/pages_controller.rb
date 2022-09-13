@@ -14,10 +14,10 @@ class PagesController < ApplicationController
     @event = Event.new
     @user_friend = UserFriend.new
     @event_members = EventMember.all
-    @mysuggestions = suggestions() unless current_user.nil?
+    @mysuggestions = suggestions unless current_user.nil?
   end
 
-  def suggestions()
+  def suggestions
     location = "#{current_user.latitude},#{current_user.longitude}"
     type = "#{current_user.preference_type}"
     radius = '1000'
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 
     place_ids = []  #ID OF EACH PLACE
     json_file['results'].each_with_index do |place, index|
-      while index < 9
+      if index < 9
         place_ids << place['place_id']
       end
     end
