@@ -82,10 +82,11 @@ class EventsController < ApplicationController
     response = https.request(request)
     file = response.read_body
     json_file = JSON.parse(file)
-
+    counter = 0
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each_with_index do |place, index|
-      while index < 9
+    json_file['results'].each do |place|
+      if counter < 9
+        counter += 1
         place_ids << place['place_id']
       end
     end
@@ -101,8 +102,10 @@ class EventsController < ApplicationController
       json_file = JSON.parse(file)
 
       photo_references = []
-      json_file['result']['photos'].each_with_index do |reference, index|
-        if index < 1
+      counter2 = 0
+      json_file['result']['photos'].each do |reference|
+        if counter2 < 2
+          counter2 += 1
           photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM"
           photo_references << photo_url
         end
