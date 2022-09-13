@@ -15,25 +15,22 @@ class UserFriendsController < ApplicationController
     uf = UserFriend.find(params[:id])
     uf.update(status: "Accepted")
     notif = Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: User.find(uf.friend_id))
-    # NotificationChannel.broadcast_to(
-    #   uf.friend,
-    #   "<p>#{notif.message}</p>".html_safe
-    # )
-    # head :ok
-    redirect_to root_path
-
+    NotificationChannel.broadcast_to(
+      uf.friend,
+       "<div><p>#{notif.message}</p></div>".html_safe
+     )
+    head :ok
   end
 
   def decline
     @user_friend = UserFriend.find(params[:id])
     Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: User.find(@user_friend.friend_id))
-    # NotificationChannel.broadcast_to(
-    #   @user_friend.friend,
-    #   "<p>#{notification.message}</p>".html_safe
-    # )
-    # head :ok
+    NotificationChannel.broadcast_to(
+       @user_friend.friend,
+       "<div><p>#{notification.message}</p></div>".html_safe
+     )
+    head :ok
     @user_friend.destroy
-    redirect_to root_path
   end
 
   # GET /user_friends/new

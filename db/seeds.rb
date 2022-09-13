@@ -98,8 +98,8 @@ event1 = Event.create!(
   title: 'Le Wagon Alumni Lunch',
   description: 'Meeting up for lunch with the gang.',
   user_id: user3.id,
-  event_date: Date.today + 10
-
+  event_date: Date.today + 10,
+  location: "Hoxton"
 )
 EventMember.create!(user_id: user1.id, event_id: event1.id)
 EventMember.create!(user_id: user2.id, event_id: event1.id)

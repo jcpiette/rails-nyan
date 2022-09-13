@@ -1,24 +1,6 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to root_path do%>
+  <i class="fa-sharp fa-solid fa-arrow-left"></i>
+<% end %>
 
 <%= render @event %>
-
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Delete this event", event_path(@event), data: { turbo_method: :delete, turbo: true } %>
-</div>
-<%= link_to "Back to Dashboard", root_path %>
-
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoib3BhdHRlcnNvbjEyMyIsImEiOiJjbDgwMHhhOG0wMW8xM3ltdzF3NXFkY3FuIn0.jveYJS4mmFAztZKMaf32oQ';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11'
-  });
-</script>
-
-
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

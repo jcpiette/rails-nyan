@@ -5,12 +5,11 @@ class EventMembersController < ApplicationController
     em = EventMember.find(params[:id])
     em.update(is_interested: false)
     notif = Notification.create!(message: "#{current_user.full_name} will not join your event!", is_read: 1, user: User.find(em.event.user_id))
-    # NotificationChannel.broadcast_to(
-    #   @user_friend.friend,
-    #   "<p>#{notification.message}</p>".html_safe
-    # )
-    # head :ok
-    redirect_to root_path
+     NotificationChannel.broadcast_to(
+       em.event.user,
+       "<div><p>#{notification.message}</p></div>".html_safe
+     )
+    head :ok
   end
 
   # GET /event_members or /event_members.json
@@ -22,13 +21,11 @@ class EventMembersController < ApplicationController
     em = EventMember.find(params[:id])
     em.update(is_interested: true)
     notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
-    # NotificationChannel.broadcast_to(
-    #   uf.friend,
-    #   "<p>#{notif.message}</p>".html_safe
-    # )
-    # head :ok
-    redirect_to root_path
-
+    NotificationChannel.broadcast_to(
+      em.event.user,
+       "</div><p>#{notif.message}</p></div>".html_safe
+     )
+    head :ok
   end
 
 
