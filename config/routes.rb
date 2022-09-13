@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :event_members, only: [:show] do
     member do
       post :accept
-      delete :decline
+      post :decline
     end
   end
   # Defines the root path route ("/")

@@ -3,10 +3,11 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 <div class="form-inputs">
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :event_date %>
-  <%= f.input :location, input_html: { value: 'Choose a restaurant' } %>
+  <%= f.input :title, placeholder:'Coolest event ever!', class: "form-top"%>
+  <%= f.input :description, placeholder: 'Anything special happening?', class: "form-top", my_wrapper_tag: :p%>
+  <%= f.date_select :event_date %>
+  <%= f.time_select :event_date, ignore_date: true %>
+  <%= f.input :location, input_html: { value: 'Put your pointer over try it!' }, class: "form-location"%>
 </div>
 
 

@@ -4,6 +4,7 @@ require 'json'
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
+<<<<<<< HEAD
   def accept
     raise
     em = EventMember.find(params[:id])
@@ -30,6 +31,8 @@ class EventsController < ApplicationController
   end
 
 
+=======
+>>>>>>> d168f46dba9dbe7e64e47339e4bb5d06aa59cbcb
   # GET /events or /events.json
   def index
     @events = Event.all
