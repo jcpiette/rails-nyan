@@ -35,13 +35,13 @@ class EventsController < ApplicationController
     params["native-select"].split(",").each do |user|
       iu = User.where(full_name: user).first
       EventMember.create(event: @event, user: iu)
-      Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
+      # Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
 
-      NotificationChannel.broadcast_to(
-        iu.friend,
-        "<p>#{notif.message}</p>".html_safe
-      )
-      head :ok
+      # NotificationChannel.broadcast_to(
+      #   iu.friend,
+      #   "<p>#{notif.message}</p>".html_safe
+      # )
+      # head :ok
     end
     if @event.save!
       redirect_to edit_event_path(@event)
@@ -84,8 +84,10 @@ class EventsController < ApplicationController
     json_file = JSON.parse(file)
 
     place_ids = []  #ID OF EACH PLACE
-    json_file['results'].each_with_index do |place, index|
-      while index < 9
+    counter = 0
+    json_file['results'].each do |place|
+      if index < 9
+        counter += 1
         place_ids << place['place_id']
       end
     end
