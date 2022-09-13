@@ -1,14 +1,14 @@
 <div class="event-container">
   <div class="form-and-map">
     <%= render "form", event: @event %>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=500x330&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM">
+    <div id="map"></div>
   </div>
   <div>
   <div class="places-container">
     <section class="layout">
     <% @suggestions.each_with_index do |suggestion, index|%>
       <% if index <= 3%>
-        <div class="card mb-3 event-cards" style="max-height: 200px; ">
+        <div class="card mb-3 event-cards" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
@@ -30,6 +30,9 @@
     <%end%>
   </section>
 </div>
+<%= radius = @suggestions[0]['radius'].split(',')%>
+
+<% suggestions_array = @suggestions %>
 
 <br>
 <div>
@@ -37,3 +40,51 @@
   <%= link_to "Show this event", @event %> |
   <%= link_to "Back to events", events_path %>
 </div>
+<style>
+#map {
+  height: 500px;
+  width: 410px;
+}
+</style>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM&callback=initMap&v=weekly"
+      defer
+    ></script>
+<script>
+var s_array0 = ['<%=suggestions_array[0]['latlng']['lat']%>','<%= suggestions_array[0]['latlng']['lng']%>']
+var s_array1 = ['<%=suggestions_array[1]['latlng']['lat']%>','<%= suggestions_array[1]['latlng']['lng'] %>']
+var s_array2 = ['<%=suggestions_array[2]['latlng']['lat']%>','<%= suggestions_array[2]['latlng']['lng'] %>']
+var s_array3 = ['<%=suggestions_array[3]['latlng']['lat']%>','<%= suggestions_array[3]['latlng']['lng'] %>']
+var add_marker = (location, thismap) => {
+  new google.maps.Marker({
+  position: location,
+  map: thismap,
+});
+}
+function initMap() {
+  // The location of centre
+  const centre = { lat: parseFloat('<%=radius[0]%>'), lng: parseFloat('<%=radius[1]%>') };
+  // The map, centered at centre
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 14,
+    center: centre,
+  });
+
+  add_marker(centre, map)
+  add_marker({lat: parseFloat(s_array0[0]), lng: parseFloat(s_array0[1])}, map)
+  add_marker({lat: parseFloat(s_array1[0]), lng: parseFloat(s_array1[1])}, map)
+  add_marker({lat: parseFloat(s_array2[0]), lng: parseFloat(s_array2[1])}, map)
+  add_marker({lat: parseFloat(s_array3[0]), lng: parseFloat(s_array3[1])}, map)
+
+
+
+  // The marker, positioned at centre   const uluru = { lat: -25.344, lng: 131.031 };
+  // const marker = new google.maps.Marker({
+  //   position: centre,
+  //   map: map,
+  // });
+
+}
+
+window.initMap = initMap;
+</script>
