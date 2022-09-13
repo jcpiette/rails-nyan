@@ -3,6 +3,13 @@
 .dash-card {
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.friends-list {
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-style: solid;  /* <-----------Friends Border */
 }
 
 .dash-card > h2 {
@@ -35,8 +42,8 @@
 .friends-list{
   color: #124073;
   margin-bottom: 50px;
-  border-bottom: #124073;
-  
+
+
 }
 
 .pending-friends{
