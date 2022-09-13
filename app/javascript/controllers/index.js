@@ -10,6 +10,9 @@ application.register("avatar", AvatarController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import NotificationSubscriptionController from "./notification_subscription_controller"
 application.register("notification-subscription", NotificationSubscriptionController)
 

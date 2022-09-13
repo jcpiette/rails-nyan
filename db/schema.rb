@@ -58,6 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_193308) do
     t.string "location"
     t.datetime "event_date"
     t.bigint "user_id", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"

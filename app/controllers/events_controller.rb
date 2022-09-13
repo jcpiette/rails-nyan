@@ -4,9 +4,16 @@ require 'json'
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
+
   # GET /events or /events.json
   def index
     @events = Event.all
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   # GET /events/1 or /events/1.json
