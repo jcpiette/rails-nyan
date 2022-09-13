@@ -10,24 +10,25 @@
   -ms-transition: all 0.7s;
   -moz-transition: all 0.7s;
   -webkit-transition: all 0.7s;
-  
+
 
 }
 
 .flex-cards-budget {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin-bottom: 100px;
+  grid-gap: 4px;
+  margin-bottom: 30px;
 
 }
 
 .flex-cards-preference {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 4px;
   margin-bottom: 25px;
 }
+
 
 .delete-account {
   margin-top: 70px  !important;
