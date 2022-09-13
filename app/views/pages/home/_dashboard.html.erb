@@ -22,32 +22,88 @@
 
 
 
+<%# <div id="fb">
+  <div id="fb-top">
+    <p><b>Friend Requests</b><span>Find Friends &bull; Settings</span></p>
+  </div>
+  <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman">
+  <p id="info"><b>Natalie G.</b> <br> <span>14 mutual friends</p>
+  <div id="button-block">
+    <div id="confirm">Confirm</div>
+    <div id="delete">Delete Request</div>
+  </div>
+</div> %>
+
+
+
+
+
     <div class="dash-card pending-friends">
       <h3>Pending</h3>
       <%# friends I have added and I am waiting on them to accept/decline %>
       <ul>
-      <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
-        <li><%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %>...</li>
-      <% end %>
-      <%# friends who have added me and I can accept/decline %>
-      <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-        <li>
-          <div class="accept-decline">
-            <%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %>
-            <div>
-              <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                <i class="fa-solid fa-check"></i>
-              <% end %>
-              <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
-                <i class="fa-solid fa-xmark"></i>
-              <% end %>
+        <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+          <li>
+            <%# <%= image_tag User.find(friend.friend_id).img_url%>
+            <%# <%= User.find(friend.friend_id).full_name... %>
+
+             <div id="fb">
+              <div id="fb-top">
+                <p><b>Friend Requests</b></p>
+              </div>
+              <%= image_tag User.find(friend.friend.user_id).img_url%><%= User.find(friend.friend.user_id).full_name %>
+              <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
+              <p id="info"><b><%=User.find(friend.user_id).full_name  %></b> <br> <span>14 mutual friends</p>
+              <div id="button-block">
+                <div id="confirm">
+                  <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                    <i class="fa-solid fa-check"></i>
+                  <% end %>
+                </div>
+                <div id="delete">
+                  <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                    <i class="fa-solid fa-xmark"></i>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-        </li>
-      <% end %>
+
+          </li>
+
+        <% end %>
+        <%# friends who have added me and I can accept/decline %>
+        <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
+          <li>
+
+            <div class="accept-decline">
+              <%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %>
+              <div>
+                <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                  <i class="fa-solid fa-check"></i>
+                <% end %>
+                <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                  <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="col-5 section middle">
     <div class="dash-card events-card">
@@ -113,3 +169,94 @@
           <%# </ul> %>
         <%# </div> %>
       <%# <% end %>
+
+
+<style>
+#fb{
+  width:500px;
+  border:1px solid gray;
+  border-radius:5px;
+  position:relative;
+  height:175px;
+}
+#fb p{
+  font-family:sans-serif;
+  margin: 0 0 0 10px;
+  line-height:30px;
+}
+
+#fb-top span{
+  color:#4267B2;
+  float:right;
+  margin-right:10px;
+}
+#fb-top{
+  background-color:#efefef;
+  height:30px;
+  width:500px;
+  border-radius:5px 5px 0 0;
+  position:absolute;
+  top:-1px;
+  left:-1px;
+  border:1px solid gray;
+}
+
+#fb img{
+  position:absolute;
+  left:10px;
+  top:52.5px;
+}
+
+#info{
+  position:absolute;
+  left:120px;
+  top:75px;
+}
+
+#info {
+  color:#4267B2;
+  line-height:25px;
+  font-size:18px;
+}
+
+#info span{
+  color:#777;
+  font-size:14px;
+}
+
+#button-block{
+  position:absolute;
+  right:10px;
+  top:85px;
+}
+
+#button-block div{
+  display:inline-block;
+}
+
+#confirm, #delete{
+  background-color:#4267B2;
+  color:white;
+  padding:7px;
+  border-radius:2px;
+  margin-right:10px;
+  font-family:sans-serif;
+}
+
+#delete{
+  color:#222;
+  background-color:#bbb;
+  border:1px solid #999;
+  padding:6px;
+  margin-right:0;
+}
+
+#button-block div:hover{
+  opacity:.8;
+  cursor:pointer;
+}
+
+
+
+
+</style>
