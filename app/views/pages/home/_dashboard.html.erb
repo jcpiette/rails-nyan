@@ -130,8 +130,14 @@
               <% end %>
             </div>
             <div id="interested">
-              <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-              <i class="fa-solid fa-check"></i>
+              <% if @event_members.where(event_id: event.id).first.is_interested === false %>
+                <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                <p class="btn btn-primary">Interested</p>
+                <% end %>
+              <% else %>
+                <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                <p class="btn btn-success">You go !</p>
+                <% end %>
               <% end %>
             </div>
           </div>
