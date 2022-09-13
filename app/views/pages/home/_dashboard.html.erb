@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col section left-side">
     <div class="dash-card friends-list">
-      <h3>Your Added Friends</h3>
+      <h3>Friends</h3>
       <div class="button-dash">
         <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelationModal">
           Add Friend
@@ -32,10 +32,8 @@
         <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
           <li>
              <div id="fb">
-              <div id="fb-top">
-                <p><b>Friend Requests</b></p>
-              </div>
-              <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %>
+
+              <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %>
               <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
               <p id="info"><b><%=User.find(friend.friend_id).full_name  %></b> <br> <span>14 mutual friends</p>
               <div id="button-block">
