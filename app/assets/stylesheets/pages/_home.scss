@@ -13,9 +13,12 @@
   border-top: none;  /* <-----------Friends Border */
   box-shadow: 5px 10px #0d2544;
   width: 500px ;
+}
 
-
-
+.friends-title {
+  background-color: #0C2445;
+  color: white;
+  border-radius: 50px;
 }
 
 .dash-card > h2 {
@@ -23,9 +26,9 @@
   color: #0C2445;
 }
 
-.dash-card > h3 {
+.dash-card  {
   text-align: center;
-  color: #124073;
+  color: white;
 }
 
 .suggestion-card {

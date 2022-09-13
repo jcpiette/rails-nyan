@@ -2,12 +2,8 @@
 <div class="row">
   <div class="col section left-side">
     <div class="dash-card friends-list">
-      <h3>Friends</h3>
-      <div class="button-dash">
-        <button type="button" class="btn-dash fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#addRelationModal">
-          Add Friend
-        </button>
-      </div>
+      <h3 class="friends-title">Friends</h3>
+
       <%# friends I have added who have accepted %>
       <ul id='friend-list'>
 
@@ -20,6 +16,11 @@
         <%= User.find(friend.user_id).full_name %></li>
       <% end %>
       </ul>
+            <div class="button-dash">
+        <button type="button" class="btn-dash fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#addRelationModal">
+          Add Friend
+        </button>
+      </div>
     </div>
 
 
@@ -27,7 +28,7 @@
 
 
     <div class="dash-card pending-friends">
-      <h3>Pending Friend Requests</h3>
+      <h3 class="pending-text">Pending Friend Requests</h3>
       <ul>
         <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
           <li>
