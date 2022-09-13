@@ -6,6 +6,21 @@ class EventMembersController < ApplicationController
     @event_members = EventMember.all
   end
 
+  def accept
+
+    em = EventMember.find(params[:id])
+    em.update(is_interested: 1)
+    notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
+    # NotificationChannel.broadcast_to(
+    #   uf.friend,
+    #   "<p>#{notif.message}</p>".html_safe
+    # )
+    # head :ok
+    redirect_to root_path
+
+  end
+
+
   # GET /event_members/1 or /event_members/1.json
   def show
   end

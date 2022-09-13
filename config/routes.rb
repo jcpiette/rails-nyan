@@ -14,7 +14,12 @@ Rails.application.routes.draw do
       delete :decline
     end
   end
-
+  resources :event_members, only: [:show] do
+    member do
+      post :accept
+      delete :decline
+    end
+  end
   # Defines the root path route ("/")
   root 'pages#home'
 end
