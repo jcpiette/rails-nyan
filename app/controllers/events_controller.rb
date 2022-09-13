@@ -8,10 +8,10 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all
-    @markers = @flats.geocoded.map do |flat|
+    @markers = @events.geocoded.map do |event|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: event.latitude,
+        lng: event.longitude
       }
     end
   end
