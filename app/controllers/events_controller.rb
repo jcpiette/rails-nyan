@@ -8,18 +8,19 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all
+  end
+
+  # GET /events/1 or /events/1.json
+  def show
+    @events = Event.all
+    @event = Event.find(params[:id])
+    @members = EventMember.all
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude
       }
     end
-  end
-
-  # GET /events/1 or /events/1.json
-  def show
-    @event = Event.find(params[:id])
-    @members = EventMember.all
   end
 
   # GET /events/new
