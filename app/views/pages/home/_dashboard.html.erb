@@ -3,17 +3,16 @@
 
     <div class="col-3 section left-side">
       <div class="dash-card friends-list">
-        <h3 class="friends-title"> Friends  <i class="fas fa-users"></i></h3>
+        <h3 class="friends-title">Friends<i class="fas fa-users"></i></h3>
 
         <%# friends I have added who have accepted %>
         <ul id='friend-list'>
-          <li> <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%> </li>
-            <li class='friend selected'>   <%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
+          <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
+            <li class='friend selected'><%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
           <% end %>
         <%# friends who have added me and I have accepted %>
           <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-            <%= User.find(friend.user_id).full_name %></li>
+            <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %></li>
           <% end %>
         </ul>
         <div class="button-dash">
