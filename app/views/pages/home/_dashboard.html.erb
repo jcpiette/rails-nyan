@@ -29,7 +29,6 @@
           <%# friends have added me and I can accept/decline %>
           <div class="pending-friends">
             <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-
                 <div class="friend-accept">
                   <div class="friend-info">
                     <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
