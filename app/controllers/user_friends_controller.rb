@@ -17,17 +17,17 @@ class UserFriendsController < ApplicationController
     notif = Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: uf.user)
     NotificationChannel.broadcast_to(
       uf.user,
-       "<div><p>#{notif.message}</p></div>".html_safe
-     )
+      "<li class=\"dropdown-item\">#{notif.message}</li>".html_safe
+    )
     redirect_to root_path
   end
 
   def decline
     @user_friend = UserFriend.find(params[:id])
-    Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: @user_friend.user)
+    notif = Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: @user_friend.user)
     NotificationChannel.broadcast_to(
        @user_friend.user,
-       "<div><p>#{notification.message}</p></div>".html_safe
+       "<li class=\"dropdown-item\">#{notif.message}</li>".html_safe
      )
     redirect_to root_path
     @user_friend.destroy
@@ -54,7 +54,7 @@ class UserFriendsController < ApplicationController
         notification = Notification.create!(message: "#{current_user.full_name} want to connect with you!", is_read: 1, user: @user_friend.friend)
         NotificationChannel.broadcast_to(
           @user_friend.friend,
-          "<div><p>#{notification.message}</p></div>".html_safe
+          "<li class=\"dropdown-item\">#{notification.message}</li>".html_safe
         )
       else
         format.html { render :new, status: :unprocessable_entity }

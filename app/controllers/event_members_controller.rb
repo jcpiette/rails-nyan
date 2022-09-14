@@ -7,7 +7,7 @@ class EventMembersController < ApplicationController
     notif = Notification.create!(message: "#{current_user.full_name} will not join your event!", is_read: 1, user: em.event.user)
      NotificationChannel.broadcast_to(
        em.event.user,
-       "<div><p>#{notification.message}</p></div>".html_safe
+       "<li class=\"dropdown-item\">#{notif.message}</li>".html_safe
      )
      redirect_to root_path
   end
@@ -23,8 +23,8 @@ class EventMembersController < ApplicationController
     notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: em.event.user)
     NotificationChannel.broadcast_to(
       em.event.user,
-       "</div><p>#{notif.message}</p></div>".html_safe
-     )
+      "<li class=\"dropdown-item\">#{notif.message}</li>".html_safe
+    )
     redirect_to root_path
   end
 

@@ -13,12 +13,15 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <div class="notification" data-controller="notification-subscription" data-notification-subscription-notification-id-value="<%= current_user.id %>">
-            <li>
-                <div class="notifications" data-notification-subscription-target="notifications">
-                  <a data-notification-subscription-target="notificationsMessage" tabindex="0" class="btn btn-info" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus" data-bs-title="My Notifications" data-bs-html="true" data-bs-content='<%= render 'notifcations/popover' %>'>
-                      <i class="fa-solid fa-bell"></i><span class="badge badge-light" data-notification-subscription-target="notificationsCount"> <%= @notifications.count %> </span>
-                  </a>
-                </div>
+            <li class="nav-item dropdown notifications" data-notification-subscription-target="notifications">
+                <a id="navbarNotifDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa-solid fa-bell"></i><span class="badge badge-light" data-notification-subscription-target="notificationsCount"> <%= @notifications.count %> </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarNotifDropdown" data-notification-subscription-target="notificationsMessage">
+                  <li class="dropdown-item">My Notifcations</li>
+                  <li><hr class="dropdown-divider"></li>
+                  <%= render 'notifcations/popover' %>
+                </ul>
             </li>
           </div>
           <li class="nav-item dropdown">
@@ -41,8 +44,8 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-danger" %>
-            <%= link_to "Login", new_user_session_path, class: "btn btn-danger" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-danger signup" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-danger login" %>
           </li>
         <% end %>
       </ul>
