@@ -1,5 +1,17 @@
 @import 'bootstrap/scss/bootstrap';
-
+ body {
+  background-color: #E4D7B4;
+ }
+.form-inputs {
+  margin-top: 15px;
+  border-radius: 5px;
+  background-color: #f0e8d4;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-color: grey;
+}
 .event-container {
   display: flex;
 }
@@ -11,38 +23,68 @@
   flex-direction: column;
 }
 .form-and-map {
-  margin-right: 50px;
+  margin-right: 150px;
+
 }
+
+
 input[name="event[title]"] {
-  width: 410px;
+  width: 400px;
+  margin-left: 3px;
+  background-color: #f0e8d4;
+  border-color: grey;
+  border-radius: 5px;
 }
 
 input[name="event[description]"] {
-  width: 410px;
-  padding-bottom: 150px;
+  width: 400px;
+  margin-left: 3px;
+  padding-bottom: 50px;
   overflow: wrap;
+  background-color: #f0e8d4;
+  border-color: grey;
+  border-radius: 5px;
 }
 
 
 input[name="event[location]"] {
-  width: 410px;
+  width: 400px;
+  margin-left: 3px;
   height: 50px;
+  background-color: #f0e8d4;
+}
+
+input[name="commit"] {
+  width: 400px;
+  margin-left: 3px;
+  height: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
+  background-color: #f0e8d4;
 }
 .card-text {
   margin: 0;
 }
 
+.form-label {
+  text-align: center;
+}
 .event-cards {
   background-color: #f0e8d4;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .body {
   background-color: #F4F4F4;
 }
 
-img {
-  max-width:100%;
-  max-height:100%;
+.image {
+  text-align: left;
+  width:250px;
+  height: 196px;
+
 }
 
 .button {
@@ -66,4 +108,13 @@ img {
 .button:focus {
   box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
+}
+
+#map {
+  margin-top: 20px;
+  height: 410px;
+  width: 410px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
 }
