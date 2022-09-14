@@ -1,13 +1,25 @@
 .user-settings-container {
   display: flex;
+  background-color: white;
+}
+
+.user-settings-sub-info {
+padding-left: 35px;
 }
 
 .user-settings-container .user-settings-menu {
   position: sticky;
   top: 0;
-  padding-right: 50px;
+
 }
 
+.dropdown-item:hover {
+  text-decoration: underline;
+}
+
+.user-settings-menu {
+  background-color: #EEF1FF;
+}
 
 input[type=radio] {
   display: none;

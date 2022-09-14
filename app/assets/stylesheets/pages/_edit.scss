@@ -4,13 +4,7 @@
  }
 .form-inputs {
   margin-top: 15px;
-  border-radius: 5px;
 
-  border-left-style: solid;
-  border-right-style: solid;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-color: grey;
 }
 .event-container {
   display: flex;
@@ -76,9 +70,7 @@ input[name="commit"] {
   border-bottom-right-radius: 10px;
 }
 
-.body {
-  background-color: #F4F4F4;
-}
+
 
 .image {
   text-align: left;
