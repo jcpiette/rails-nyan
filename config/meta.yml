@@ -1,4 +1,4 @@
 meta_product_name: "NYAN"
 meta_title: "NYAN - Not Your Average Night"
 meta_description: "Take the stress away from planning an event with your friends. Create an event, Add your friends and let us do the work for you!"
-meta_image: "white_logo.png" # should exist in `app/assets/images/`
+meta_image: "og_image.jpg" # should exist in `app/assets/images/`
