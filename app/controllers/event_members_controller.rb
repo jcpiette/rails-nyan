@@ -4,7 +4,7 @@ class EventMembersController < ApplicationController
   def decline
     em = EventMember.find(params[:id])
     em.update(is_interested: false)
-    notif = Notification.create!(message: "#{current_user.full_name} will not join your event!", is_read: 1, user: User.find(em.event.user_id))
+    notif = Notification.create!(message: "#{current_user.full_name} will not join your event!", is_read: 1, user: em.event.user)
      NotificationChannel.broadcast_to(
        em.event.user,
        "<div><p>#{notification.message}</p></div>".html_safe
@@ -20,7 +20,7 @@ class EventMembersController < ApplicationController
   def accept
     em = EventMember.find(params[:id])
     em.update(is_interested: true)
-    notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: User.find(em.event.user_id))
+    notif = Notification.create!(message: "#{current_user.full_name} will join your event!", is_read: 1, user: em.event.user)
     NotificationChannel.broadcast_to(
       em.event.user,
        "</div><p>#{notif.message}</p></div>".html_safe

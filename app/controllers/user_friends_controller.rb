@@ -14,7 +14,7 @@ class UserFriendsController < ApplicationController
   def accept
     uf = UserFriend.find(params[:id])
     uf.update(status: "Accepted")
-    notif = Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: User.find(uf.friend_id))
+    notif = Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: uf.user)
     NotificationChannel.broadcast_to(
       uf.user,
        "<div><p>#{notif.message}</p></div>".html_safe
@@ -24,7 +24,7 @@ class UserFriendsController < ApplicationController
 
   def decline
     @user_friend = UserFriend.find(params[:id])
-    Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: User.find(@user_friend.friend_id))
+    Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: @user_friend.user)
     NotificationChannel.broadcast_to(
        @user_friend.user,
        "<div><p>#{notification.message}</p></div>".html_safe
@@ -51,7 +51,7 @@ class UserFriendsController < ApplicationController
 
     respond_to do |format|
       if @user_friend.save!
-        notification = Notification.create!(message: "#{current_user.full_name} want to connect with you!", is_read: 1, user: User.find(@user_friend.friend_id))
+        notification = Notification.create!(message: "#{current_user.full_name} want to connect with you!", is_read: 1, user: @user_friend.friend)
         NotificationChannel.broadcast_to(
           @user_friend.friend,
           "<div><p>#{notification.message}</p></div>".html_safe
