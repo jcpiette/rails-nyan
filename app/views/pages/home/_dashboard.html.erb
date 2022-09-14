@@ -1,4 +1,4 @@
-<div class="dashboard-page container">
+<div class="dashboard-page">
   <div class="row">
 
     <div class="col-3 section left-side">
@@ -11,36 +11,48 @@
         </div>
         <ul>
           <%# friends I have added who have accepted %>
-          <div class="friend">
           <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %></li>
-          <% end %>
-          </div>
-          <div class="friend">
-          <%# friends who have added me and I have accepted %>
-          <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %></li>
-          <% end %>
-          </div>
-          <%# friends have added me and I can accept/decline %>
-          <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-            <div class="pending-friends">
-              <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%=User.find(friend.user_id).full_name %>
-                <div class="friend-links">
-                  <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                    <i class="fa-regular fa-square-check"></i>
-                  <% end %>
-                  <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
-                    <i class="fa-regular fa-rectangle-xmark"></i>
-                  <% end %>
-                </div>
-              </li>
+            <div class="friend">
+              <p><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+              <p><%= User.find(friend.friend_id).full_name %></p>
             </div>
           <% end %>
+
+          <%# friends who have added me and I have accepted %>
+          <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
+            <div class="friend">
+              <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+              <p><%= User.find(friend.user_id).full_name %></p>
+            </div>
+          <% end %>
+
+          <%# friends have added me and I can accept/decline %>
+          <div class="pending-friends">
+            <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
+                <div class="friend-accept">
+                  <div class="friend-info">
+                    <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+                    <p><%=User.find(friend.user_id).full_name %></p>
+                  <div>
+                  <div class="friend-links">
+                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                      <i class="fa-regular fa-square-check"></i>
+                    <% end %>
+                    <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                      <i class="fa-regular fa-rectangle-xmark"></i>
+                    <% end %>
+                  </div>
+                </div>
+
+            <% end %>
+          </div>
           <div class="pending-friends">
             <%# friends who I have added and waiting for them to accept/decline %>
             <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
-              <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%=User.find(friend.friend_id).full_name %>...</li>
+              <div class="friend">
+                <p><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+                <p><%=User.find(friend.friend_id).full_name %>...</li></p>
+              </div>
             <% end %>
           </div>
         </ul>
