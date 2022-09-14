@@ -1,9 +1,9 @@
-.dash-card {
-  padding: 20px;
+.container {
+  width: 100%;
 }
 
 .section {
-  padding-top: 20px;
+  padding: 20px;
 }
 
 .middle {
@@ -16,7 +16,6 @@
 }
 
 .dash-card  {
-  padding-top: 10px;
   text-align: center;
   color: #AAC4FF;
 }
@@ -43,7 +42,7 @@
 .event-card {
   display: flex;
   background-color: #AAC4FF;
-  padding: 15px;
+  padding: 20px;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
@@ -82,4 +81,9 @@ ul {
 
 .fa-solid, .fas {
   margin-left: 10px;
+}
+
+.fa-regular {
+  color: #B1B2FF;
+  font-size: 25px;
 }
