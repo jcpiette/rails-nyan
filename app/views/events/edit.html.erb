@@ -1,3 +1,4 @@
+<% label_array = ['A','B','C','D']%>
 <div class="event-container">
   <div class="form-and-map">
     <%= render "form", event: @event %>
@@ -15,7 +16,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= suggestion['name'] %></h5>
+                <h5 class="card-title"><%= suggestion['name'] + "#{label_array[index]}" %></h5>
                 <p class="card-text"><%= suggestion['address'] %></p>
                 <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
                 <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
@@ -31,8 +32,9 @@
   </section>
 </div>
 <%= radius = @suggestions[0]['radius'].split(',')%>
-
 <% suggestions_array = @suggestions %>
+
+
 
 <br>
 <div>
@@ -51,16 +53,23 @@
       defer
     ></script>
 <script>
+const labels = "ABCD";
+let labelIndex = 0;
 var s_array0 = ['<%=suggestions_array[0]['latlng']['lat']%>','<%= suggestions_array[0]['latlng']['lng']%>']
 var s_array1 = ['<%=suggestions_array[1]['latlng']['lat']%>','<%= suggestions_array[1]['latlng']['lng'] %>']
 var s_array2 = ['<%=suggestions_array[2]['latlng']['lat']%>','<%= suggestions_array[2]['latlng']['lng'] %>']
 var s_array3 = ['<%=suggestions_array[3]['latlng']['lat']%>','<%= suggestions_array[3]['latlng']['lng'] %>']
+
+
 var add_marker = (location, thismap) => {
   new google.maps.Marker({
   position: location,
   map: thismap,
+  label: labels[labelIndex++ % labels.length]
+
 });
 }
+
 function initMap() {
   // The location of centre
   const centre = { lat: parseFloat('<%=radius[0]%>'), lng: parseFloat('<%=radius[1]%>') };
@@ -70,7 +79,9 @@ function initMap() {
     center: centre,
   });
 
-  add_marker(centre, map)
+
+
+
   add_marker({lat: parseFloat(s_array0[0]), lng: parseFloat(s_array0[1])}, map)
   add_marker({lat: parseFloat(s_array1[0]), lng: parseFloat(s_array1[1])}, map)
   add_marker({lat: parseFloat(s_array2[0]), lng: parseFloat(s_array2[1])}, map)
