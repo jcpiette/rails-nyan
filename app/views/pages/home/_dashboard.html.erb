@@ -11,18 +11,23 @@
         </div>
         <ul>
           <%# friends I have added who have accepted %>
+          <div>
           <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
             <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %></li>
           <% end %>
+          </div>
+          <div>
           <%# friends who have added me and I have accepted %>
           <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
             <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %></li>
           <% end %>
+          </div>
+          <div>
           <%# friends have added me and I can accept/decline %>
           <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
             <div class="pending-friends">
               <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%=User.find(friend.user_id).full_name %>
-                <div class="friend links">
+                <div class="friend-links">
                   <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
                     <i class="fa-regular fa-square-check"></i>
                   <% end %>
@@ -33,7 +38,6 @@
               </li>
             </div>
           <% end %>
-
           <div class="pending-friends">
             <%# friends who I have added and waiting for them to accept/decline %>
             <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
@@ -47,7 +51,7 @@
 
     <div class="col-6 section middle">
       <div class="dash-card events-card">
-        <h2><strong>Upcoming Events</strong></h2>
+        <h2>Upcoming Events</h2>
         <div class="button-dash">
           <button type="button" class="btn-dash fa-regular fa-calendar-plus" data-bs-toggle="modal" data-bs-target="#addEventModal">
             Add Event
@@ -70,11 +74,11 @@
                 <div id="interested">
                   <% if @event_members.where(event_id: event.id).first.is_interested === false %>
                     <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                      <p class="btn btn-primary">Interested</p>
+                      <p class="btn-dash">Interested?</p>
                     <% end %>
                   <% else %>
                     <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                      <p class="btn btn-success">You go !</p>
+                      <p class="btn-dash-go">Going!</p>
                     <% end %>
                   <% end %>
                 </div>
@@ -89,15 +93,15 @@
         <h3>Near You<i class="fa-solid fa-location-dot"></i></h3>
         <%@mysuggestions.each_with_index do |suggestion, index|%>
           <%if index < 1%>
-            <div class=" suggestion-card" style="width: 18rem;">
-              <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+            <div class="suggestion-card" style="width: 18rem;">
+              <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid" alt="...">
               <div class="card-body">
-                <h5 class="card-title"><%= suggestion['name'] %></h5>
+                <ul class="list-group">
+                  <li class="list-group-item"><%= suggestion['name'] %></li>
+                  <li class="list-group-item"><%=suggestion['address']%></li>
+                  <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
+                </ul>
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><%=suggestion['address']%></li>
-                <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
-              </ul>
             </div>
           <%end%>
         <%end%>
