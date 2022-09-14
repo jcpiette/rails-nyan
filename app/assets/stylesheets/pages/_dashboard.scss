@@ -1,25 +1,22 @@
 
 .fb{
   width:100%;
-  border:5px solid #0c2445;
-  border-radius: 20px;
+  border-radius: 10px;
   position:relative;
   height:175px;
   right: 35px;
-  box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12)
+  // box-shadow:
+  // 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  // 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  // 0 12.5px 10px rgba(0, 0, 0, 0.06),
+  // 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  // 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  // 0 100px 80px rgba(0, 0, 0, 0.12)
 }
 
 .pending-text {
   margin-right: 150px;
   text-decoration: #0C2445 !important;
-
-
 }
 
 
@@ -28,8 +25,6 @@
   font-family:sans-serif;
   margin: 0 0 0 10px;
   line-height:30px;
-
-
 }
 
 .fb-top span{
@@ -37,6 +32,7 @@
   float:right;
   margin-right:10px;
 }
+
 .fb-top{
   background-color:#efefef;
   height:30px;
@@ -106,14 +102,6 @@
   cursor:pointer;
 }
 
-
-.full-name {
-
-}
-
-
-
-
 .friend-list {
   display: block;
   margin: 0;
@@ -128,8 +116,6 @@
   width: 300px;
   height: 60px;
   background: #EEE;
-  border-bottom: 1px solid #DDD;
-
   display: flex;
   align-items: center;
 }
@@ -137,7 +123,7 @@
 .friend img {
   width: 45px;
   height: 45px;
-  border-radius: 30px;
+  border-radius: 10px;
   border: 2px solid #AAA;
   object-fit: cover;
   margin-left: 5px;
@@ -159,8 +145,5 @@
   0 12.5px 10px rgba(0, 0, 0, 0.06),
   0 22.3px 17.9px rgba(0, 0, 0, 0.072),
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12)
-;
+  0 100px 80px rgba(0, 0, 0, 0.12);
 }
-
-
