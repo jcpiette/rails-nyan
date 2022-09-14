@@ -2,16 +2,16 @@
   <div class="row">
     <div class="event-show-card show-card col">
       <div class="event-info">
-        <h2><%= event.title %></h2>
-        <p><%= event.description %></p>
-        <p>When: <%= event.event_date %></p>
+        <div><h2><%= event.title %></h2></div>
+        <div><p><%= event.description %></p></div>
+        <div><p>When: <%= event.event_date %></p></div>
         <div>
-          Who:
+          <p>Who:</p>
           <% @members.where(event_id: event).each do |member| %>
-            <%= image_tag  User.find(member.user_id).img_url, class:"avatar" %><%= User.find(member.user_id).full_name%>
+            <p><%= image_tag  User.find(member.user_id).img_url, class:"avatar" %><%= User.find(member.user_id).first_name%></p>
           <% end %>
         </div>
-        <p>Location: <%= event.location %></p>
+        <div><p>Location: <%= event.location %></p></div>
       </div>
     </div>
 
