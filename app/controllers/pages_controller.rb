@@ -21,12 +21,12 @@ class PagesController < ApplicationController
     location = "#{current_user.latitude},#{current_user.longitude}"
     type = "#{current_user.preference_type}"
     radius = '1000'
-    fminprice = "3"
+    fminprice = "4"
     fmaxprice = "4"
     minprice = (fminprice.to_i - 1)
     maxprice = fmaxprice.to_i
     # make the json
-    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM")
+    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
     request = Net::HTTP::Get.new(url)
@@ -44,7 +44,7 @@ class PagesController < ApplicationController
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
     place_ids.each_with_index do |place_id, index|
-      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM")
+      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
       request = Net::HTTP::Get.new(url)
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
       json_file['result']['photos'].each do |reference|
         if counter2 < 2
           counter2 += 1
-          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM"
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c"
           photo_references << photo_url
         end
       end
