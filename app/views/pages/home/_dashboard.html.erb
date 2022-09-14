@@ -12,11 +12,11 @@
         <ul>
           <%# friends I have added who have accepted %>
           <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li><%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
+            <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %></li>
           <% end %>
           <%# friends who have added me and I have accepted %>
           <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li><%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %></li>
+            <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %></li>
           <% end %>
           <%# friends have added me and I can accept/decline %>
           <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
@@ -28,6 +28,7 @@
                   <i class="fa-solid fa-xmark"></i>
                 <% end %>
             </li>
+          <% end %>
           <%# friends who I have added and waiting for them to accept/decline %>
           <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
             <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%=User.find(friend.friend_id).full_name %>
@@ -35,6 +36,7 @@
                   <i class="fa-solid fa-xmark "></i>
                 <% end %>
             </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -50,30 +52,30 @@
         </div>
           <% @events.each do |event|%>
             <%= link_to event_path(event), class:"card-link" do%>
-            <div class="event-card">
-              <div class="event-info">
-                <ul>
-                  <li><%= event.title %></li>
-                  <li><%=  event.description%></li>
-                </ul>
-              </div>
-              <div class="avatars">
-                <% @event_members.where(event_id: event.id).each do |member|%>
-                <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-                <% end %>
-              </div>
-              <div id="interested">
-                <% if @event_members.where(event_id: event.id).first.is_interested === false %>
-                  <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                  <p class="btn btn-primary">Interested</p>
+              <div class="event-card">
+                <div class="event-info">
+                  <ul>
+                    <li><%= event.title %></li>
+                    <li><%=  event.description%></li>
+                  </ul>
+                </div>
+                <div class="avatars">
+                  <% @event_members.where(event_id: event.id).each do |member|%>
+                  <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
                   <% end %>
-                <% else %>
-                  <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                  <p class="btn btn-success">You go !</p>
+                </div>
+                <div id="interested">
+                  <% if @event_members.where(event_id: event.id).first.is_interested === false %>
+                    <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                      <p class="btn btn-primary">Interested</p>
+                    <% end %>
+                  <% else %>
+                    <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                      <p class="btn btn-success">You go !</p>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
               </div>
-            </div>
             <% end %>
           <% end %>
       </div>
@@ -98,7 +100,6 @@
         <%end%>
       </div>
     </div>
-
 
   </div>
 </div>
