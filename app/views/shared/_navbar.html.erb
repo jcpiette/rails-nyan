@@ -1,8 +1,11 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="nyan-navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
       <%= link_to "/", class: "navbar-brand" do %>
-        <%= image_tag "white_logo.png" %><h3 class="text-white">Not Your Average Night</h3>
+        <div class="nav-title">
+          <%= image_tag "white_logo.png" %><h3>Not Your Average Night</h3>
+        </div>
       <% end %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,7 +16,7 @@
             <li>
                 <div class="notifications" data-notification-subscription-target="notifications">
                   <a data-notification-subscription-target="notificationsMessage" tabindex="0" class="btn btn-info" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus" data-bs-title="My Notifications" data-bs-html="true" data-bs-content='<%= render 'notifcations/popover' %>'>
-                      <i class="fa-solid fa-bell"></i> Notifications <span class="badge badge-light"  data-notification-subscription-target="notificationsCount"> <%= @notifications.count %> </span>
+                      <i class="fa-solid fa-bell"></i><span class="badge badge-light" data-notification-subscription-target="notificationsCount"> <%= @notifications.count %> </span>
                   </a>
                 </div>
             </li>

@@ -22,7 +22,7 @@ export default class extends Controller {
   }
 
   addMessage(data) {
-    this.notificationsCountTarget.innerHTML = this.notificationsMessageTarget.innerHTML + 1;
+    this.notificationsCountTarget.span.innerHTML = this.notificationsMessageTarget.span.innerHTML + 1;
     this.notificationsMessageTarget.dataset.bsContent = this.notificationsMessageTarget.dataset.bsContent + data;
   }
 }
