@@ -22,6 +22,6 @@ export default class extends Controller {
   }
 
   addMessage(data) {
-    this.notificationsMessageTarget.dataset.bsContent = this.notificationsMessageTarget.dataset.bsContent + data;
+    this.notificationsMessageTarget.insertAdjacentHTML("afterbegin", data);
   }
 }
