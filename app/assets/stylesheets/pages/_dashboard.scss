@@ -1,66 +1,99 @@
-
-.fb{
-  width:100%;
-  border-radius: 10px;
-  position:relative;
-  height:175px;
-  right: 35px;
-  // box-shadow:
-  // 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  // 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  // 0 12.5px 10px rgba(0, 0, 0, 0.06),
-  // 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  // 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  // 0 100px 80px rgba(0, 0, 0, 0.12)
+.container{
+  background-color: #EEF1FF;
+  width: 100%;
 }
 
-.pending-text {
-  margin-right: 150px;
-  text-decoration: #0C2445 !important;
+.dash-card {
+  padding: 20px;
 }
 
+.friends-list {
+  padding: 20px;
+  width: 100% ;
+}
 
-.fb p{
+.friends-title {
+  background-color: #0C2445;
+  color: white;
+}
+
+.dash-card > h2 {
+  text-align: center;
+  color: #0C2445;
+}
+
+.dash-card  {
+  text-align: center;
+  color: white;
+}
+
+.button-dash {
+  text-align: center;
+  margin: 30px;
+}
+
+.row {
+  height: 100%;
+}
+
+.col {
+  min-height: 85vh;
+}
+
+.friends-list{
+  color: #124073;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.pending-friends{
+  height: 40%;
+}
+
+.events-card{
+  height: 100%;
+  background-color: white;
+}
+
+.event-card {
   display: flex;
-  font-family:sans-serif;
-  margin: 0 0 0 10px;
-  line-height:30px;
+  background-color: #0C2445;
+  padding: 20px;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.fb-top span{
-  color:#4267B2;
-  float:right;
-  margin-right:10px;
+.avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.fb-top{
-  background-color:#efefef;
-  height:30px;
-  width: 492px;
-  border-radius:10px;
-  position:absolute;
-  top:-1px;
-  left:-1px;
-  border:1px solid #0C2445;
-  ;
+.event-info {
+  color: white;
 }
 
+ul {
+  list-style: none;
+}
+
+li {
+  margin-top: 20px;
+}
+
+.accept-decline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-link {
+  text-decoration: none;
+}
 .fb img{
   position:absolute;
   left:10px;
   top:52.5px;
-}
-
-.info{
-  position:absolute;
-  left:120px;
-  top: 50px;
-}
-
-.info {
-  color:#000000;
-  line-height:25px;
-  font-size:18px;
 }
 
 .info span{
@@ -123,11 +156,10 @@
 .friend img {
   width: 45px;
   height: 45px;
-  border-radius: 10px;
-  border: 2px solid #AAA;
   object-fit: cover;
   margin-left: 5px;
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 .friend .name {
@@ -137,13 +169,5 @@
 .friend.selected {
   background: #43A047;
   color: white;
-  border-radius: 10px;
   width: 100%;
-  box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12);
 }
