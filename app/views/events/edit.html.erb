@@ -2,6 +2,10 @@
 <div class="event-container">
   <div class="form-and-map">
     <%= render "form", event: @event %>
+    <div>
+      <%= link_to "Show this event", @event %> |
+      <%= link_to "Back to events", events_path %>
+    </div>
     <div id="map"></div>
   </div>
   <div>
@@ -12,11 +16,11 @@
         <div class="card mb-3 event-cards" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+            <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start image" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= suggestion['name'] + "#{label_array[index]}" %></h5>
+                <h5 class="card-title"><%= suggestion['name'] + "-  #{label_array[index]}" %></h5>
                 <p class="card-text"><%= suggestion['address'] %></p>
                 <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
                 <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
@@ -31,22 +35,18 @@
     <%end%>
   </section>
 </div>
-<%= radius = @suggestions[0]['radius'].split(',')%>
+<% radius = @suggestions[0]['radius'].split(',')%>
 <% suggestions_array = @suggestions %>
 
 
 
 <br>
 <div>
-<div>
-  <%= link_to "Show this event", @event %> |
-  <%= link_to "Back to events", events_path %>
+
+</div>
 </div>
 <style>
-#map {
-  height: 500px;
-  width: 410px;
-}
+
 </style>
 <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM&callback=initMap&v=weekly"
