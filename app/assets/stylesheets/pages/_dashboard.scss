@@ -60,3 +60,13 @@ ul {
   text-decoration: none;
   color: white;
 }
+
+.friend {
+  display: flex;
+  align-items: center;
+}
+
+.pending-friends {
+  border-top: 1px solid rgb(210, 218, 255);
+  padding-top: 15px;
+}
