@@ -4,37 +4,30 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
     <%= f.error_notification %>
 
-
-
-    <div class="form-inputs">
       <%= f.input :preference_type,
               required: true, :as => :hidden %>
       <%= f.input :preference_budget,
                   required: true, :as => :hidden %>
 
-
-        <div class="preference_budget">
-        <p><strong>I want to spend...<strong></p>
-
-        <input type="hidden" name="user[preference_budget]" value="" autocomplete="off">
-<div class="flex-cards-budget">
-         <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
-
-          <div>
-            <% if current_user.preference_budget == (n[:value])  %>
-              <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>" checked>
-              <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
-                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
-              </label>
+      <p><strong>I want to spend...<strong></p>
+      <div class="flex-cards-budget">
+        <% [{value: '£', icon: ''}, {value: '££', icon: ''},  {value: '£££', icon: ''}, {value: '££££', icon: ''}].each do |n| %>
+        <div class="preference-budget">
+          <% if current_user.preference_budget == (n[:value])  %>
+            <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>" checked>
+            <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
+              <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+            </label>
           <% else %>
-              <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>">
-              <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
-                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
-              </label>
+            <input type="radio" value="<%= n[:value]%>" name="user[preference_budget]" id="user_preference_budget_<%=n[:value]%>">
+            <label class="clickable" for="user_preference_budget_<%=n[:value]%>">
+              <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+            </label>
           <% end %>
-          </div>
-        <% end %>
         </div>
+        <% end %>
+      </div>
+
       <div class="preference-type">
         <p><strong>I want to go to a...<strong></p>
         <input type="hidden" name="user[preference_type]" value="" autocomplete="off">
@@ -59,12 +52,9 @@
         </div>
 
       </div>
-    </div>
-    <br>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Update", class: "btn btn-flat" %>
-    </div>
-  <% end %>
-
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "btn btn-flat" %>
+      </div>
+    <% end %>
 </div>
