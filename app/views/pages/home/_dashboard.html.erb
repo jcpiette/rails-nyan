@@ -3,17 +3,16 @@
 
     <div class="col-3 section left-side">
       <div class="dash-card friends-list">
-        <h3 class="friends-title"> Friends  <i class="fas fa-users"></i></h3>
+        <h3 class="friends-title">Friends<i class="fas fa-users"></i></h3>
 
         <%# friends I have added who have accepted %>
         <ul id='friend-list'>
-          <li> <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%> </li>
-            <li class='friend selected'>   <%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
+          <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
+            <li class='friend selected'><%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
           <% end %>
         <%# friends who have added me and I have accepted %>
           <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-            <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-            <%= User.find(friend.user_id).full_name %></li>
+            <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url%><%= User.find(friend.user_id).full_name %></li>
           <% end %>
         </ul>
         <div class="button-dash">
@@ -135,25 +134,17 @@
       <div class="dash-card suggested-for-user">
         <h3> Near You</h3>
         <%@mysuggestions.each_with_index do |suggestion, index|%>
-
-        <%if index < 1%>
-
-
-        <div class="card" style="width: 18rem;">
-          <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><%= suggestion['name'] %></h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><%=suggestion['address']%></li>
-          <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-        <%end%>
+          <%if index < 1%>
+            <div class=" suggestion-card" style="width: 18rem;">
+              <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= suggestion['name'] %></h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%=suggestion['address']%></li>
+                <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
+              </ul>
+          <%end%>
         <%end%>
       </div>
 
