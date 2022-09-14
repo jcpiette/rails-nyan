@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="notification-subscription"
 export default class extends Controller {
   static values = { notificationId: Number }
-  static targets = ["notifications", "notificationsMessage", "notificationsCount" ]
+  static targets = ["notifications", "notificationsMessage", "notificationsCount"]
 
   connect() {
     console.log("connect to notif room");
@@ -22,7 +22,6 @@ export default class extends Controller {
   }
 
   addMessage(data) {
-    this.notificationsCountTarget.innerHTML = this.notificationsMessageTarget.innerHTML + 1;
     this.notificationsMessageTarget.dataset.bsContent = this.notificationsMessageTarget.dataset.bsContent + data;
   }
 }

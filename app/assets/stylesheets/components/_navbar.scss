@@ -1,7 +1,15 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.nyan-navbar {
   background-color: #0C2445;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,12 +20,38 @@
   width: 40px;
 }
 
-.navbar-logo {
+.me-auto {
   display: flex;
   align-items: center;
 }
 
-.info {
+.nav-item {
+  padding: 0 !important;
+}
 
+.nav-title {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.nav-title > h3 {
+  margin-left: 10px;
+}
+
+.info {
   border-radius: 10px;
+}
+
+.fa-bell {
+  color: #0c2345;
+}
+
+.btn-info {
+  background-color: white !important;
+  border-color: white !important;
+}
+
+.badge-light {
+  color: #0c2345 !important;
 }
