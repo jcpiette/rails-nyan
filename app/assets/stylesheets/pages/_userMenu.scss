@@ -43,16 +43,16 @@
 }
 
 .btn-flat {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #670BFF;
-  transition: background 0.3s ease;
+  color: white  !important;
+  padding: 8px 24px  !important;
+  border-radius: 4px  !important;
+  background: #670BFF  !important;
+  transition: background 0.3s ease  !important;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
-  color: white;
+  background: #4D04C4  !important;
+  color: white  !important;
 }
 
 .toggle {
