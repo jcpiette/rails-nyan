@@ -11,18 +11,17 @@
         </div>
         <ul>
           <%# friends I have added who have accepted %>
-          <div>
+          <div class="friend">
           <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%>
             <li><%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.friend_id).full_name %></li>
           <% end %>
           </div>
-          <div>
+          <div class="friend">
           <%# friends who have added me and I have accepted %>
           <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
             <li><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %></li>
           <% end %>
           </div>
-          <div>
           <%# friends have added me and I can accept/decline %>
           <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
             <div class="pending-friends">
