@@ -23,21 +23,21 @@
         </div>
       </div>
 
-      <div class="dash-card pending-friends">
-        <h3 class="pending-text">Pending Friend Requests</h3>
+      <div class="dash-card friends-list">
+       <h3 class="friends-title">Pending Friend Requests </h3>
         <ul>
           <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
             <li>
               <div class="fb">
                 <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %>
                 <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
-                <p class="info"><b><%=User.find(friend.friend_id).full_name  %></b>
+                <p class="info"><b class="full-name"><%=User.find(friend.friend_id).full_name  %></b> </p>
                 <div class="button-block">
-                  <div class="confirm">
-                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                      <i class="fa-solid fa-check"></i>
-                    <% end %>
-                  </div>
+                  <%# <div class="confirm"> %>
+                    <%# <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                      <%# <i class="fa-solid fa-check"></i> %>
+                    <%# <% end %>
+                  <%# </div> %>
                   <div class="delete">
                     <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
                       <i class="fa-solid fa-xmark"></i>
@@ -50,25 +50,29 @@
           </ul>
       </div>
 
-      <div class="dash-card pending-friends">
-        <h3 class="pending-text">Friend Requests</h3>
+      <div class="dash-card friends-list">
+         <h3 class="friends-title"> Friend Requests</h3>
         <ul>
           <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
             <li>
               <div class="fb">
-                <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-                  <p class="info"><b><%=User.find(friend.user_id).full_name  %></b> <br>
+                <div>
+                  <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
+                </div>
+                <div>
+                  <p class="info"> <b><%=User.find(friend.user_id).full_name  %></b> </p>
+                </div>
                 <div class="button-block">
-                <div class="confirm">
-                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                      <i class="fa-solid fa-check"></i>
+                  <div class="confirm">
+                      <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                        <i class="fa-solid fa-check"></i>
+                      <% end %>
+                  </div>
+                  <div class="delete">
+                    <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                      <i class="fa-solid fa-xmark"></i>
                     <% end %>
-                </div>
-                <div class="delete">
-                  <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
-                    <i class="fa-solid fa-xmark"></i>
-                  <% end %>
-                </div>
+                  </div>
                 </div>
               </div>
             </li>
