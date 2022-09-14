@@ -29,17 +29,22 @@
           <%# friends have added me and I can accept/decline %>
           <div class="pending-friends">
             <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-              <div>
-                <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%=User.find(friend.user_id).full_name %>
-                <div class="friend-links">
-                  <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                    <i class="fa-regular fa-square-check"></i>
-                  <% end %>
-                  <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
-                    <i class="fa-regular fa-rectangle-xmark"></i>
-                  <% end %>
+
+                <div class="friend-accept">
+                  <div class="friend-info">
+                    <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+                    <p><%=User.find(friend.user_id).full_name %></p>
+                  <div>
+                  <div class="friend-links">
+                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                      <i class="fa-regular fa-square-check"></i>
+                    <% end %>
+                    <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                      <i class="fa-regular fa-rectangle-xmark"></i>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+
             <% end %>
           </div>
           <div class="pending-friends">

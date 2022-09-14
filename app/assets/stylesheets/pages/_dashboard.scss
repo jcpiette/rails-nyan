@@ -51,11 +51,6 @@ ul {
   list-style: none;
 }
 
-.accept-decline {
-  display: flex;
-  justify-content: space-between;
-}
-
 .card-link {
   text-decoration: none;
   color: white;
@@ -68,5 +63,11 @@ ul {
 
 .pending-friends {
   border-top: 1px solid rgb(210, 218, 255);
-  padding-top: 15px;
+  padding-top: 20px;
+}
+
+.friend-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
