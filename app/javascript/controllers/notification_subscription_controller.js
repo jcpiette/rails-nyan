@@ -12,8 +12,7 @@ export default class extends Controller {
 
     this.channel = createConsumer().subscriptions.create(
       { channel: "NotificationChannel", id: this.notificationIdValue },
-      { received: data => { this.addMessage(data) }
-      }
+      { received: data => this.addMessage(data) }
     )
   }
 
