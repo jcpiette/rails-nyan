@@ -24,6 +24,7 @@ padding-left: 35px;
 input[type=radio] {
   display: none;
 }
+
 input[type=radio]:not(:disabled) ~ label {
   cursor: pointer;
 }
@@ -35,5 +36,6 @@ input[type=radio]:disabled ~ label {
 }
 
 input[type=radio]:checked + label {
-  color: green;
+  color: #B1B2FF;
+  border-color: #B1B2FF;
 }
