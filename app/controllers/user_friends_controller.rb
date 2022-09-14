@@ -16,20 +16,20 @@ class UserFriendsController < ApplicationController
     uf.update(status: "Accepted")
     notif = Notification.create!(message: "#{current_user.full_name} has accepted your invite!", is_read: 1, user: User.find(uf.friend_id))
     NotificationChannel.broadcast_to(
-      uf.friend,
+      uf.user,
        "<div><p>#{notif.message}</p></div>".html_safe
      )
-    head :ok
+    redirect_to root_path
   end
 
   def decline
     @user_friend = UserFriend.find(params[:id])
     Notification.create!(message: "#{current_user.full_name} has declined your invite!", is_read: 1, user: User.find(@user_friend.friend_id))
     NotificationChannel.broadcast_to(
-       @user_friend.friend,
+       @user_friend.user,
        "<div><p>#{notification.message}</p></div>".html_safe
      )
-    head :ok
+    redirect_to root_path
     @user_friend.destroy
   end
 
@@ -51,9 +51,11 @@ class UserFriendsController < ApplicationController
 
     respond_to do |format|
       if @user_friend.save!
-        Notification.create!(message: "#{current_user.full_name} want to connect with you!", is_read: 1, user: User.find(@user_friend.friend_id))
-        format.html { redirect_to root_path, notice: "User friend was successfully created." }
-        format.json { render :show, status: :created, location: @user_friend }
+        notification = Notification.create!(message: "#{current_user.full_name} want to connect with you!", is_read: 1, user: User.find(@user_friend.friend_id))
+        NotificationChannel.broadcast_to(
+          @user_friend.friend,
+          "<div><p>#{notification.message}</p></div>".html_safe
+        )
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_friend.errors, status: :unprocessable_entity }

@@ -9,7 +9,7 @@ class EventMembersController < ApplicationController
        em.event.user,
        "<div><p>#{notification.message}</p></div>".html_safe
      )
-    head :ok
+     redirect_to root_path
   end
 
   # GET /event_members or /event_members.json
@@ -25,7 +25,7 @@ class EventMembersController < ApplicationController
       em.event.user,
        "</div><p>#{notif.message}</p></div>".html_safe
      )
-    head :ok
+    redirect_to root_path
   end
 
 

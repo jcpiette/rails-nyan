@@ -41,7 +41,6 @@ class EventsController < ApplicationController
          iu,
          "<div><p>#{notif.message}</p></div>".html_safe
        )
-      head :ok
     end
     if @event.save!
       redirect_to edit_event_path(@event)
