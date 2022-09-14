@@ -1,6 +1,6 @@
 
-#fb{
-  width:500px;
+.fb{
+  width:100%;
   border:5px solid #0c2445;
   border-radius: 20px;
   position:relative;
@@ -17,11 +17,13 @@
 
 .pending-text {
   margin-right: 150px;
+  text-decoration: #0C2445 !important;
+
 
 }
 
 
-#fb p{
+.fb p{
   font-family:sans-serif;
   margin: 0 0 0 10px;
   line-height:30px;
@@ -29,12 +31,12 @@
 
 }
 
-#fb-top span{
+.fb-top span{
   color:#4267B2;
   float:right;
   margin-right:10px;
 }
-#fb-top{
+.fb-top{
   background-color:#efefef;
   height:30px;
   width: 492px;
@@ -46,40 +48,40 @@
   ;
 }
 
-#fb img{
+.fb img{
   position:absolute;
   left:10px;
   top:52.5px;
 }
 
-#info{
+.info{
   position:absolute;
   left:120px;
   top: 50px;
 }
 
-#info {
+.info {
   color:#000000;
   line-height:25px;
   font-size:18px;
 }
 
-#info span{
+.info span{
   color:#777;
   font-size:14px;
 }
 
-#button-block{
+.button-block{
   position:absolute;
   right:10px;
   top:85px;
 }
 
-#button-block div{
+.button-block div{
   display:inline-block;
 }
 
-#confirm, #delete{
+.confirm, #delete{
   background-color: rgb(125, 207, 2);
   color:white;
   padding:7px;
@@ -89,7 +91,7 @@
   top: 50px;
 }
 
-#delete{
+.delete{
   color:#222;
   background-color:rgb(231, 7, 7);
   border:1px solid #999;
@@ -98,14 +100,14 @@
   top: 50px;
 }
 
-#button-block div:hover{
+.button-block div:hover{
   opacity:.8;
   cursor:pointer;
 }
 
 
 
-#friend-list {
+.friend-list {
   display: block;
   margin: 0;
   padding: 0;
@@ -143,6 +145,7 @@
   background: #43A047;
   color: white;
   border-radius: 10px;
+  width: 100%;
   box-shadow:
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   0 6.7px 5.3px rgba(0, 0, 0, 0.048),

@@ -1,167 +1,158 @@
 <div class="dashboard-page container">
-<div class="row">
-  <div class="col section left-side">
-    <div class="dash-card friends-list">
-      <h3 class="friends-title">Friends</h3>
+  <div class="row">
 
-      <%# friends I have added who have accepted %>
-      <ul id='friend-list'>
+    <div class="col-3 section left-side">
+      <div class="dash-card friends-list">
+        <h3 class="friends-title">Friends</h3>
 
-        <li> <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%> </li>
-     <li class='friend selected'>   <%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
-      <% end %>
-      <%# friends who have added me and I have accepted %>
-      <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
-        <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-        <%= User.find(friend.user_id).full_name %></li>
-      <% end %>
-      </ul>
-            <div class="button-dash">
-        <button type="button" class="btn-dash fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#addRelationModal">
-          Add Friend
-        </button>
+        <%# friends I have added who have accepted %>
+        <ul id='friend-list'>
+          <li> <% @friends.where(user_id: current_user).where(status: "Accepted").each do |friend|%> </li>
+            <li class='friend selected'>   <%= image_tag User.find(friend.friend_id).img_url%><%= User.find(friend.friend_id).full_name %></li>
+          <% end %>
+        <%# friends who have added me and I have accepted %>
+          <% @friends.where(friend_id: current_user).where(status: "Accepted").each do |friend|%>
+            <li class='friend selected'><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
+            <%= User.find(friend.user_id).full_name %></li>
+          <% end %>
+        </ul>
+        <div class="button-dash">
+          <button type="button" class="btn-dash fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#addRelationModal">
+            Add Friend
+          </button>
+        </div>
       </div>
-    </div>
 
-
-
-
-
-    <div class="dash-card pending-friends">
-      <h3 class="pending-text">Pending Friend Requests</h3>
-      <ul>
-        <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
-          <li>
-             <div id="fb">
-
-              <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-              <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
-              <p id="info"><b><%=User.find(friend.friend_id).full_name  %></b> <br> <span>14 mutual friends</p>
-              <div id="button-block">
-                <div id="confirm">
-                  <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                    <i class="fa-solid fa-check"></i>
-                  <% end %>
+      <div class="dash-card pending-friends">
+        <h3 class="pending-text">Pending Friend Requests</h3>
+        <ul>
+          <% @friends.where(user_id: current_user).where(status: "Pending").each do |friend|%>
+            <li>
+              <div class="fb">
+                <%= image_tag User.find(friend.friend_id).img_url,  width: 50, height: 50, class: "nav-link" %>
+                <%# <img src="https://s13.postimg.org/xgla0jo4n/image.jpg" height="100" width="100" alt="Image of woman"> %>
+                <p class="info"><b><%=User.find(friend.friend_id).full_name  %></b>
+                <div class="button-block">
+                  <div class="confirm">
+                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                      <i class="fa-solid fa-check"></i>
+                    <% end %>
+                  </div>
+                  <div class="delete">
+                    <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
+                      <i class="fa-solid fa-xmark"></i>
+                    <% end %>
+                  </div>
                 </div>
-                <div id="delete">
+              </div>
+            </li>
+          <% end %>
+          </ul>
+      </div>
+
+      <div class="dash-card pending-friends">
+        <h3 class="pending-text">Friend Requests</h3>
+        <ul>
+          <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
+            <li>
+              <div class="fb">
+                <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
+                  <p class="info"><b><%=User.find(friend.user_id).full_name  %></b> <br>
+                <div class="button-block">
+                <div class="confirm">
+                    <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
+                      <i class="fa-solid fa-check"></i>
+                    <% end %>
+                </div>
+                <div class="delete">
                   <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
                     <i class="fa-solid fa-xmark"></i>
                   <% end %>
-
+                </div>
                 </div>
               </div>
-            </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-          </li>
 
-        <% end %>
-        <%# friends who have added me and I can accept/decline %>
-        <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
-          <li>
+    </div>
 
-            <div class="accept-decline">
-              <%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %><%= User.find(friend.user_id).full_name %>
-              <div>
-                <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
-                  <i class="fa-solid fa-check"></i>
+    <div class="col-6 section middle">
+      <div class="dash-card events-card">
+        <h2><strong>Incoming Events</strong></h2>
+        <div class="button-dash">
+          <button type="button" class="btn-dash fa-regular fa-calendar-plus" data-bs-toggle="modal" data-bs-target="#addEventModal">
+            Add Event
+          </button>
+        </div>
+          <% @events.each do |event|%>
+            <%= link_to event_path(event), class:"card-link" do%>
+            <div class="event-card">
+              <div class="event-info">
+                <ul>
+                  <li><%= event.title %></li>
+                  <li><%=  event.description%></li>
+
+                </ul>
+              </div>
+              <div class="avatars">
+                <% @event_members.where(event_id: event.id).each do |member|%>
+                <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
                 <% end %>
-                <%= link_to decline_user_friend_path(friend), data: { turbo_method: :delete } do %>
-                  <i class="fa-solid fa-xmark"></i>
+              </div>
+              <div id="interested">
+                <% if @event_members.where(event_id: event.id).first.is_interested === false %>
+                  <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                  <p class="btn btn-primary">Interested</p>
+                  <% end %>
+                <% else %>
+                  <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
+                  <p class="btn btn-success">You go !</p>
+                  <% end %>
                 <% end %>
               </div>
             </div>
-
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="col-5 section middle">
-    <div class="dash-card events-card">
-      <h2><strong>Incoming Events</strong></h2>
-      <div class="button-dash">
-        <button type="button" class="btn-dash fa-regular fa-calendar-plus" data-bs-toggle="modal" data-bs-target="#addEventModal">
-           Add Event
-        </button>
-      </div>
-        <% @events.each do |event|%>
-          <%= link_to event_path(event), class:"card-link" do%>
-          <div class="event-card">
-            <div class="event-info">
-              <ul>
-                <li><%= event.title %></li>
-                <li><%=  event.description%></li>
-
-              </ul>
-            </div>
-            <div class="avatars">
-              <% @event_members.where(event_id: event.id).each do |member|%>
-              <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-              <% end %>
-            </div>
-            <div id="interested">
-              <% if @event_members.where(event_id: event.id).first.is_interested === false %>
-                <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                <p class="btn btn-primary">Interested</p>
-                <% end %>
-              <% else %>
-                <%= link_to decline_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
-                <p class="btn btn-success">You go !</p>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
+            <% end %>
           <% end %>
-        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="col section right-side">
-    <div class="dash-card suggested-for-user">
-      <h3> Near You</h3>
-      <%@mysuggestions.each_with_index do |suggestion, index|%>
+    <div class="col-3 section right-side">
+      <div class="dash-card suggested-for-user">
+        <h3> Near You</h3>
+        <%@mysuggestions.each_with_index do |suggestion, index|%>
 
-      <%if index < 1%>
+        <%if index < 1%>
 
 
-      <div class="card" style="width: 18rem;">
-        <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+        <div class="card" style="width: 18rem;">
+          <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= suggestion['name'] %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%=suggestion['address']%></li>
+          <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
+          <li class="list-group-item">A third item</li>
+        </ul>
         <div class="card-body">
-          <h5 class="card-title"><%= suggestion['name'] %></h5>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+        <%end%>
+        <%end%>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%=suggestion['address']%></li>
-        <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+
+
+
+
+        </div>
       </div>
-      <%end%>
-      <%end%>
     </div>
 
-
-
-
-    </div>
   </div>
-</div>
 </div>
 
 <%# <%=@mysuggestions%>
