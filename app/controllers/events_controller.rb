@@ -44,6 +44,8 @@ class EventsController < ApplicationController
     end
     if @event.save!
       redirect_to edit_event_path(@event)
+      #redirect_to action: 'edit', id: @event.id
+
     else
       format.html { render :new, status: :unprocessable_entity }
     end
