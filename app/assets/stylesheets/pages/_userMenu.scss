@@ -1,6 +1,8 @@
 .tab-selected {
   font-weight: bold !important;
   text-decoration: underline !important;
+  background-color: white !important;
+  padding: 16px !important;
 }
 
 .flex-cards-budget {
@@ -100,4 +102,16 @@
 
 .toggle:checked + label::after {
   left: 18px;
+}
+
+th {
+  padding: 0px !important;
+}
+
+td {
+  padding: 0px !important;
+}
+
+.dropdown-item {
+  padding: 16px !important;
 }
