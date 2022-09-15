@@ -71,7 +71,7 @@
             <%= link_to event_path(event), class:"card-link" do%>
 
             <div class="card-trip">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <%=  image_tag event.google_img %>
               <div class="card-trip-infos">
                 <div>
                   <h2><%= event.title %></h2>
