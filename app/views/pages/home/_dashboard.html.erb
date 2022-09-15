@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-3 section left-side">
-      <div class="dash-card friends-list">
+      <div class="dash-card friends-list sticky">
         <h3 class="friends-title">Friends<i class="fas fa-users"></i></h3>
         <div class="button-dash">
           <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addRelationModal">
@@ -27,7 +27,7 @@
           <% end %>
 
           <%# friends have added me and I can accept/decline %>
-          <div class="pending-friends">
+          <div class="pending-friends" >
             <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
                 <div class="friend-accept">
                   <div class="friend">
@@ -60,7 +60,7 @@
 
 
     <div class="col-6 section middle">
-      <div class="dash-card events-card">
+      <div class="dash-card events-card sticky">
         <h2>Upcoming Events</h2>
         <div class="button-dash">
           <button type="button" class="btn-dash" data-bs-toggle="modal" data-bs-target="#addEventModal">
@@ -99,7 +99,7 @@
     </div>
 
     <div class="col-3 section right-side">
-      <div class="dash-card suggested-for-user">
+      <div class="dash-card suggested-for-user sticky">
         <h3>Near You<i class="fa-solid fa-location-dot"></i></h3>
         <%@mysuggestions.each_with_index do |suggestion, index|%>
           <%if index < 1%>

@@ -118,4 +118,37 @@ event3 = Event.create!(
 )
 EventMember.create(user_id: user9.id, event_id: event3.id)
 
+event3 = Event.create!(
+  title: 'Pottery Class',
+  description: 'Join me for a fun and creative pottery class.',
+  user_id: user3.id,
+  event_date: Date.today + 30
+)
+EventMember.create(user_id: user9.id, event_id: event3.id)
+
+event3 = Event.create!(
+  title: 'Pottery Class',
+  description: 'Join me for a fun and creative pottery class.',
+  user_id: user3.id,
+  event_date: Date.today + 30
+)
+EventMember.create(user_id: user9.id, event_id: event3.id)
+
+event3 = Event.create!(
+  title: 'Pottery Class',
+  description: 'Join me for a fun and creative pottery class.',
+  user_id: user3.id,
+  event_date: Date.today + 30
+)
+EventMember.create(user_id: user9.id, event_id: event3.id)
+
+event3 = Event.create!(
+  title: 'Pottery Class',
+  description: 'Join me for a fun and creative pottery class.',
+  user_id: user3.id,
+  event_date: Date.today + 30
+)
+EventMember.create(user_id: user9.id, event_id: event3.id)
+
+
 puts 'Events created!'
