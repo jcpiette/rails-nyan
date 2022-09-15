@@ -64,13 +64,13 @@ class EventsController < ApplicationController
     location = [ User.find(session[:user_id].latitude, User.find(session[:user_id]).longitude)]
     type = User.find(session[:user_id]).preference_type
     minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
-    radius = '500'
+    radius = '100'
   end
 
   def suggestions(users)
     location = find_event_location(users)
     type = find_event_type(users)
-    radius = '500'
+    radius = '1000'
     fminprice = find_event_budget(users)
     fmaxprice = find_event_budget(users)
     minprice = fminprice.to_i
@@ -144,7 +144,8 @@ class EventsController < ApplicationController
     budgets = users.map(&:preference_budget)
     budgets_to_i = budgets.map(&:to_i)
     budgets_to_f = budgets_to_i.map(&:to_f)
-    @budget = (budgets_to_f.sum / budgets.count)
+    budget_dp = (budgets_to_f.sum / budgets.count)
+    @budget = budget_dp.floor()
   end
 
   def find_event_location(users)
@@ -154,7 +155,9 @@ class EventsController < ApplicationController
     float_longitudes = string_longitudes.map(&:to_f)
     average_latitude = (float_latitudes.sum / float_latitudes.count)
     average_longitude = (float_longitudes.sum / float_longitudes.count)
-    @location = "#{average_latitude.to_s},#{average_longitude.to_s}"
+    avg_lat = average_latitude.round(5)
+    avg_lng = average_longitude.round(5)
+    @location = "#{average_avg_lat.to_s},#{avg_lng.to_s}"
   end
 
   # PATCH/PUT /events/1 or /events/1.json
