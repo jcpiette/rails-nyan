@@ -18,3 +18,9 @@
 @import "pages/dashboard";
 
 @import "events/show";
+
+body {
+  h2, h3, p, li, a{font-family: 'Roboto', sans-serif !important;
+  }
+
+}
