@@ -10,14 +10,14 @@
         <div class="card-haha mb-3" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
           <div class="row g-0 choose-event-cards">
             <div class="col-md-4">
-            <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start image-suggestion" alt="...">
+            <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid image-suggestion" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"><%= suggestion['name'] + "-  #{label_array[index]}" %></h5>
                 <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
                 <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
-                <a href="<%="#{suggestion['website']}"%>" target="_blank" class="card-linkx card-text-bottom">Visit!</a>
+                <a href="<%="#{suggestion['website']}"%>" target="_blank" class="card-linkx card-text-bottom">Take a Closer Look</a>
                 <button class="button card-text-bottom" id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">📍</button>
               </div>
             </div>

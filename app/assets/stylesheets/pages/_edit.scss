@@ -1,8 +1,6 @@
 /*This is for container of the page */
 #edit-events-container {
   width: 100%;
-  height: 75.5%;
-  background-color: #D2DAFF;
   position: absolute;
   display: flex;
  }
@@ -15,38 +13,34 @@
   background-color: #EEF1FF;
  }
 
- /*This is for the form */
- #edit-events-form {
-
-  height: 50%
- }
+//  works for displaying inputs
 .form-inputs-edit {
   display: flex;
-  flex-wrap:wrap;
-  border-color: aqua;
+  flex-direction: column;
+  justify-content: center;
  }
+
 input[name="event[title]"] {
   width: 418px;
-  margin-left: 3px;
   background-color: #D2DAFF;
-  border-radius: 5px;
  }
 
 input[name="event[description]"] {
   width: 418px;
   height: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   overflow: wrap;
   background-color: #D2DAFF;
   border-color: grey;
-  border-radius: 5px;
  }
+
 select {
-  margin-top: 32px;
   height: 50px;
   width: 77px;
   background-color: #D2DAFF;
+  margin-bottom: 10px;
  }
+
 input[name="event[location]"] {
   width: 418px;
   height: 50px;
@@ -57,64 +51,55 @@ input[name="event[location]"] {
 input[name="commit"] {
   width: 100%;
   height: 50px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: grey;
   background-color: #D2DAFF;
  }
+
  /*This is for the event cards*/
+
 #edit-events-events {
   display: flex;
   flex-wrap: wrap;
  }
 
  #edit-events-events > .edit-events-card {
-  width: 50%;
-  height: 154px;
-  border-style: solid;
+  width: 200px;
+  height: 150px;
  }
 
  .card-text {
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
  }
 
  .card-title {
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
  }
 
  .card-haha {
   width: 50%;
-  border-color: grey;
-  border-bottom-style: solid;
-  border-left-style: solid ;
-  border-top-style: solid;
  }
 
  .card-haha img {
-  height: 199px !important;
-  width: 250px !important;
-
+  height: 125px;
+  width: 150px;
  }
 
- /*This is for the map div*/
+//  map correct width
  #edit-events-right-container{
   width: 50%;
  }
+
+// map correct height
  #map {
-  height: 734px;
-  width: auto;
+  height: 625px;
  }
 
+// closer look link
 .card-linkx {
-  color: black;
+  color: #B0B2FE;
 }
-
-.button {
-  border-radius: 50%;
-}
-
+// closer look and select location link
 .card-text-bottom {
   text-align: center;
   margin-left: 50px;
