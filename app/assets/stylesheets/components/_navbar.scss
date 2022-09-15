@@ -1,9 +1,11 @@
 .nyan-navbar {
-  background-color: #0C2445;
+  background-color: #AAC4FF;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .container-fluid {
@@ -44,7 +46,7 @@
 }
 
 .fa-bell {
-  color: #0c2345;
+  color: white;
 }
 
 .btn-info {
@@ -54,14 +56,15 @@
 }
 
 .badge-light {
-  color: #0c2345 !important;
+  color: white !important;
 }
 
 .login{
-margin-bottom: 20px;
+  background-color: white;
+  color: #AAC4FF;
 }
 
 .signup {
-
-  margin-bottom: 20px;
+  color: white;
+  border: 1px solid white !important;
 }
