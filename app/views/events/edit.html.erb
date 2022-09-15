@@ -7,10 +7,10 @@
     <div id="edit-events-events">
       <% @suggestions.each_with_index do |suggestion, index|%>
       <% if index <= 3%>
-        <div class="card mb-3 event-cards" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
-          <div class="row g-0">
+        <div class="card-haha mb-3" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
+          <div class="row g-0 choose-event-cards">
             <div class="col-md-4">
-            <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start image" alt="...">
+            <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid rounded-start image-suggestion" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">

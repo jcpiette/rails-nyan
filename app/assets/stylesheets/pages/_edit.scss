@@ -1,18 +1,5 @@
-
-
- /*This is for container of the page */
-// #edit-events-container {
-
-// }
-.form-inputs {
-  margin-top: 15px;
-
-}
-.event-container {
-  display: flex;
-}
-.layout {
-  margin-top: 15px;
+/*This is for container of the page */
+#edit-events-container {
   width: 100%;
   height: 75.5%;
   background-color: #D2DAFF;
@@ -33,19 +20,19 @@
 
   height: 50%
  }
- .form-inputs {
+.form-inputs {
   display: flex;
   flex-wrap:wrap;
   border-color: aqua;
  }
- input[name="event[title]"] {
+input[name="event[title]"] {
   width: 400px;
   margin-left: 3px;
   background-color: #D2DAFF;
   border-radius: 5px;
  }
 
- input[name="event[description]"] {
+input[name="event[description]"] {
   width: 400px;
   padding-bottom: 50px;
   overflow: wrap;
@@ -53,52 +40,29 @@
   border-color: grey;
   border-radius: 5px;
  }
- #edit-events-form > select {
+select {
   height: 10px;
  }
- input[name="event[location]"] {
+input[name="event[location]"] {
   width: 400px;
   height: 50px;
   background-color: #D2DAFF;
  }
 
+
 input[name="commit"] {
-  width: 320px;
-  margin-left: 3px;
+  width: 100%;
   height: 50px;
   border-radius: 5px;
   border-style: solid;
   border-color: grey;
   background-color: #D2DAFF;
  }
-
  /*This is for the event cards*/
- #edit-events-events {
+#edit-events-events {
   display: flex;
   flex-wrap: wrap;
  }
-
-
-.card-text {
-  margin: 0;
-}
-
-.form-label {
-  text-align: center;
-}
-.event-cards {
-  background-color: #f0e8d4;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-
-
-.image {
-  text-align: left;
-  width:250px;
-  height: 196px;
-}
 
  #edit-events-events > .edit-events-card {
   width: 50%;
@@ -116,19 +80,19 @@ input[name="commit"] {
   text-align: center;
  }
 
- .event-cards {
+ .card-haha {
   width: 50%;
  }
- .event-cards img {
-  width: 200px;
-  height: 200px;
+
+ .card-haha img {
+  height: 199px !important;
+  width: 250px !important;
  }
 
  /*This is for the map div*/
  #edit-events-right-container{
   width: 50%;
  }
-
  #map {
   height: 734px;
   width: auto;
