@@ -8,7 +8,7 @@
       <%= f.input :description, placeholder: 'Anything special happening?', class: "form-top", my_wrapper_tag: :p%>
     </div>
     <%= f.input :location,:as => :hidden, class: "form-location"%>
-      <%= f.input :google_img,:as => :hidden %>
+    <%= f.input :google_img,:as => :hidden, class: "form-google_img"%>
     <div class="form-inputs-edit-time">
       <%= f.date_select :event_date %>
       <%= f.time_select :event_date, ignore_date: true %>
@@ -25,5 +25,11 @@
 <script>
 function myfunction(name) {
   document.getElementById('event_location').value = name
-}
+};
+
+function myfunction2(url) {
+  document.getElementById('event_google_img').value = url
+};
+
+
 </script>

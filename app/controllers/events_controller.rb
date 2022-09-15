@@ -104,6 +104,9 @@ class EventsController < ApplicationController
       xx = json_file
       photo_references = []
       counter2 = 0
+
+      next if json_file['result']['photos'].nil?
+
       json_file['result']['photos'].each do |reference|
         if counter2 < 2
           counter2 += 1
@@ -156,7 +159,6 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
-    raise
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to root_path, notice: "Event was successfully updated." }
@@ -188,6 +190,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:title, :description, :location, :event_date)
+    params.require(:event).permit(:title, :description, :location, :event_date, :google_img)
   end
 end
