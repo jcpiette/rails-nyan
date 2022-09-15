@@ -69,19 +69,15 @@
         </div>
           <% @events.each do |event|%>
             <%= link_to event_path(event), class:"card-link" do%>
-              <div class="event-card">
-                <div class="event-info">
-                  <ul>
-                    <li><%= event.title %></li>
-                    <li><%=  event.description%></li>
-                  </ul>
+
+            <div class="card-trip">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= event.title %></h2>
+                  <p><%=  event.description%></p>
                 </div>
-                <div class="avatars">
-                  <% @event_members.where(event_id: event.id).each do |member|%>
-                  <%= image_tag User.find(member.user_id).img_url,  width: 50, height: 50, class: "nav-link" %>
-                  <% end %>
-                </div>
-                <div id="interested">
+
                   <% if @event_members.where(event_id: event.id).first.is_interested === false %>
                     <%= link_to accept_event_member_path(@event_members.where(event_id: event.id).first), data: { turbo_method: :post } do %>
                       <p class="btn-dash">Interested?</p>
@@ -91,8 +87,11 @@
                       <p class="btn-dash-go">Going!</p>
                     <% end %>
                   <% end %>
-                </div>
+
+                <%=  image_tag User.find(event.user_id).img_url, class: "card-trip-user avatar-bordered" %>
               </div>
+            </div>
+
             <% end %>
           <% end %>
       </div>
