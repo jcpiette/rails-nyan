@@ -15,11 +15,9 @@
           <div class="notification" data-controller="notification-subscription" data-notification-subscription-notification-id-value="<%= current_user.id %>">
             <li class="nav-item dropdown notifications" data-notification-subscription-target="notifications">
                 <a id="navbarNotifDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa-solid fa-bell"></i><span class="badge badge-light" data-notification-subscription-target="notificationsCount"> <%= @notifications.count %> </span>
+                    <i class="fa-solid fa-bell"></i><span class="badge" data-notification-subscription-target="notificationsCount" style="color:white"> <%= @notifications.count %> </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarNotifDropdown" data-notification-subscription-target="notificationsMessage">
-                  <li class="dropdown-item">My Notifcations</li>
-                  <li><hr class="dropdown-divider"></li>
                   <%= render 'notifcations/popover' %>
                 </ul>
             </li>
