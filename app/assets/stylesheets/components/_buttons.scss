@@ -1,15 +1,21 @@
 .btn-dash {
-  border-radius: 10px;
-  border: solid 1px #124073;
-  color: #124073;
-  padding: 5px;
+  border: solid 1px rgb(177, 178, 255);
+  color: rgb(177, 178, 255);
+  padding: 10px;
   text-decoration: none;
-  box-shadow: 3px 3px #124073;
+  background-color: white;
 }
 
 .btn-dash:hover {
   color: white;
-  background-color: #124073;
+  background-color: rgb(177, 178, 255);
   transition: 0.3s;
-  box-shadow: 0px 0px #124073;
+}
+
+.btn-dash-go {
+  color: white;
+  background-color: rgb(177, 178, 255);
+  border: solid 1px rgb(177, 178, 255);
+  padding: 10px;
+  text-decoration: none;
 }

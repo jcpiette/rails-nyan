@@ -1,0 +1,131 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 260px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.card-product {
+  overflow: hidden;
+  height: 225px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border: 5px solid white;
+}
+
+.card-product img {
+  height: 100%;
+  width: 650px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 37px;
+  font-weight: bold;
+  color: #212529;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 18px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color:#212529;
+}
+
+.card-product  > #odometer {
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  font-size: 45px;
+  width: 45%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  margin-top: 0px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+#booking-card h2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.odometer{
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-container {
+  text-align: center;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin-bottom: 3px;
+  background-color: #212529
+
+}
+
+.card-container p{
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 15px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 2px 2px 5px lightgray;
+  height: 400px;
+  width: 300px;
+  text-align: center;
+  font-size: smaller;
+  border-radius: 5px;
+}
+
+.card img{
+  height: 300px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 5%;
+}
+
+.system-flex-container {
+  border-style: solid;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 600px;
+  width: 100%;
+ }
+
+.system-flex-container > .planet {
+  width: 150px;
+  margin: 30px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 15px;
+}

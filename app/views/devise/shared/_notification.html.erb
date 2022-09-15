@@ -6,18 +6,18 @@
 
     <div class="form-inputs">
       <%= f.input :notification_friend_invite,
-              required: true %>
+              required: true, input_html: { class: "toggle" } %>
       <%= f.input :notification_event_invite,
-          required: true %>
+          required: true, input_html: { class: "toggle" } %>
       <%= f.input :notification_event_update,
-                  required: true %>
+                  required: true, input_html: { class: "toggle" } %>
       <%= f.input :notification_friend_update,
-                  required: true %>
+                  required: true, input_html: { class: "toggle" } %>
     </div>
     <br>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      <%= f.button :submit, "Update", class: "btn btn-flat" %>
     </div>
   <% end %>
 

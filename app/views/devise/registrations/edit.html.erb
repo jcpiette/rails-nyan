@@ -1,7 +1,9 @@
 <div class="user-settings-container" data-controller="user-menu-tab avatar">
-    <%= render "devise/shared/userMenu" %>
+
+  <%= render "devise/shared/userMenu" %>
+
   <div class =user-settings-sub-info>
-    <%= link_to "⬅", :back, class: "previous" %>
+    <%= link_to "", :back, class: "fa-sharp fa-solid fa-arrow-left" %>
 
     <%= render "devise/shared/user_info" %>
 
@@ -11,6 +13,5 @@
 
     <%= render "devise/shared/preferences" %>
 
-    <br>
   </div>
 </div>

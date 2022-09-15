@@ -5,7 +5,7 @@
 
       <%= image_tag current_user.img_url,  width: 150, height: 150, class: "nav-link", data: {avatar_target: "avatar", action: "click->avatar#showFileInterface"} %>
         <tr>
-          <th scope="row">
+          <th scope="row" >
             <%= link_to '/', class: "dropdown-item tab-selected", remote: true, data: { action: 'click->user-menu-tab#displayAccount', user_menu_tab_target: "button" } do %>
               <i class="fa-solid fa-user-shield"></i>  Account
             <% end %>
@@ -39,7 +39,7 @@
   <div class="delete-account">
     <p>Unhappy?</p>
     <p>
-      <%= link_to "Delete my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+      <%= link_to "Delete my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-ghost" %>
     </p>
   </div>
 </div>
