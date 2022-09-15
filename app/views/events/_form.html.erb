@@ -3,8 +3,10 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs-edit">
-    <%= f.input :title, placeholder:'Coolest event ever!', class: "form-top"%>
-    <%= f.input :description, placeholder: 'Anything special happening?', class: "form-top", my_wrapper_tag: :p%>
+    <div class="form-top">
+      <%= f.input :title, placeholder:'Coolest event ever!', class: "form-top"%>
+      <%= f.input :description, placeholder: 'Anything special happening?', class: "form-top", my_wrapper_tag: :p%>
+    </div>
     <%= f.input :location,:as => :hidden, class: "form-location"%>
     <div class="form-inputs-edit-time">
       <%= f.date_select :event_date %>
@@ -13,7 +15,7 @@
   </div>
 
   <div class="form-actions">
-      <%= f.button :submit%>
+      <%= f.button :submit, class:"btn-dash"%>
   </div>
 
 <% end %>

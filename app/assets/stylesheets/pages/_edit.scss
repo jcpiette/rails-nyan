@@ -1,4 +1,9 @@
 /*This is for container of the page */
+.form-top {
+  display: flex;
+  justify-content: space-between;
+}
+
 #edit-events-container {
   width: 100%;
   position: absolute;
@@ -10,48 +15,50 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  background-color: #EEF1FF;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
  }
 
 //  works for displaying inputs
 .form-inputs-edit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  color: #B0B2FE;
  }
 
 input[name="event[title]"] {
-  width: 418px;
-  background-color: #D2DAFF;
+  width: 350px;
+  background-color: #AAC4FF;
+  color: white;
  }
 
 input[name="event[description]"] {
-  width: 418px;
-  height: 100px;
-  padding-bottom: 10px;
+  width: 350px;
+  height: 90px;
   overflow: wrap;
-  background-color: #D2DAFF;
-  border-color: grey;
+  background-color: #AAC4FF;
+  color: white;
  }
 
 select {
   height: 50px;
   width: 77px;
-  background-color: #D2DAFF;
+  background-color: #AAC4FF;
   margin-bottom: 10px;
+  color: white;
  }
 
 input[name="event[location]"] {
   width: 418px;
   height: 50px;
-  background-color: #D2DAFF;
+  background-color: #AAC4FF;
+  color: white;
  }
 
 
 input[name="commit"] {
-  width: 100%;
+  width: 50%;
   height: 50px;
-  background-color: #D2DAFF;
  }
 
  /*This is for the event cards*/
@@ -59,6 +66,7 @@ input[name="commit"] {
 #edit-events-events {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 0;
  }
 
  #edit-events-events > .edit-events-card {
@@ -69,11 +77,15 @@ input[name="commit"] {
  .card-text {
   font-size: 18px;
   text-align: center;
+  color:#B0B2FE;
+  margin: 0;
+
  }
 
  .card-title {
   font-size: 20px;
   text-align: center;
+  color: #B0B2FE;
  }
 
  .card-haha {
