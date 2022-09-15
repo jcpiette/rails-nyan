@@ -1,8 +1,17 @@
 import autocomplete from 'js-autocomplete';
 
 const autocompleteSearch = () => {
-  const users = JSON.parse(document.getElementById('search-data').dataset.users)
-  const searchInput = document.getElementById('user_friend_user');
+  let users;
+  let searchInput;
+  if (document.getElementById('search-data')) {
+    users = JSON.parse(document.getElementById('search-data').dataset.users);
+    searchInput = document.getElementById('user_friend_user');
+  } else {
+    console.log("found search data")
+    users = false;
+    searchInput = false;
+    console.log(users)
+  }
 
   if (users && searchInput) {
     new autocomplete({
