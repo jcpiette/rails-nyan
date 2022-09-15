@@ -4,6 +4,8 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .container-fluid {
@@ -58,10 +60,11 @@
 }
 
 .login{
-margin-bottom: 20px;
+  background-color: white;
+  color: #AAC4FF;
 }
 
 .signup {
-
-  margin-bottom: 20px;
+  color: white;
+  border: 1px solid white !important;
 }
