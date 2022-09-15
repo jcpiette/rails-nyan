@@ -2,12 +2,14 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class="form-inputs">
+<div class="form-inputs-edit">
   <%= f.input :title, placeholder:'Coolest event ever!', class: "form-top"%>
   <%= f.input :description, placeholder: 'Anything special happening?', class: "form-top", my_wrapper_tag: :p%>
+  <%= f.input :location, input_html: { value: 'Put your pointer over try it!' }, class: "form-location"%>
+  <div class="form-inputs-edit-time">
   <%= f.date_select :event_date %>
   <%= f.time_select :event_date, ignore_date: true %>
-  <%= f.input :location, input_html: { value: 'Put your pointer over try it!' }, class: "form-location"%>
+  </div>
 </div>
 
 
