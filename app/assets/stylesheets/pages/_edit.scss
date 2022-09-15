@@ -1,5 +1,9 @@
-@import 'bootstrap/scss/bootstrap';
 
+
+ /*This is for container of the page */
+#edit-events-container {
+
+}
 .form-inputs {
   margin-top: 15px;
 
@@ -10,41 +14,53 @@
 .layout {
   margin-top: 15px;
   width: 100%;
-  height: 100%;
+  height: 75.5%;
+  background-color: #D2DAFF;
+  position: absolute;
+  display: flex;
+ }
+
+ /*This is for left container of the page. It holds the events and the form */
+ #edit-events-left-container {
   display: flex;
   flex-direction: column;
-}
-.form-and-map {
-  margin-right: 150px;
+  width: 50%;
+  background-color: #EEF1FF;
+ }
 
-}
+ /*This is for the form */
+ #edit-events-form {
 
-
-input[name="event[title]"] {
+  height: 50%
+ }
+ .form-inputs {
+  display: flex;
+  flex-wrap:wrap;
+  border-color: aqua;
+ }
+ input[name="event[title]"] {
   width: 400px;
   margin-left: 3px;
-  background-color: #f0e8d4;
-  border-color: grey;
+  background-color: #D2DAFF;
   border-radius: 5px;
-}
+ }
 
-input[name="event[description]"] {
+ input[name="event[description]"] {
   width: 400px;
-  margin-left: 3px;
   padding-bottom: 50px;
   overflow: wrap;
-  background-color: #f0e8d4;
+  background-color: #D2DAFF;
   border-color: grey;
   border-radius: 5px;
-}
-
-
-input[name="event[location]"] {
+ }
+ #edit-events-form > select {
+  height: 10px;
+ }
+ input[name="event[location]"] {
   width: 400px;
-  margin-left: 3px;
   height: 50px;
-  background-color: #f0e8d4;
-}
+  background-color: #D2DAFF;
+ }
 
 input[name="commit"] {
   width: 320px;
@@ -53,6 +69,14 @@ input[name="commit"] {
   border-radius: 5px;
   border-style: solid;
   border-color: grey;
+  background-color: #D2DAFF;
+ }
+ /*This is for the event cards*/
+ #edit-events-events {
+  display: flex;
+  flex-wrap: wrap;
+ }
+
 
 }
 .card-text {
@@ -75,36 +99,36 @@ input[name="commit"] {
   width:250px;
   height: 196px;
 
-}
 
-.button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-  border-radius: 6px;
-  border: none;
-
-  color: #fff;
-  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
-   background-origin: border-box;
-  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button:focus {
-  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
-  outline: 0;
-}
-
-#map {
-  margin-top: 20px;
-  height: 410px;
-  width: 410px;
-  border-radius: 5px;
+ #edit-events-events > .edit-events-card {
+  width: 50%;
+  height: 154px;
   border-style: solid;
-  border-color: grey;
-}
+ }
+
+ .card-text {
+  font-size: 11px;
+  text-align: center;
+ }
+
+ .card-title {
+  font-size: 22px;
+  text-align: center;
+ }
+
+ .event-cards {
+  width: 50%;
+ }
+
+ .image {
+  height: 199px;
+  width: 250px;
+ }
+ /*This is for the map div*/
+ #edit-events-right-container{
+  width: 50%;
+ }
+ #map {
+  height: 734px;
+  width: auto;
+ }

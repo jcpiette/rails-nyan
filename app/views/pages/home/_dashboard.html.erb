@@ -30,10 +30,10 @@
           <div class="pending-friends">
             <% @friends.where(friend_id: current_user).where(status: "Pending").each do |friend|%>
                 <div class="friend-accept">
-                  <div class="friend-info">
-                    <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
-                    <p><%=User.find(friend.user_id).full_name %></p>
-                  <div>
+                  <div class="friend">
+                      <p><%= image_tag User.find(friend.user_id).img_url,  width: 50, height: 50, class: "nav-link" %></p>
+                      <p><%=User.find(friend.user_id).full_name %></p>
+                  </div>
                   <div class="friend-links">
                     <%= link_to accept_user_friend_path(friend), data: { turbo_method: :post } do %>
                       <i class="fa-regular fa-square-check"></i>
@@ -43,7 +43,6 @@
                     <% end %>
                   </div>
                 </div>
-
             <% end %>
           </div>
           <div class="pending-friends">
@@ -107,8 +106,8 @@
             <div class="suggestion-card" style="width: 18rem;">
               <img src="<%="#{suggestion['photos'][0]}"%>" class="img-fluid" alt="...">
               <div class="card-body">
-                <ul class="list-group">
-                  <li class="list-group-item"><%= suggestion['name'] %></li>
+                <ul>
+                  <li class="list-group-item"><strong><%= suggestion['name'] %></strong></li>
                   <li class="list-group-item"><%=suggestion['address']%></li>
                   <li class="list-group-item"><%= '⭐'*suggestion['rating'].to_i%></li>
                 </ul>
@@ -118,7 +117,6 @@
         <%end%>
       </div>
     </div>
-
   </div>
 </div>
 

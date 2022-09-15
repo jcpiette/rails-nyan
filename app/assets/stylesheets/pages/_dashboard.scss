@@ -1,4 +1,6 @@
-
+.container {
+  width: 100%;
+}
 
 .section {
   padding: 20px;
@@ -43,7 +45,7 @@
   padding: 20px;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  margin: 20px;
 }
 
 .avatars {
@@ -61,6 +63,11 @@ ul {
   color: white;
 }
 
+.card-link:hover {
+  color: #EEF2FF;
+  transition: 0.3s;
+}
+
 .friend {
   display: flex;
   align-items: center;
@@ -69,12 +76,6 @@ ul {
 .pending-friends {
   border-top: 1px solid rgb(210, 218, 255);
   padding-top: 25px;
-}
-
-.friend-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .fa-solid, .fas {
@@ -87,6 +88,21 @@ ul {
 
 .friend-links > a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 30px;
   color: #AAC4FF;
+}
+
+.friend-links > a:hover {
+  color: #B1B2FF;
+  transition: 0.3s;
+}
+
+.friend-links {
+  margin-bottom: 20px;
+}
+
+.friend-accept {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
