@@ -17,8 +17,9 @@
                 <h5 class="card-title"><%= suggestion['name'] + "-  #{label_array[index]}" %></h5>
                 <p class="card-text"><%= '⭐'*suggestion['rating'].to_i%></p>
                 <p class="card-text"><%= '£'*suggestion['price level'].to_i%></p>
-                <a href="<%="#{suggestion['website']}"%>" target="_blank" class="card-linkx card-text-bottom" onmouseover="myfunction2('<%=suggestion['photos'][0]%>')" >Visit!</a>
+                <a href="<%="#{suggestion['website']}"%>" target="_blank" class="card-linkx card-text-bottom" >Visit!</a>
                 <button class="button card-text-bottom" id="button-<%=index%>" onmouseover="myfunction('<%=suggestion['name']%> <%=suggestion['address']%>')">📍</button>
+                <button class="button card-text-bottom" id="button-<%=index%>" onmouseover="myfunction2('<%=suggestion['photos'][0]%>')">📍</button>
               </div>
             </div>
           </div>
