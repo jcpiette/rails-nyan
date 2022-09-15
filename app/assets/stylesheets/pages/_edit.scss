@@ -1,8 +1,11 @@
 /*This is for container of the page */
+.form-top {
+  display: flex;
+  justify-content: space-between;
+}
+
 #edit-events-container {
   width: 100%;
-  height: 75.5%;
-  background-color: #D2DAFF;
   position: absolute;
   display: flex;
  }
@@ -12,109 +15,103 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  background-color: #EEF1FF;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
  }
 
- /*This is for the form */
- #edit-events-form {
-
-  height: 50%
- }
+//  works for displaying inputs
 .form-inputs-edit {
-  display: flex;
-  flex-wrap:wrap;
-  border-color: aqua;
+  color: #B0B2FE;
  }
+
 input[name="event[title]"] {
-  width: 418px;
-  margin-left: 3px;
-  background-color: #D2DAFF;
-  border-radius: 5px;
+  width: 350px;
+  background-color: #AAC4FF;
+  color: white;
  }
 
 input[name="event[description]"] {
-  width: 418px;
-  height: 100px;
-  padding-bottom: 50px;
+  width: 350px;
+  height: 90px;
   overflow: wrap;
-  background-color: #D2DAFF;
-  border-color: grey;
-  border-radius: 5px;
+  background-color: #AAC4FF;
+  color: white;
  }
+
 select {
-  margin-top: 32px;
   height: 50px;
   width: 77px;
-  background-color: #D2DAFF;
+  background-color: #AAC4FF;
+  margin-bottom: 10px;
+  color: white;
  }
+
 input[name="event[location]"] {
   width: 418px;
   height: 50px;
-  background-color: #D2DAFF;
+  background-color: #AAC4FF;
+  color: white;
  }
 
 
 input[name="commit"] {
-  width: 100%;
+  width: 50%;
   height: 50px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: grey;
-  background-color: #D2DAFF;
  }
+
  /*This is for the event cards*/
+
 #edit-events-events {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 0;
  }
 
  #edit-events-events > .edit-events-card {
-  width: 50%;
-  height: 154px;
-  border-style: solid;
+  width: 200px;
+  height: 150px;
  }
 
  .card-text {
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
+  color:#B0B2FE;
+  margin: 0;
+
  }
 
  .card-title {
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
+  color: #B0B2FE;
  }
 
  .card-haha {
   width: 50%;
-  border-color: grey;
-  border-bottom-style: solid;
-  border-left-style: solid ;
-  border-top-style: solid;
  }
 
  .card-haha img {
-  height: 199px !important;
-  width: 250px !important;
-
+  height: 125px;
+  width: 150px;
  }
 
- /*This is for the map div*/
+//  map correct width
  #edit-events-right-container{
   width: 50%;
  }
+
+// map correct height
  #map {
-  height: 734px;
-  width: auto;
+  height: 625px;
  }
 
+// closer look link
 .card-linkx {
-  color: black;
+  color: #B0B2FE;
 }
-
-.button {
-  border-radius: 50%;
-}
-
+// closer look and select location link
 .card-text-bottom {
   text-align: center;
   margin-left: 50px;
