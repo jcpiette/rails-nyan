@@ -13,3 +13,8 @@ const toggleActiveClass = (event) => {
  const myfunction = (name) => {
    document.getElementById('event_location').value = name;
  };
+
+ business.forEach(toggleActiveOnClick);
+ const myfunction2 = (url) => {
+  document.getElementById('event_google_img').value = url;
+ }
