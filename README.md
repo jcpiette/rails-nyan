@@ -7,6 +7,8 @@
 * yarn add bootstrap @popperjs/core
 * yarn add @rails/actioncable
 * yarn add js-autocomplete
+* yarn add @mapbox/mapbox-gl-geocoder
+
 
 
 This README would normally document whatever steps are necessary to get the
