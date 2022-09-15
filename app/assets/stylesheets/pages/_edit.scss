@@ -20,20 +20,21 @@
 
   height: 50%
  }
-.form-inputs {
+.form-inputs-edit {
   display: flex;
   flex-wrap:wrap;
   border-color: aqua;
  }
 input[name="event[title]"] {
-  width: 400px;
+  width: 418px;
   margin-left: 3px;
   background-color: #D2DAFF;
   border-radius: 5px;
  }
 
 input[name="event[description]"] {
-  width: 400px;
+  width: 418px;
+  height: 100px;
   padding-bottom: 50px;
   overflow: wrap;
   background-color: #D2DAFF;
@@ -41,10 +42,13 @@ input[name="event[description]"] {
   border-radius: 5px;
  }
 select {
-  height: 10px;
+  margin-top: 32px;
+  height: 50px;
+  width: 77px;
+  background-color: #D2DAFF;
  }
 input[name="event[location]"] {
-  width: 400px;
+  width: 418px;
   height: 50px;
   background-color: #D2DAFF;
  }
@@ -71,7 +75,7 @@ input[name="commit"] {
  }
 
  .card-text {
-  font-size: 11px;
+  font-size: 22px;
   text-align: center;
  }
 
@@ -82,11 +86,16 @@ input[name="commit"] {
 
  .card-haha {
   width: 50%;
+  border-color: grey;
+  border-bottom-style: solid;
+  border-left-style: solid ;
+  border-top-style: solid;
  }
 
  .card-haha img {
   height: 199px !important;
   width: 250px !important;
+
  }
 
  /*This is for the map div*/
@@ -97,3 +106,16 @@ input[name="commit"] {
   height: 734px;
   width: auto;
  }
+
+.card-linkx {
+  color: black;
+}
+
+.button {
+  border-radius: 50%;
+}
+
+.card-text-bottom {
+  text-align: center;
+  margin-left: 50px;
+}
