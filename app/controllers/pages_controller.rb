@@ -54,6 +54,8 @@ class PagesController < ApplicationController
 
       photo_references = []
       counter2 = 0
+      next if json_file['result']['photos'].nil?
+
       json_file['result']['photos'].each do |reference|
         if counter2 < 2
           counter2 += 1
