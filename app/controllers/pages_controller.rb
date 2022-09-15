@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     radius = '1000'
     fminprice = "3"
     fmaxprice = "4"
-    minprice = (fminprice.to_i - 1)
+    minprice = fminprice.to_i
     maxprice = fmaxprice.to_i
     # make the json
     url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
