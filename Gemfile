@@ -82,4 +82,4 @@ gem "sassc-rails"
 gem "devise"
 gem 'nested_form'
 gem 'geocoder'
-gem 'redis'
+gem 'redis', "~> 4.8.0"
