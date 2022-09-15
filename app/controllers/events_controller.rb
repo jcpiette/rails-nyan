@@ -157,7 +157,7 @@ class EventsController < ApplicationController
     average_longitude = (float_longitudes.sum / float_longitudes.count)
     avg_lat = average_latitude.round(5)
     avg_lng = average_longitude.round(5)
-    @location = "#{average_avg_lat.to_s},#{avg_lng.to_s}"
+    @location = "#{avg_lat.to_s},#{avg_lng.to_s}"
   end
 
   # PATCH/PUT /events/1 or /events/1.json
