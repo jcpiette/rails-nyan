@@ -94,50 +94,28 @@ event1 = Event.create!(
   description: 'Meeting up for lunch with the gang.',
   user_id: user3.id,
   event_date: Date.today + 10,
-  location: '138 Kingsland Road'
+  location: '138 Kingsland Road',
+  google_img: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AcYSjRg_Hq7x4FLHZ5qgF58pxoSr-93O4YQjgeRTOLFz7leTtSliMAqXJK0FjAhqAkPmDoMeRw-43H92hMiorcLTU_OmsYnkfZv9vtVy6buq-bSq8jMSANR0Hx3N2sHy2F-Gm7b2wwxSbwdQ76THHo0HVhlJofjp-HQFSgOFSTLvRfNwMFo&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c"
 )
 EventMember.create!(user_id: user1.id, event_id: event1.id)
 EventMember.create!(user_id: user2.id, event_id: event1.id)
 
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 20
-)
-EventMember.create!(user_id: user4.id, event_id: event3.id)
+# event2 = Event.create!(
+#   title: 'Night Out',
+#   description: 'Join me for a fun night out in the city',
+#   user_id: user3.id,
+#   event_date: Date.today + 20,
+#   google_img:
+# )
+# EventMember.create!(user_id: user4.id, event_id: event2.id)
 
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
+# event3 = Event.create!(
+#   title: 'Pottery Class',
+#   description: 'Join me for a fun and creative pottery class.',
+#   user_id: user3.id,
+#   event_date: Date.today + 30,
+#   google_img:
+# )
+# EventMember.create(user_id: user9.id, event_id: event3.id)
 
 puts 'Events created!'
