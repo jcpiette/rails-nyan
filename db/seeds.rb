@@ -94,50 +94,28 @@ event1 = Event.create!(
   description: 'Meeting up for lunch with the gang.',
   user_id: user3.id,
   event_date: Date.today + 10,
-  location: '138 Kingsland Road'
+  location: '138 Kingsland Road',
+  google_img:
 )
 EventMember.create!(user_id: user1.id, event_id: event1.id)
 EventMember.create!(user_id: user2.id, event_id: event1.id)
 
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
+event2 = Event.create!(
+  title: 'Night Out',
+  description: 'Join me for a fun night out in the city',
   user_id: user3.id,
-  event_date: Date.today + 20
+  event_date: Date.today + 20,
+  google_img:
 )
-EventMember.create!(user_id: user4.id, event_id: event3.id)
+EventMember.create!(user_id: user4.id, event_id: event2.id)
 
 event3 = Event.create!(
   title: 'Pottery Class',
   description: 'Join me for a fun and creative pottery class.',
   user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
+  event_date: Date.today + 30,
+  google_img:
 )
 EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
-event3 = Event.create!(
-  title: 'Pottery Class',
-  description: 'Join me for a fun and creative pottery class.',
-  user_id: user3.id,
-  event_date: Date.today + 30
-)
-EventMember.create(user_id: user9.id, event_id: event3.id)
-
 
 puts 'Events created!'
