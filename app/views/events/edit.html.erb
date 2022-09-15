@@ -1,17 +1,11 @@
 <% label_array = ['A','B','C','D']%>
-<div class="event-container">
-  <div class="form-and-map">
-    <%= render "form", event: @event %>
-    <div>
-      <%= link_to "Show this event", @event %> |
-      <%= link_to "Back to events", events_path %>
+<div id="edit-events-container">
+  <div id="edit-events-left-container">
+    <div id="edit-events-form">
+      <%= render "form", event: @event %>
     </div>
-    <div id="map"></div>
-  </div>
-  <div>
-  <div class="places-container">
-    <section class="layout">
-    <% @suggestions.each_with_index do |suggestion, index|%>
+    <div id="edit-events-events">
+      <% @suggestions.each_with_index do |suggestion, index|%>
       <% if index <= 3%>
         <div class="card mb-3 event-cards" style="max-height: 200px;" id="<%="business-#{index}"%> data_">
           <div class="row g-0">
@@ -32,23 +26,19 @@
         </div>
       <% end %>
     <%end%>
-  </section>
+    </div>
+  </div>
+  <div id="edit-events-right-container">
+    <div id="map"></div>
+  </div>
 </div>
 <% radius = @suggestions[0]['radius'].split(',')%>
 <% suggestions_array = @suggestions %>
-
-
-
-<br>
-<div>
-
-</div>
-</div>
 <style>
 
 </style>
 <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyQ-O48DeMBn0HnuDfhSUdGDXMPEEA1sM&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHJGGNjI-B1IZ4dvM95q6ZyfYqmVLjq48&callback=initMap&v=weekly"
       defer
     ></script>
 <script>

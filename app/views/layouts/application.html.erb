@@ -46,7 +46,7 @@
   <body class="d-flex flex-column min-vh-100">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div class="flex-grow-1 container">
+    <div class="flex-grow-1 <%= 'container' unless params[:controller] == 'events' && params[:action] == 'edit' %>">
       <%= yield %>
     </div>
     <%= render "shared/footer" %>
