@@ -70,10 +70,10 @@ class EventsController < ApplicationController
   def suggestions(users)
     location = find_event_location(users)
     type = find_event_type(users)
-    radius = '1500'
+    radius = '500'
     fminprice = find_event_budget(users)
     fmaxprice = find_event_budget(users)
-    minprice = (fminprice.to_i - 1)
+    minprice = fminprice.to_i
     maxprice = fmaxprice.to_i
     # make the json
     url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
