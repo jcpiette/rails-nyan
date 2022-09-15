@@ -39,12 +39,12 @@
 
               <input type="radio" value="<%= n[:value]%>" name="user[preference_type]" id="user_preference_type_<%=n[:value]%>" checked>
               <label class="clickable" for="user_preference_type_<%=n[:value]%>">
-                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value].capitalize().gsub('_', ' ')  %>
               </label>
           <% else %>
               <input type="radio" value="<%= n[:value]%>" name="user[preference_type]" id="user_preference_type_<%=n[:value]%>">
               <label class="clickable" for="user_preference_type_<%=n[:value]%>">
-                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value] %>
+                <i class="fa-solid <%= n[:icon]%>"></i> <%=  n[:value].capitalize().gsub('_', ' ') %>
               </label>
           <% end %>
           </span>
