@@ -62,9 +62,9 @@
   background-color: #D2DAFF;
  }
 
-
- input[name="commit"] {
-  width: 100%;
+input[name="commit"] {
+  width: 320px;
+  margin-left: 3px;
   height: 50px;
   border-radius: 5px;
   border-style: solid;
@@ -78,6 +78,7 @@
   flex-wrap: wrap;
  }
 
+<<<<<<< HEAD
 
 .card-text {
   margin: 0;
@@ -100,6 +101,8 @@
   height: 196px;
 
 
+=======
+>>>>>>> addfb9e4743b7f44c8d627b735a5c604b0bf0dc7
  #edit-events-events > .edit-events-card {
   width: 50%;
   height: 154px;
@@ -119,15 +122,16 @@
  .event-cards {
   width: 50%;
  }
-
- .image {
-  height: 199px;
-  width: 250px;
+ .event-cards img {
+  width: 200px;
+  height: 200px;
  }
+
  /*This is for the map div*/
  #edit-events-right-container{
   width: 50%;
  }
+
  #map {
   height: 734px;
   width: auto;
