@@ -23,7 +23,7 @@ export default class extends Controller {
 
   addMessage(data) {
     this.notificationsCountTarget.innerText = parseInt(this.notificationsCountTarget.innerText) + 1;
-    this.notificationsCountTarget.style= "color: red; font-size: 25px;";
+    this.notificationsTarget.style = "background-color:red;"
     this.notificationsMessageTarget.insertAdjacentHTML("afterbegin", data);
   }
 }

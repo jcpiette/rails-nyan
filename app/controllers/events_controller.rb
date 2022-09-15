@@ -39,7 +39,7 @@ class EventsController < ApplicationController
       notif = Notification.create!(message: "#{current_user.full_name} has invited you to an event!", is_read: 1, user: iu)
       NotificationChannel.broadcast_to(
          iu,
-         "<li class=\"dropdown-item\">#{notif.message}</li>".html_safe
+         "<li class=\"dropdown-item\" style=\"background-color:#D2DAFF\">#{notif.message}</li>".html_safe
         )
     end
     if @event.save!
