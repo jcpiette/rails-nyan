@@ -4,14 +4,14 @@
       <div class="event-info">
         <div><h2><%= event.title %></h2></div>
         <div><p><%= event.description %></p></div>
-        <div><p>When: <%= event.event_date %></p></div>
+        <div><p>When: <%= event.event_date.strftime("%d / %m / %Y") %></p></div>
         <div>
-          <p>Who:</p>
+          <p>Who's Going:</p>
           <% @members.where(event_id: event).each do |member| %>
             <p><%= image_tag  User.find(member.user_id).img_url, class:"avatar" %><%= User.find(member.user_id).first_name%></p>
           <% end %>
         </div>
-        <div><p>Location: <%= event.location %></p></div>
+        <div><p>Where: <%= event.location %></p></div>
       </div>
     </div>
 
