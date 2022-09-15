@@ -52,25 +52,20 @@ user9 = User.create!(first_name: 'Hermione', last_name: 'Granger', full_name: 'H
 # Create notifications
 puts 'Creating notifications...'
 
-Notification.create!(message: "Lorem Ipsum 1", is_read: 1, user: user1)
-Notification.create!(message: "Lorem Ipsum 2", is_read: 1, user: user1)
-Notification.create!(message: "Lorem Ipsum 3", is_read: 0, user: user1)
-Notification.create!(message: "Lorem Ipsum 4", is_read: 0, user: user1)
+Notification.create!(message: "Jonh has accepted your invite", is_read: 1, user: user1)
+Notification.create!(message: "You have been invited to an event", is_read: 1, user: user1)
 
-Notification.create!(message: "Lorem Ipsum 1", is_read: 1, user: user2)
-Notification.create!(message: "Lorem Ipsum 2", is_read: 1, user: user2)
-Notification.create!(message: "Lorem Ipsum 3", is_read: 0, user: user2)
-Notification.create!(message: "Lorem Ipsum 4", is_read: 0, user: user2)
+Notification.create!(message: "Jonh has accepted your invite", is_read: 1, user: user2)
+Notification.create!(message: "You have been invited to an event", is_read: 1, user: user2)
 
-Notification.create!(message: "Lorem Ipsum 1", is_read: 1, user: user3)
-Notification.create!(message: "Lorem Ipsum 2", is_read: 1, user: user3)
-Notification.create!(message: "Lorem Ipsum 3", is_read: 0, user: user3)
-Notification.create!(message: "Lorem Ipsum 4", is_read: 0, user: user3)
 
-Notification.create!(message: "Lorem Ipsum 1", is_read: 1, user: user4)
-Notification.create!(message: "Lorem Ipsum 2", is_read: 1, user: user4)
-Notification.create!(message: "Lorem Ipsum 3", is_read: 0, user: user4)
-Notification.create!(message: "Lorem Ipsum 4", is_read: 0, user: user4)
+Notification.create!(message: "Jonh has accepted your invite", is_read: 1, user: user3)
+Notification.create!(message: "You have been invited to an event", is_read: 1, user: user3)
+
+
+Notification.create!(message: "Jonh has accepted your invite", is_read: 1, user: user4)
+Notification.create!(message: "You have been invited to an event", is_read: 1, user: user4)
+
 
 puts 'Notifications created!'
 
