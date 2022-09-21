@@ -95,7 +95,7 @@ event1 = Event.create!(
   user_id: user3.id,
   event_date: Date.today + 10,
   location: '138 Kingsland Road',
-  google_img: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AcYSjRg_Hq7x4FLHZ5qgF58pxoSr-93O4YQjgeRTOLFz7leTtSliMAqXJK0FjAhqAkPmDoMeRw-43H92hMiorcLTU_OmsYnkfZv9vtVy6buq-bSq8jMSANR0Hx3N2sHy2F-Gm7b2wwxSbwdQ76THHo0HVhlJofjp-HQFSgOFSTLvRfNwMFo&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c"
+  google_img: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AcYSjRg_Hq7x4FLHZ5qgF58pxoSr-93O4YQjgeRTOLFz7leTtSliMAqXJK0FjAhqAkPmDoMeRw-43H92hMiorcLTU_OmsYnkfZv9vtVy6buq-bSq8jMSANR0Hx3N2sHy2F-Gm7b2wwxSbwdQ76THHo0HVhlJofjp-HQFSgOFSTLvRfNwMFo&key=AIzaSyBHJGGNjI-B1IZ4dvM95q6ZyfYqmVLjq48"
 )
 EventMember.create!(user_id: user1.id, event_id: event1.id)
 EventMember.create!(user_id: user2.id, event_id: event1.id)
