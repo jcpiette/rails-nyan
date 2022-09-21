@@ -1,4 +1,8 @@
-# README
+# NYAN
+
+NYAN is a web app for creating events with friends.
+
+# Installation
 
 1. Git Clone repo
 2. In command line, run : 
@@ -8,28 +12,3 @@
 * yarn add @rails/actioncable
 * yarn add js-autocomplete
 * yarn add @mapbox/mapbox-gl-geocoder
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
