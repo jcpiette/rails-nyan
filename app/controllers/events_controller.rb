@@ -60,12 +60,7 @@ class EventsController < ApplicationController
     @suggestions = suggestions(users)
   end
 
-  def user_suggestions
-    location = [ User.find(session[:user_id].latitude, User.find(session[:user_id]).longitude)]
-    type = User.find(session[:user_id]).preference_type
-    minprice, maxprice = [User.find(session[:user_id]).preference_budget, User.find(session[:user_id]).preference_budget]
-    radius = '100'
-  end
+
 
   def suggestions(users)
     location = find_event_location(users)
@@ -75,8 +70,9 @@ class EventsController < ApplicationController
     fmaxprice = find_event_budget(users)
     minprice = fminprice.to_i
     maxprice = fmaxprice.to_i
+
     # make the json
-    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
+    url = URI("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=#{radius}&keyword=#{type}&minprice=#{minprice}&maxprice=#{maxprice}&key=AIzaSyBHJGGNjI-B1IZ4dvM95q6ZyfYqmVLjq48")
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
     request = Net::HTTP::Get.new(url)
@@ -94,14 +90,13 @@ class EventsController < ApplicationController
     @suggestions = []  #ALL PLACE ID
     place_photo = []   #GET THE ID OF THE PHOTO
     place_ids.each_with_index do |place_id, index|
-      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c")
+      url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name%2Cformatted_address%2Cgeometry%2Cprice_level%2Cadr_address%2Crating%2Ctypes%2Cphotos%2Cwebsite&key=AIzaSyBHJGGNjI-B1IZ4dvM95q6ZyfYqmVLjq48")
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
       request = Net::HTTP::Get.new(url)
       response = https.request(request)
       file = response.read_body
       json_file = JSON.parse(file)
-      xx = json_file
       photo_references = []
       counter2 = 0
 
@@ -110,12 +105,10 @@ class EventsController < ApplicationController
       json_file['result']['photos'].each do |reference|
         if counter2 < 2
           counter2 += 1
-          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyBESAb2LgEWKH77louT0bFz9hH3XBB3U3c"
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=#{reference['photo_reference']}&key=AIzaSyBHJGGNjI-B1IZ4dvM95q6ZyfYqmVLjq48"
           photo_references << photo_url
         end
       end
-
-
 
       @suggestions << {
         'name' => json_file['result']['name'],
@@ -129,6 +122,7 @@ class EventsController < ApplicationController
         'latlng' => json_file['result']['geometry']['location']
       }
     end
+
     @suggestions
   end
 
